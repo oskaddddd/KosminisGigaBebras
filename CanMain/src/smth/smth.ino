@@ -182,7 +182,7 @@ void packets(){
     packets();
   if(KosminesGigaBebroBangos.available()){
     for (size_t i = 0; i < sizeof(Packet); ++i) {
-        KosminesGigaBebroBangos.print(byteArray[i], HEX);
+      KosminesGigaBebroBangos.print(byteArray[i], HEX);
     }
     KosminesGigaBebroBangos.println();
     KosminesGigaBebroBangos.flush();
@@ -193,6 +193,5 @@ void loop() {
   readSensors();
   writeToFile();
   packets();
-  Sender();
   delay(250);
 }
