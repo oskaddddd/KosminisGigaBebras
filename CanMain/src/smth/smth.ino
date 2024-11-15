@@ -8,13 +8,17 @@
 #include  <Wire.h>
 #include  <SoftwareSerial.h>
 #include  <cstdint>
+//e220 pins
 #define m0 6
 #define m1 7
 #define aux 5
-const int DHTPIN = 5;
 const byte rxPin = 3;
 const byte txPin = 2;
+
+const int DHTPIN = 5;
+
 float humidity, temperature, aX, aY, aZ, gX, gY, gZ, pressure;
+
 File myFile;
 MPU9250_asukiaaa mySensor;
 dht11 DHT;
@@ -43,14 +47,14 @@ void setup() {
   Serial.begin(9600);
   sender.begin(9600);
 
-  while (!Serial);
+  while (!Serial); //check for Serial
   Wire.begin();
-
+  //check for SD
   if (!SD.begin()) {
     Serial.println("false");
     return;
   }
-
+  //check for specified file in SD
   myFile = SD.open("KosminioGigaBebrofailai.txt", FILE_WRITE);
   if (!myFile) {
     Serial.println("false");
@@ -58,49 +62,51 @@ void setup() {
   }
 
   myFile.close();
-
-  mySensor.setWire(&Wire);
+  //sensor initialization
+  mySensor.setWire(&Wire);//MPU9250
   mySensor.beginAccel();
   mySensor.beginGyro();
   mySensor.beginMag();
 
   if (!bmp.begin()) {
-    Serial.println("Could not find BMP280 sensor, check wiring!");
+    Serial.println("BMP280 not found");
     while (1);
   }
 
   pinMode(DHTPIN, INPUT);
+
   E220 radioModule(&KosminesGigaBebroBangos, m0, m1, aux);
   while (!radioModule.init()) {
-    delay(5000);
+    delay(5000); //waiting for radio module detection
   }
+
   radioModule.setAddress(230, true);
   radioModule.setChannel(123,123);
-  Serial.println(radioModule.getAddress());
+  Serial.println(radioModule.getAddress()); //check if the radio module isn't fried
   radioModule.printBoardParameters();
 }
 
 void readSensors() {
-
+  //accelerometer
   if (mySensor.accelUpdate() == 0) {
     aX = mySensor.accelX();
     aY = mySensor.accelY();
     aZ = mySensor.accelZ();
   }
-
+  //gyroscope
   if (mySensor.gyroUpdate() == 0) {
     gX = mySensor.gyroX();
     gY = mySensor.gyroY();
     gZ = mySensor.gyroZ();
   }
 
-  temperature1 = bmp.readTemperature();
+  int temperature1 = bmp.readTemperature();
   pressure = bmp.readPressure() / 100.0F;
 
   int chk = DHT.read(DHTPIN);
   humidity = DHT.humidity;
-  temperature2 = DHT.temperature;
-  int temperature=(temperature1+temperature2)/2;
+  int temperature2 = DHT.temperature;
+  int temperature=(temperature1+temperature2)/2; //avrg of temperatures recieved from modules
 }
 
 void writeToFile() {
@@ -147,9 +153,9 @@ void packets(){
     packet.timestamp = 0.0f;         // Undefined, leave as default
 
     // Sensor values
-    packet.angVelocity = static_cast<int16_t>(gX * 100); // Example scaling to fit int16_t
-    packet.angVelocity = static_cast<int16_t>(gY * 100);
-    packet.angVelocity = static_cast<int16_t>(gZ * 100);
+    packet.angVelocity[0] = static_cast<int16_t>(gX * 100); // Example scaling to fit int16_t
+    packet.angVelocity[1] = static_cast<int16_t>(gY * 100);
+    packet.angVelocity[2] = static_cast<int16_t>(gZ * 100);
 
     packet.acceleration[0] = static_cast<int16_t>(aX * 100); 
     packet.acceleration[1] = static_cast<int16_t>(aY * 100); 
@@ -173,18 +179,12 @@ void packets(){
     // Serialize packet into byte array
     uint8_t byteArray[sizeof(Packet)];
     memcpy(byteArray, &packet, sizeof(Packet));
-
-    // Print byte array for debugging
-    for (size_t i = 0; i < sizeof(Packet); ++i) {
-        Serial.print(byteArray[i], HEX);
-        Serial.print(" ");
-    }
-    Serial.println();
-}
-
-void Sender(){
+    packets();
   if(KosminesGigaBebroBangos.available()){
-    KosminesGigaBebroBangos.print("20");
+    for (size_t i = 0; i < sizeof(Packet); ++i) {
+        KosminesGigaBebroBangos.print(byteArray[i], HEX);
+    }
+    KosminesGigaBebroBangos.println();
     KosminesGigaBebroBangos.flush();
   }
 }
