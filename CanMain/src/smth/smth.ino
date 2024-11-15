@@ -177,9 +177,9 @@ void packets(){
     packet.timestamp = 0.0f;         // Undefined, leave as default
 
     // Sensor values
-    packet.angVelocity = static_cast<int16_t>(gX * 100); // Example scaling to fit int16_t
-    packet.angVelocity = static_cast<int16_t>(gY * 100);
-    packet.angVelocity = static_cast<int16_t>(gZ * 100);
+    packet.angVelocity[0] = static_cast<int16_t>(gX * 100); // Example scaling to fit int16_t
+    packet.angVelocity[1] = static_cast<int16_t>(gY * 100);
+    packet.angVelocity[2] = static_cast<int16_t>(gZ * 100);
 
     packet.acceleration[0] = static_cast<int16_t>(aX * 100); 
     packet.acceleration[1] = static_cast<int16_t>(aY * 100); 
@@ -203,11 +203,10 @@ void packets(){
     // Serialize packet into byte array
     uint8_t byteArray[sizeof(Packet)];
     memcpy(byteArray, &packet, sizeof(Packet));
-
-    // Print byte array for debugging
+    packets();
+  if(KosminesGigaBebroBangos.available()){
     for (size_t i = 0; i < sizeof(Packet); ++i) {
-        Serial.print(byteArray[i], HEX);
-        Serial.print(" ");
+      KosminesGigaBebroBangos.print(byteArray[i], HEX);
     }
     Serial.println();
 }
