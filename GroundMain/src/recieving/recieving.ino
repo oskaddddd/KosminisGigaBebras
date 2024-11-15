@@ -19,6 +19,7 @@ void setup() {
   }
   radioModule.setAddress(230,true);
   Serial.print("Adress: ");
+  radioModule.setChannel(123,123);
   Serial.println(radioModule.getAddress());
   radioModule.printBoardParameters();
 }
