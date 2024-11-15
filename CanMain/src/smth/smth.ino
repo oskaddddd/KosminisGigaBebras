@@ -1,26 +1,42 @@
-#include  <E220.h>
+//Libraries
 #include  <SD.h>
 #include  <SPI.h>
 #include  <Arduino.h>
-#include  <dht11.h>
-#include  <MPU9250_asukiaaa.h>
-#include  <Adafruit_BMP280.h>
 #include  <Wire.h>
 #include  <SoftwareSerial.h>
 #include  <cstdint>
+
+//Sensors
+#include  <dht11.h>
+#include  <MPU9250_asukiaaa.h>
+#include  <Adafruit_BMP280.h>
+
+//LoRa
+#include  <E220.h>
+
 #define m0 6
 #define m1 7
 #define aux 5
-const int DHTPIN = 5;
+
+MPU9250_asukiaaa MPU_sensor;
+dht11 DHT_sensor;
+Adafruit_BMP280 BMP_sensor;
+
+const int DHT_pin = 5;
 const byte rxPin = 3;
 const byte txPin = 2;
-float humidity, temperature, aX, aY, aZ, gX, gY, gZ, pressure;
+
+
+int16_t temprature, acceleration[3], angVelocity[3], magneticField[3];
+uint16_t preasure, vocConc, co2Conc;
+uint8_t humidity;
+float gps[3]
+
+
 File myFile;
-MPU9250_asukiaaa mySensor;
-dht11 DHT;
-Adafruit_BMP280 bmp;
-SoftwareSerial sender(rxPin, txPin);
-Stream &KosminesGigaBebroBangos = (Stream &)sender;
+
+SoftwareSerial LoRa(rxPin, txPin);
+Stream &kgbBangos = (Stream &)LoRa;
 
 #pragma pack(push, 1)  // Ensure no padding between members
 struct Packet {
@@ -38,104 +54,118 @@ struct Packet {
     uint16_t vocConcentration;    // 2 bytes
     uint16_t co2Concentration;    // 2 bytes
 };
-#pragma pack(pop)
-void setup() {
-  Serial.begin(9600);
-  sender.begin(9600);
 
-  while (!Serial);
+#pragma pack(pop)
+
+File file;
+
+void setup() {
+  //Setup Serial
+  Serial.begin(9600);
+  LoRa.begin(9600);
   Wire.begin();
 
+  if(!Wire){
+    Serial.print("Failed to inicialize ")
+  }
+  //Wait for serial to begin
+  while (!Serial);
+  
+
   if (!SD.begin()) {
-    Serial.println("false");
+    Serial.println("SD card failed");
     return;
   }
 
-  myFile = SD.open("KosminioGigaBebrofailai.txt", FILE_WRITE);
-  if (!myFile) {
-    Serial.println("false");
-    return;
+  //Test if SD card is working
+  file = SD.open("KosminioGigaBebrofailai.txt", FILE_WRITE);
+  if (!file) {
+    Serial.println("SD card failed");
+  }
+  
+
+  
+  MPU_sensor.setWire(&Wire);
+  MPU_sensor.beginAccel();
+  MPU_sensor.beginGyro();
+  MPU_sensor.beginMag();
+
+
+  if (!BMP_sensor.begin()) {
+    Serial.println("BMP280 failed");
   }
 
-  myFile.close();
+  pinMode(DHT_pin, INPUT);
+  E220 radioModule(&kgbBangos, m0, m1, aux);
 
-  mySensor.setWire(&Wire);
-  mySensor.beginAccel();
-  mySensor.beginGyro();
-  mySensor.beginMag();
-
-  if (!bmp.begin()) {
-    Serial.println("Could not find BMP280 sensor, check wiring!");
-    while (1);
-  }
-
-  pinMode(DHTPIN, INPUT);
-  E220 radioModule(&KosminesGigaBebroBangos, m0, m1, aux);
+  //Wait for radio module to turn on
   while (!radioModule.init()) {
-    delay(5000);
+    delay(1000);
   }
-  radioModule.setAddress(230, true);
-  radioModule.setChannel(123,123);
-  Serial.println(radioModule.getAddress());
-  radioModule.printBoardParameters();
+
+  //Wait for radio module to set up
+  uint8_t = 0;
+  while ((!radioModule.setAddress(230, true) || !radioModule.setChannel(123, true)) && i < 5){
+    i++;
+    delay(500)
+  }
+
+  //radioModule.printBoardParameters();
 }
 
 void readSensors() {
 
-  if (mySensor.accelUpdate() == 0) {
-    aX = mySensor.accelX();
-    aY = mySensor.accelY();
-    aZ = mySensor.accelZ();
+  float check;
+
+  //Get accelerometer data
+  if (MPU_sensor.accelUpdate() == 0) {
+    acceleration[0] = MPU_sensor.accelX()*100;
+    acceleration[1] = MPU_sensor.accelY()*100;
+    acceleration[2] = MPU_sensor.accelZ()*100;
   }
 
-  if (mySensor.gyroUpdate() == 0) {
-    gX = mySensor.gyroX();
-    gY = mySensor.gyroY();
-    gZ = mySensor.gyroZ();
+  //Get gyro data
+  if (MPU_sensor.gyroUpdate() == 0) {
+    angVelocity[0] = MPU_sensor.gyroX()*100;
+    angVelocity[1] = MPU_sensor.gyroY()*100;
+    angVelocity[2] = MPU_sensor.gyroZ()*100;
   }
 
-  temperature1 = bmp.readTemperature();
-  pressure = bmp.readPressure() / 100.0F;
+  //Get humidity data
+  DHT_sensor.read(DHT_pin);
+  humidity = DHT_sensor.humidity;
 
-  int chk = DHT.read(DHTPIN);
-  humidity = DHT.humidity;
-  temperature2 = DHT.temperature;
-  int temperature=(temperature1+temperature2)/2;
+  //Read temprature (100*C) and check if its valid
+  check = BMP_sensor.readTemperature();
+  if (check == NAN){
+    temperature = (DHT_sensor.temperature*100);
+  }
+  else{
+    temprature = (check*100);
+  }
+
+  //Read preassure (Pa) and check if its valid
+  check = BMP_sensor.readPressure();
+  if (check == NAN){
+    preasure = 0;
+  }
+  else{
+    preasure = check;
+  }
+
 }
 
-void writeToFile() {
-  myFile = SD.open("test.txt", FILE_WRITE);
-  if (!myFile) {
-    Serial.println("Error opening test.txt");
-    return;
-  }
 
-  myFile.print("Humidity (%): ");
-  myFile.print(humidity);
 
-  myFile.print("Temperature (C): ");
-  myFile.print(temperature);
-
-  myFile.print("accelX: ");
-  myFile.print(aX);
-  myFile.print("\taccelY: ");
-  myFile.print(aY);
-  myFile.print("\taccelZ: ");
-  myFile.print(aZ);
-  
-  myFile.print("\tgX: ");
-  myFile.print(gX);
-  myFile.print("\tgY: ");
-  myFile.print(gY);
-  myFile.print("\tgZ: ");
-  myFile.print(gZ);
-
-  myFile.print("\tPressure (hPa): ");
-  myFile.print(pressure);
+//Print data to file
+template <typename... Args>
+void writeToFile(Args... args) {
+  (myFile.print(args), ..., myFile.print(" "));  // Print each argument followed by a space
   myFile.println();
-  
-  myFile.close();
 }
+
+
+
 void packets(){
 
     Packet packet = {};
@@ -182,10 +212,10 @@ void packets(){
     Serial.println();
 }
 
-void Sender(){
-  if(KosminesGigaBebroBangos.available()){
-    KosminesGigaBebroBangos.print("20");
-    KosminesGigaBebroBangos.flush();
+void SendData(){
+  if(kgbBangos.available()){
+    kgbBangos.()
+    kgbBangos.flush();
   }
 }
 
@@ -193,6 +223,6 @@ void loop() {
   readSensors();
   writeToFile();
   packets();
-  Sender();
+  SendData();
   delay(250);
 }
