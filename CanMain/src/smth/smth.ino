@@ -1,5 +1,5 @@
 #include  <E220.h>
-#include  <C:\Users\wld\AppData\Local\Arduino15\packages\arduino\hardware\esp32\2.0.18-20240930.arduino3\libraries\SD.h>
+#include  <SD.h>
 #include  <SPI.h>
 #include  <Arduino.h>
 #include  <dht11.h>
@@ -7,7 +7,7 @@
 #include  <Adafruit_BMP280.h>
 #include  <Wire.h>
 #include  <SoftwareSerial.h>
-#include <cstdint>
+#include  <cstdint>
 #define m0 6
 #define m1 7
 #define aux 5
@@ -157,14 +157,12 @@ void packets(){
     uint8_t byteArray[sizeof(Packet)];
 
     // Copy the data from the packet struct into the byte array
-    std::memcpy(byteArray, &packet, sizeof(Packet));
+    //std::memcpy(byteArray, &packet, sizeof(Packet));
 
-    return 0;
 }
 void Sender(){
-  if(serial.available()){
-    KosminesGigaBebroBangos.print(byteArray);
-    KosminesGigaBebroBangos.print();
+  if(KosminesGigaBebroBangos.available()){
+    KosminesGigaBebroBangos.print("20");
     KosminesGigaBebroBangos.flush();
   }
 }
