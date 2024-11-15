@@ -28,7 +28,7 @@ struct Packet {
     uint8_t packetId;             // 1 byte
     uint8_t senderId;             // 1 byte
     float timestamp;              // 4 bytes
-    int16_t angVelocity;          // 2 bytes
+    int16_t angVelocity[3];          // 2 bytes
     int16_t acceleration[3];      // 6 bytes (3 * 2 bytes)
     int16_t magneticField[3];    // 6 bytes (3 * 2 bytes)
     float gps[3];                 // 12 bytes (3 * 4 bytes)
@@ -94,12 +94,13 @@ void readSensors() {
     gZ = mySensor.gyroZ();
   }
 
-  temperature = bmp.readTemperature();
+  temperature1 = bmp.readTemperature();
   pressure = bmp.readPressure() / 100.0F;
 
   int chk = DHT.read(DHTPIN);
   humidity = DHT.humidity;
-  temperature = DHT.temperature;
+  temperature2 = DHT.temperature;
+  int temperature=(temperature1+temperature2)/2;
 }
 
 void writeToFile() {
@@ -137,29 +138,50 @@ void writeToFile() {
 }
 void packets(){
 
-    Packet packet = {
-        0x01,             // header
-        0x02,             // packetId
-        0x03,             // senderId
-        123.456f,         // timestamp
-        10,               // angVelocity
-        { 1, 2, 3 },      // acceleration
-        { 4, 5, 6 },      // magneticField
-        { 10.1f, 20.2f, 30.3f },  // gps
-        2500,             // temperature
-        1013,             // pressure
-        60,               // humidity
-        100,              // vocConcentration
-        400               // co2Concentration
-    };
+    Packet packet = {};
+    
+    // Assign sensor values to the packet
+    packet.header = 0x01;            // Example header
+    packet.packetId = 0x02;          // Example packet ID
+    packet.senderId = 0x03;          // Example sender ID
+    packet.timestamp = 0.0f;         // Undefined, leave as default
 
-    // Create a byte array to hold the packet data
+    // Sensor values
+    packet.angVelocity = static_cast<int16_t>(gX * 100); // Example scaling to fit int16_t
+    packet.angVelocity = static_cast<int16_t>(gY * 100);
+    packet.angVelocity = static_cast<int16_t>(gZ * 100);
+
+    packet.acceleration[0] = static_cast<int16_t>(aX * 100); 
+    packet.acceleration[1] = static_cast<int16_t>(aY * 100); 
+    packet.acceleration[2] = static_cast<int16_t>(aZ * 100);
+
+    packet.magneticField[0] = static_cast<int16_t>(4); // Example magnetic field data
+    packet.magneticField[1] = static_cast<int16_t>(5);
+    packet.magneticField[2] = static_cast<int16_t>(6);
+
+    packet.gps[0] = 0.0f; // Undefined GPS values
+    packet.gps[1] = 0.0f;
+    packet.gps[2] = 0.0f;
+
+    packet.temperature = static_cast<int16_t>(temperature * 100); // Celsius to fixed-point
+    packet.pressure = static_cast<uint16_t>(pressure * 100); // hPa to fixed-point
+    packet.humidity = static_cast<uint8_t>(humidity); // Humidity in percentage
+
+    packet.vocConcentration = 0; // Undefined VOC value
+    packet.co2Concentration = 0; // Undefined CO2 value
+
+    // Serialize packet into byte array
     uint8_t byteArray[sizeof(Packet)];
+    memcpy(byteArray, &packet, sizeof(Packet));
 
-    // Copy the data from the packet struct into the byte array
-    //std::memcpy(byteArray, &packet, sizeof(Packet));
-
+    // Print byte array for debugging
+    for (size_t i = 0; i < sizeof(Packet); ++i) {
+        Serial.print(byteArray[i], HEX);
+        Serial.print(" ");
+    }
+    Serial.println();
 }
+
 void Sender(){
   if(KosminesGigaBebroBangos.available()){
     KosminesGigaBebroBangos.print("20");
@@ -172,5 +194,5 @@ void loop() {
   writeToFile();
   packets();
   Sender();
-  delay(2000);
+  delay(250);
 }
