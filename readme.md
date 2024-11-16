@@ -6,7 +6,7 @@ The packet is sent in byte form.
 
 The header is used to identify what kind of packet this is and to know the time that it was sent.
 
-```
+```python
 header: uint8  (1 byte) -> 0x00
 packetId: uint8  (1 byte) -> 0x00 for a data packet and 0x01 for a debug packet
 senderId: uint8  (1 byte) -> used to varify the sender can be changed, curerently set to 0xE6
@@ -21,7 +21,7 @@ The type of payload is identified by the `packetId` byte. The payload can be eit
 
 All the collected data is sent using this packet. It will be sent multiple times per second.
 
-```
+```python
 angVelocity: [int16, int16, int16] (6 bytes) -> 100 * °/s
 acceleration: [int16, int16, int16] (6 bytes) -> 100 * g
 magneticField: [int16, int16, int16] (6 bytes) -> 100 * mTesla
@@ -38,7 +38,7 @@ checkSum: uint8 (1 byte) -> calculated by using xor on all the bytes of the pack
 
 This is used to diagnose issues with the CanSat and see if everything is working correctly
 
-```
+```python
 packetCount: uint16 (2 bytes) -> How many data packets were sent in total
 batteryVoltage: uint16 (2 bytes) -> 100*V 
 memUsage: uint16 (2 bytes) -> kB
