@@ -27,13 +27,13 @@ const byte rxPin = 3;
 const byte txPin = 2;
 
 
-int16_t temprature, acceleration[3], angVelocity[3], magneticField[3];
+int16_t temperature, acceleration[3], angVelocity[3], magneticField[3];
 uint16_t preasure, vocConc, co2Conc;
 uint8_t humidity;
-float gps[3]
+float gps[3];
 
 
-File myFile;
+
 
 SoftwareSerial LoRa(rxPin, txPin);
 Stream &kgbBangos = (Stream &)LoRa;
@@ -63,10 +63,10 @@ void setup() {
   //Setup Serial
   Serial.begin(9600);
   LoRa.begin(9600);
-  Wire.begin();
 
-  if(!Wire){
-    Serial.print("Failed to inicialize ")
+
+  if(!Wire.begin()){
+    Serial.print("Failed to inicialize ");
   }
   //Wait for serial to begin
   while (!Serial);
@@ -104,10 +104,10 @@ void setup() {
   }
 
   //Wait for radio module to set up
-  uint8_t = 0;
+  uint8_t i = 0;
   while ((!radioModule.setAddress(230, true) || !radioModule.setChannel(123, true)) && i < 5){
     i++;
-    delay(500)
+    delay(500);
   }
 
   //radioModule.printBoardParameters();
@@ -135,13 +135,13 @@ void readSensors() {
   DHT_sensor.read(DHT_pin);
   humidity = DHT_sensor.humidity;
 
-  //Read temprature (100*C) and check if its valid
+  //Read temperature (100*C) and check if its valid
   check = BMP_sensor.readTemperature();
   if (check == NAN){
     temperature = (DHT_sensor.temperature*100);
   }
   else{
-    temprature = (check*100);
+    temperature = (check*100);
   }
 
   //Read preassure (Pa) and check if its valid
@@ -160,60 +160,61 @@ void readSensors() {
 //Print data to file
 template <typename... Args>
 void writeToFile(Args... args) {
-  (myFile.print(args), ..., myFile.print(" "));  // Print each argument followed by a space
-  myFile.println();
+  (file.print(args), ..., file.print(" "));  // Print each argument followed by a space
+  file.println();
 }
 
 
 
-void packets(){
-
-    Packet packet = {};
-    
-    // Assign sensor values to the packet
-    packet.header = 0x01;            // Example header
-    packet.packetId = 0x02;          // Example packet ID
-    packet.senderId = 0x03;          // Example sender ID
-    packet.timestamp = 0.0f;         // Undefined, leave as default
-
-    // Sensor values
-    packet.angVelocity[0] = static_cast<int16_t>(gX * 100); // Example scaling to fit int16_t
-    packet.angVelocity[1] = static_cast<int16_t>(gY * 100);
-    packet.angVelocity[2] = static_cast<int16_t>(gZ * 100);
-
-    packet.acceleration[0] = static_cast<int16_t>(aX * 100); 
-    packet.acceleration[1] = static_cast<int16_t>(aY * 100); 
-    packet.acceleration[2] = static_cast<int16_t>(aZ * 100);
-
-    packet.magneticField[0] = static_cast<int16_t>(4); // Example magnetic field data
-    packet.magneticField[1] = static_cast<int16_t>(5);
-    packet.magneticField[2] = static_cast<int16_t>(6);
-
-    packet.gps[0] = 0.0f; // Undefined GPS values
-    packet.gps[1] = 0.0f;
-    packet.gps[2] = 0.0f;
-
-    packet.temperature = static_cast<int16_t>(temperature * 100); // Celsius to fixed-point
-    packet.pressure = static_cast<uint16_t>(pressure * 100); // hPa to fixed-point
-    packet.humidity = static_cast<uint8_t>(humidity); // Humidity in percentage
-
-    packet.vocConcentration = 0; // Undefined VOC value
-    packet.co2Concentration = 0; // Undefined CO2 value
-
-    // Serialize packet into byte array
-    uint8_t byteArray[sizeof(Packet)];
-    memcpy(byteArray, &packet, sizeof(Packet));
-    packets();
-  if(KosminesGigaBebroBangos.available()){
-    for (size_t i = 0; i < sizeof(Packet); ++i) {
-      KosminesGigaBebroBangos.print(byteArray[i], HEX);
-    }
-    Serial.println();
-}
+//void packets(){
+//
+//    Packet packet = {};
+//    
+//    // Assign sensor values to the packet
+//    packet.header = 0x01;            // Example header
+//    packet.packetId = 0x02;          // Example packet ID
+//    packet.senderId = 0x03;          // Example sender ID
+//    packet.timestamp = 0.0f;         // Undefined, leave as default
+//
+//    // Sensor values
+//    packet.angVelocity[0] = static_cast<int16_t>(gX * 100); // Example scaling to fit int16_t
+//    packet.angVelocity[1] = static_cast<int16_t>(gY * 100);
+//    packet.angVelocity[2] = static_cast<int16_t>(gZ * 100);
+//
+//    packet.acceleration[0] = static_cast<int16_t>(aX * 100); 
+//    packet.acceleration[1] = static_cast<int16_t>(aY * 100); 
+//    packet.acceleration[2] = static_cast<int16_t>(aZ * 100);
+//
+//    packet.magneticField[0] = static_cast<int16_t>(4); // Example magnetic field data
+//    packet.magneticField[1] = static_cast<int16_t>(5);
+//    packet.magneticField[2] = static_cast<int16_t>(6);
+//
+//    packet.gps[0] = 0.0f; // Undefined GPS values
+//    packet.gps[1] = 0.0f;
+//    packet.gps[2] = 0.0f;
+//
+//    packet.temperature = static_cast<int16_t>(temperature * 100); // Celsius to fixed-point
+//    packet.pressure = static_cast<uint16_t>(pressure * 100); // hPa to fixed-point
+//    packet.humidity = static_cast<uint8_t>(humidity); // Humidity in percentage
+//
+//    packet.vocConcentration = 0; // Undefined VOC value
+//    packet.co2Concentration = 0; // Undefined CO2 value
+//
+//    // Serialize packet into byte array
+//    uint8_t byteArray[sizeof(Packet)];
+//    memcpy(byteArray, &packet, sizeof(Packet));
+//    packets();
+//  if(KosminesGigaBebroBangos.available()){
+//    for (size_t i = 0; i < sizeof(Packet); ++i) {
+//      KosminesGigaBebroBangos.print(byteArray[i], HEX);
+//    }
+//    Serial.println();
+//  }
+//}
 
 void SendData(){
   if(kgbBangos.available()){
-    kgbBangos.()
+    kgbBangos.send();
     kgbBangos.flush();
   }
 }
@@ -221,7 +222,7 @@ void SendData(){
 void loop() {
   readSensors();
   writeToFile();
-  packets();
+  //packets();
   SendData();
   delay(250);
 }
