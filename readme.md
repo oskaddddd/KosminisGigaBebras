@@ -45,7 +45,7 @@ This is used to diagnose issues with the CanSat and see if everything is working
 packetCount: uint16 (2 bytes) -> How many data packets were sent in total
 batteryVoltage: uint16 (2 bytes) -> 100*V 
 memUsage: uint16 (2 bytes) -> kB
-sensors: uint8 (1 byte) -> Each bit represents the functioning of deffirent sensors. [0, 0, sdCard, co2, voc, dht11, gy91, Parashute]
+sensors: uint8 (1 byte) -> Each bit represents the functioning of deffirent sensors. [0, 0, 0, sdCard, co2, voc, dht11, gy91]
 errors: uint8 [dynamic] (X bytes) -> Up to 48 characters (bytes)
 checksum: uint8 (1 byte) -> calculated by using xor on all the bytes of the packet.
 ```
