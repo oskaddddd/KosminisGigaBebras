@@ -3,37 +3,18 @@
 #include  <SPI.h>
 #include  <Arduino.h>
 #include  <Wire.h>
+
 #include  <HardwareSerial.h> 
+#include  <SoftwareSerial>
+
 #include  <cstdint>
 
 
+
+
 //Sensors
-#include  <dht11.h>
-#include  <MPU9250_asukiaaa.h> 
-#include  <Adafruit_BMP280.h> 
+#include "GY_85.h"
 
-MPU9250_asukiaaa MPU_sensor;
-dht11 DHT_sensor;
-Adafruit_BMP280 BMP_sensor;
-
-HardwareSerial rfSerial(1);
-
-
-const byte rxPin = 16;
-const byte txPin = 17;
-
-const int DHT_pin = 5;
-
-const byte channel = 230;
-const byte address[2] = {123, 123};
-
-char error[64] = "" ;
-uint8_t errorLength = 0;
-
-uint8_t packetLength = 0;
-uint8_t Packet[64] = {};
-
-File file;
 
 #pragma pack(push, 1) 
 struct PacketHeader {
@@ -86,6 +67,29 @@ struct DebugPayload {
 DataPayload data = {};
 DebugPayload debug = {};
 
+HardwareSerial rfSerial(1);
+
+LoRa
+
+GY_85 GY85;
+
+
+const byte rxPin = 16;
+const byte txPin = 17;
+
+const int DHT_pin = 5;
+
+const byte channel = 230;
+const byte address[2] = {123, 123};
+
+char error[64] = "" ;
+uint8_t errorLength = 0;
+
+uint8_t packetLength = 0;
+uint8_t Packet[64] = {};
+
+File file;
+
 void setup() {
   
   
@@ -93,41 +97,27 @@ void setup() {
   Serial.begin(9600);
   rfSerial.begin(9600, SERIAL_8N1, rxPin, txPin); //Rx Tx
 
-  delay(1000);
-
-  //Set the channel and the address of the LoRa
-  uint8_t addressConfig[] = {0xC1, 0x00, 0x02, 0xC0, address[0], address[1]}; 
-  uint8_t channelConfig[] = {0xC1, 0x04, 0x01, channel};
-
-  rfSerial.write(addressConfig, sizeof(addressConfig));
-  delay(100);
-  rfSerial.write(channelConfig, sizeof(channelConfig));
-
-
   //Set up wire
   if(!Wire.begin()){
-    Serial.print("Failed to inicialize ");
+    Serial.print("Failed to inicialize wire");
   }
+
+  delay(1000);
+
+  GY85.init();
+
+  if (!LoRa.begin(915E6)) {
+    Serial.println("Starting LoRa failed!");
+    while (1);
+  }
+
 
   if (!SD.begin()) {
     Serial.println("SD card failed");
     return;
   }
-  
-  //Set up MPU
-  MPU_sensor.setWire(&Wire);
-  MPU_sensor.beginAccel();
-  MPU_sensor.beginGyro();
-  MPU_sensor.beginMag();
-
-  //Setup DHT
-  pinMode(DHT_pin, INPUT);
 
 
-  //Test is BMP is working
-  if (!BMP_sensor.begin()) {
-    Serial.println("BMP280 failed");
-  }
   //Test if SD card is working
   file = SD.open("KosminioGigaBebrofailai.txt", FILE_WRITE);
   if (!file) {
@@ -141,20 +131,21 @@ void readSensors() {
 
   float check;
 
-  //Get accelerometer data
-  if (MPU_sensor.accelUpdate() == 0) {
-    data.acceleration[0] = MPU_sensor.accelX()*100;
-    data.acceleration[1] = MPU_sensor.accelY()*100;
-    data.acceleration[2] = MPU_sensor.accelZ()*100;
-  }
+  int* accelerometerReadings = GY85.readFromAccelerometer();
+  int ax = GY85.accelerometer_x(accelerometerReadings)*100;
+  int ay = GY85.accelerometer_y(accelerometerReadings)*100;
+  int az = GY85.accelerometer_z(accelerometerReadings)*100;
+  
+  int* compassReadings = GY85.readFromCompass();
+  int cx = GY85.compass_x(compassReadings)*100;
+  int cy = GY85.compass_y(compassReadings)*100;
+  int cz = GY85.compass_z(compassReadings)*100;
 
-  //Get gyro data
-  if (MPU_sensor.gyroUpdate() == 0) {
-    data.angVelocity[0] = MPU_sensor.gyroX()*100;
-    data.angVelocity[1] = MPU_sensor.gyroY()*100;
-    data.angVelocity[2] = MPU_sensor.gyroZ()*100;
-  }
-
+  float* gyroReadings = GY85.readGyro();
+  float gx = GY85.gyro_x(gyroReadings);
+  float gy = GY85.gyro_y(gyroReadings);
+  float gz = GY85.gyro_z(gyroReadings);
+  float gt = GY85.temp(gyroReadings);
   //Get data.humidity data
   DHT_sensor.read(DHT_pin);
   data.humidity = DHT_sensor.humidity;
@@ -261,7 +252,7 @@ void loop() {
   readSensors();
   BuildPacket(0);
   SendPacket();
-  delay(250);
+  delay(100);
   BuildPacket(1);
   SendPacket();
 }

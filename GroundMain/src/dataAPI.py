@@ -41,7 +41,6 @@ class Unpack():
         return b[start: length].decode('utf-8')
     
 
-Unpack.int8()
 
 
 class DataMain():
@@ -75,24 +74,21 @@ class DataMain():
         }
     
     #A function that proccesses incoming packets from the Can 
-    def parse_packet(self, packet:bytes):
+    def parse_packet(self, packet:bytes) -> dict: 
 
         logging.debug(f"Started parsing packet nr{self.PacketCount+1}: {packet}")
         
-        if (packet[0] != 0x00):
-            logging.warning("Recieved packet with wrong starting byte")
-            return
-        elif (len(packet) < 15):
+        if (len(packet) < 15):
             logging.warning("Recieved packet with inadequete length:", len(packet))
             return  
         header = {
-            "length": self.unpack.uint8(packet, 1), #1 byte 
-            "packetId": self.unpack.uint8(packet, 2), #1 byte
-            "senderId": self.unpack.uint8(packet, 3), #1 byte
-            "timestamp": self.unpack.uint32(packet, 4) #4 bytes
+            "length": self.unpack.uint8(packet, 0), #1 byte 
+            "packetId": self.unpack.uint8(packet, 1), #1 byte
+            "senderId": self.unpack.uint8(packet, 2), #1 byte
+            "timestamp": self.unpack.uint32(packet, 3) #4 bytes
         }
         
-        byteCount = 8
+        byteCount = 7
 
         #Check if the packet is valid
         if header['senderId'] != self.CanId:
@@ -148,6 +144,8 @@ class DataMain():
             byteCount+=(header['length']-byteCount)
             
             self.debug_data(payload)
+            
+        return payload
             
 
     #A function that adds data to the main DataStore
