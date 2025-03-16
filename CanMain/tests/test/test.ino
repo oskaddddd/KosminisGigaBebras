@@ -1,5 +1,5 @@
 // Create a HardwareSerial instance for the LoRa module
-HardwareSerial rfSerial(1);
+HardwareSerial LoRa_serial(1);
 
 // Define the pins for RX and TX
 const byte rxPin = 16;
@@ -14,7 +14,7 @@ void setup() {
   Serial.begin(9600);
   
   // Initialize rfSerial with correct parameters: baud rate, data format, rxPin, txPin
-  rfSerial.begin(9600, SERIAL_8N1, rxPin, txPin); // 9600 baud, 8 data bits, no parity, 1 stop bit
+  LoRa_serial.begin(9600, SERIAL_8N1, rxPin, txPin); // 9600 baud, 8 data bits, no parity, 1 stop bit
 
   // Give some time for the LoRa module to initialize
   delay(1000);
@@ -24,12 +24,12 @@ void setup() {
   uint8_t addressL = address & 0xFF;         // Low byte of the address
 
   byte addressConfig[] = {0xC0, 0x00, 0x02, addressH, addressL};  // Address config command
-  rfSerial.write(addressConfig, sizeof(addressConfig));
+  LoRa_serial.write(addressConfig, sizeof(addressConfig));
   delay(100);  // Allow time for the module to process the command
 
   // Set the channel
   byte channelConfig[] = {0xC0, 0x04, 0x01, channel};  // Channel config command
-  rfSerial.write(channelConfig, sizeof(channelConfig));
+  LoRa_serial.write(channelConfig, sizeof(channelConfig));
   delay(100);  // Allow time for the module to process the command
 
   // Print a message to indicate the setup is complete

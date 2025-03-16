@@ -1,5 +1,2 @@
-from serial import Serial
-from serial.tools import list_ports_l
-
-ports = list_ports.comports(True)
-print(ports)
+a = bytes([0x00, 0xff])
+print(bytes([0xaa])+a[:1])

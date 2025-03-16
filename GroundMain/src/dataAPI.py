@@ -88,6 +88,15 @@ class DataMain():
             "timestamp": self.unpack.uint32(packet, 3) #4 bytes
         }
         
+        #CHeck checksum
+        checksum = 0
+        for byte in bytes([0x00])+packet[:header["length"]-1]:
+            checksum^=byte
+        if checksum != packet[header['length']-1]:
+            logging.warning("Packet corrupted")
+            return
+            
+                
         byteCount = 7
 
         #Check if the packet is valid

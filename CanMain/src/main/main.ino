@@ -9,6 +9,8 @@
 
 #include  <cstdint>
 
+#include <TinyGPS++.h>
+
 
 
 
@@ -67,7 +69,7 @@ struct DebugPayload {
 DataPayload data = {};
 DebugPayload debug = {};
 
-HardwareSerial rfSerial(1);
+HardwareSerial LoRa_serial(1);
 
 LoRa
 
@@ -95,7 +97,7 @@ void setup() {
   
   //Setup Serial and LoRa
   Serial.begin(9600);
-  rfSerial.begin(9600, SERIAL_8N1, rxPin, txPin); //Rx Tx
+  LoRa_serial.begin(9600, SERIAL_8N1, rxPin, txPin); //Rx Tx
 
   //Set up wire
   if(!Wire.begin()){
@@ -126,6 +128,12 @@ void setup() {
 
 }
 
+bool setAddress(uint16_t address){
+  return 1
+}
+bool setChannel(uint16_t channel){
+  return 1
+}
 
 void readSensors() {
 
@@ -167,6 +175,32 @@ void readSensors() {
   else{
     data.pressure = check;
   }
+
+  if (gpsSerial.available() > 0) {
+    if (gps.encode(gpsSerial.read())) {
+      if (gps.location.isValid()) {
+        
+        gps.location.lat()
+        gps.location.lng()
+        if (gps.altitude.isValid())
+          Serial.println(gps.altitude.meters());
+        else
+          Serial.println(F("INVALID"));
+      } else {
+        Serial.println(F("- location: INVALID"));
+      }
+
+      if (gps.speed.isValid()) {
+        Serial.print(gps.speed.kmph());
+        Serial.println(F(" km/h"));
+      } else {
+        Serial.println(F("INVALID"));
+      }
+
+      Serial.println();
+    }
+  }
+
 
 }
 
@@ -240,8 +274,8 @@ void BuildPacket(uint8_t type){
 }
 
 void SendPacket(){
-  if(rfSerial.available()){
-    rfSerial.write(Packet, packetLength);
+  if(LoRa_serial.available()){
+    LoRa_serial.write(Packet, packetLength);
   }
 }
 
