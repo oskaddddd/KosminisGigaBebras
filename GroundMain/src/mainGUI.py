@@ -23,14 +23,16 @@ class SerialMonitor(QThread):
         super().__init__()
  
         self.coms = dataAPI.SerialSetup()
-        self.running = False
+        self.running = True
         self.pollingRate  = 30 #hertz
+        
     
     def run(self):
         while self.running:
             if self.coms.in_waiting > 0:
                 packet = self.coms.readline()
-                data = DataManager.parse_packet(packet)
+                print(packet)
+                data = DataManager.parse_data(packet)
                 
                 self.update_signal.emit(data)
                 
@@ -49,11 +51,26 @@ class MainWindow(QMainWindow):
         
         self.serial = SerialMonitor()
         self.serial.update_signal.connect(self.updateData)
+        
+        self.serial.start()
 
     def updateData(self, data:dict):
-        pass
+        print(data)
 
 if __name__ == "__main__":
+    coms = dataAPI.SerialSetup()
+    running = True
+    pollingRate  = 30 #hertz
+    while True:
+            if coms.in_waiting > 0:
+                packet = coms.readline()
+                print(packet, "\n\n")
+                #data = DataManager.parse_data(packet)
+                
+
+                
+                
+            sleep(1/pollingRate)
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
     qdarktheme.setup_theme()

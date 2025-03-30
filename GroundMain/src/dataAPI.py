@@ -44,7 +44,7 @@ class Unpack():
 
 
 class DataMain():
-    def __init__(self, CanId:bytes = 0xE6):
+    def __init__(self):
         
         #Object where all of the collected data is stored
         #Packets are stored in reverse order, so the newest one would have the index of 0
@@ -52,6 +52,7 @@ class DataMain():
         
         self.dictData = []
         self.dictDebug = []
+        
         
         with open(self.path+"data.json", 'r') as f:
             self.dictData = json.load(f)
@@ -62,16 +63,53 @@ class DataMain():
         
 
         
-        self.CanId = CanId
+        
         self.unpack = Unpack()
         self.PacketCount = 0
+        
+        self.packetBuffer = bytearray()
         
         
         
         self.PacketTypes = {
-            'data':0x00,
-            'debug':0x01
+            "data":0x00,
+            "debug":0x01
         }
+        
+        self.CanId = b'\xe6'
+        self.startBytes = b'\x98\x5c'
+        
+        self.id = self.startBytes+self.CanId
+        
+        self.footerLength = 3
+        
+    def parse_data(self, byteSnipet:bytes):
+        self.packetBuffer.append(byteSnipet)
+        #Check the snippet and 2 earlier bytes for a Header Id
+        index = self.packetBuffer[len(self.packetBuffer)-len(byteSnipet)-(len(self.id)-1):].find(self.id)
+        
+        if index != -1:
+            #Check if that bytes before the startID is the end seq
+            if self.packetBuffer[index-2:index] == b"\r\n":
+                #Send finished packet for parsing 
+                packet = self.packetBuffer[:index]
+                
+                #Check if this packet is fine, else throw it in the trash 
+                if packet.startswith(self.id):
+                    #Finally parse the packet
+                    self.parse_packet(packet)
+                else:
+                    logging.debug(f"Packet was fucked up 1:{packet}")
+                #Set the buffer to only store the new packet
+                self.packetBuffer = self.packetBuffer[index:]
+            else:
+                logging.debug(f"Packet was fucked up 2:{packet}")
+                #Woooooo weee wooo weeeeeee
+                #SOMETHING IS MAJORLY FUCKED UP
+                
+                #implement fix later
+                
+        
     
     #A function that proccesses incoming packets from the Can 
     def parse_packet(self, packet:bytes) -> dict: 
@@ -82,77 +120,78 @@ class DataMain():
             logging.warning("Recieved packet with inadequete length:", len(packet))
             return  
         header = {
-            "length": self.unpack.uint8(packet, 0), #1 byte 
-            "packetId": self.unpack.uint8(packet, 1), #1 byte
+            "start": [self.unpack.uint8(packet, 0+i) for i in range(2)], #2 bytes
             "senderId": self.unpack.uint8(packet, 2), #1 byte
-            "timestamp": self.unpack.uint32(packet, 3) #4 bytes
+            "length": self.unpack.uint8(packet, 3), #1 byte 
+            "packetType": packet[4], #1 byte
+            "timestamp": self.unpack.uint32(packet, 5) #4 bytes
         }
         
         #CHeck checksum
         checksum = 0
-        for byte in bytes([0x00])+packet[:header["length"]-1]:
+        #Loop trough all the bytes up untill the footer
+        for byte in packet[:header["length"]-self.footerLength]:
             checksum^=byte
-        if checksum != packet[header['length']-1]:
+        #Check if Chaksums match
+        if checksum != packet[header['length']-self.footerLength]:
             logging.warning("Packet corrupted")
             return
             
                 
         byteCount = 7
 
-        #Check if the packet is valid
-        if header['senderId'] != self.CanId:
-            logging.warning(f"Wrong senderId: {header['senderId']}, instead of {self.CanId}")
-            return
+
         
         payload = {'timestamp': header['timestamp']}
-        #Read
-        if header['packetId'] == self.PacketTypes['data']:
+        
+        match header['packetType']:
+            case 0x00:
 
-            payload['angVelocity'] = [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)], #6 bytes
-            byteCount+=6
-            payload['acceleration']= [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)], #6 bytes (Values were multiplied by 100 to keep the decimal)
-            byteCount+=6
-            payload['magneticField']= [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)], #6 bytes (Values were multiplied by 100 to keep the decimal)
-            byteCount+=6
-            payload['gps']= [self.unpack.float32(packet, byteCount+i*4)/100 for i in range(3)], #12 bytes
-            byteCount+=12
-            payload['temprature']=self.unpack.int16(packet, byteCount)/100, #2 bytes (Values were multiplied by 100 to keep the decimal)
-            byteCount+=2
-            payload['preasure']=self.unpack.uint16(packet, byteCount), #2 bytes
-            byteCount+=2
-            payload['humidity']=self.unpack.uint8(packet, byteCount), #1 byte
-            byteCount+=1
-            payload['vocConcentration']=self.unpack.uint16(packet, byteCount), #2 bytes
-            byteCount+=2
-            payload['co2Concentration']= self.unpack.uint16(packet, byteCount) #2 bytes
-            byteCount+=2
-            
-            self.add_data(payload)
-            
-            
-        elif header['packetId'] == self.PacketTypes['debug']:
+                payload['angVelocity'] = [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)] #6 bytes
+                byteCount+=6
+                payload['acceleration']= [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)] #6 bytes (Values were multiplied by 100 to keep the decimal)
+                byteCount+=6
+                payload['magneticField']= [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)] #6 bytes (Values were multiplied by 100 to keep the decimal)
+                byteCount+=6
+                payload['gps']= [self.unpack.float32(packet, byteCount+i*4)/100 for i in range(3)] #12 bytes
+                byteCount+=12
+                payload['temprature']=self.unpack.int16(packet, byteCount)/100 #2 bytes (Values were multiplied by 100 to keep the decimal)
+                byteCount+=2
+                #payload['preasure']=self.unpack.uint16(packet, byteCount) #2 bytes
+                #byteCount+=2
+                #payload['humidity']=self.unpack.uint8(packet, byteCount) #1 byte
+                #byteCount+=1
+                payload['vocConcentration']=self.unpack.uint16(packet, byteCount) #2 bytes
+                byteCount+=2
+                payload['co2Concentration']= self.unpack.uint16(packet, byteCount) #2 bytes
+                byteCount+=2
 
-            payload['packetCount'] = self.unpack.uint16(packet, byteCount), #2 bytes
-            byteCount+=2
-            
-            payload['baterryVoltage'] = self.unpack.uint16(packet, byteCount), #2 bytes (Values were multiplied by 100 to keep the decimal)
-            byteCount+=2
-            
-            payload['memUsage'] = self.unpack.uint16(packet, byteCount), #2 bytes
-            byteCount+=2
-            
-            payload['gy91'] = bool(self.unpack.bit(packet, byteCount, 0)), 
-            payload['dht11'] = bool(self.unpack.bit(packet, byteCount, 1)), 
-            payload['voc'] = bool(self.unpack.bit(packet, byteCount, 2)), 
-            payload['co2'] = bool(self.unpack.bit(packet, byteCount, 3)), 
-            payload['sdCard'] = bool(self.unpack.bit(packet, byteCount, 4)),
-            byteCount+=1
-            #All above combined are 1 byte 
-            
-            payload['message'] = self.unpack.string(packet, byteCount, header['length'])
-            byteCount+=(header['length']-byteCount)
-            
-            self.debug_data(payload)
+                self.add_data(payload)
+
+
+            case 0x01:
+
+                payload['packetCount'] = self.unpack.uint16(packet, byteCount) #2 bytes
+                byteCount+=2
+
+                payload['baterryVoltage'] = self.unpack.uint16(packet, byteCount) #2 bytes (Values were multiplied by 100 to keep the decimal)
+                byteCount+=2
+
+                payload['memUsage'] = self.unpack.uint16(packet, byteCount) #2 bytes
+                byteCount+=2
+
+                payload['gy91'] = bool(self.unpack.bit(packet, byteCount, 0))
+                payload['dht11'] = bool(self.unpack.bit(packet, byteCount, 1))
+                payload['voc'] = bool(self.unpack.bit(packet, byteCount, 2))
+                payload['co2'] = bool(self.unpack.bit(packet, byteCount, 3))
+                payload['sdCard'] = bool(self.unpack.bit(packet, byteCount, 4))
+                byteCount+=1
+                #All above combined are 1 byte 
+
+                payload['message'] = self.unpack.string(packet, byteCount, header['length'])
+                byteCount+=(header['length']-byteCount)
+
+                self.debug_data(payload)
             
         return payload
             
@@ -179,9 +218,11 @@ def SerialSetup():
     ports = list_ports.comports()
     print("\nChoose port:")
     for i, port in enumerate(ports):
-        print(f"-{i}- {port.name} {port.description}")
+        if port.description!="n/a":
+            print(f"({port.description})")
+            print(f"-{i}- {port.name} {port.description}")
         
-    ser = Serial(ports[int(input('Choose:'))].name, 9600)
+    ser = Serial(f"/dev/{ports[int(input('Choose:'))].name}", 57600)
     
     #Wait till serial initialises
     i = 0
@@ -191,30 +232,12 @@ def SerialSetup():
         sleep(1)
     
     logging.debug("Serial initialised!")
-    
-    
-    #Do handshake with arduno
-    i = 0
-    while True:
-        logging.debug("Sending handshake:", i)
-        ser.write(0x69)
-        ans = 0x00
-        
-        for x in range(3):
-            logging.debug("Waiting for response:", x)
-            
-            if ser.in_waiting > 0:
-                
-                ans = ser.read(1)
-                if ans == 0x69:
-                    break
-            sleep(1)
-            
-        if ans == 0x69:
-            break
-    logging.debug("Handshake finished")
+
     
     return ser
+
+if __name__ == "__main__":
+    
             
 
-        
+        pass
