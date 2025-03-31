@@ -18,11 +18,11 @@
 
 #pragma pack(push, 1) 
 struct PacketHeader {
-  uint8_t start[2] = {0x98, 0x5c}; 
-  uint8_t senderId = 0xe6;         
-  uint8_t length;
-  uint8_t packetType;                           
-  uint32_t timestamp;
+  uint8_t start[2] = {0x98, 0x98}; 
+  uint8_t senderId = 0xff;         
+  uint8_t length {};
+  uint8_t packetType {};                           
+  uint32_t timestamp {};
   
   PacketHeader(){
     timestamp = millis();
@@ -35,7 +35,7 @@ struct DataPayload {
   int16_t angVelocity[3] {};       // 2 bytes
   int16_t acceleration[3] {};      // 6 bytes (3 * 2 bytes)
   int16_t magneticField[3] {};     // 6 bytes (3 * 2 bytes)
-  float gps[3];                 // 12 bytes (3 * 4 bytes)
+  float gps[3] {};                 // 12 bytes (3 * 4 bytes)
   int16_t temperature {};          // 2 bytes
   //uint16_t pressure;            // 2 bytes
   //uint8_t humidity;             // 1 byte
@@ -317,14 +317,15 @@ void BuildPacket(uint8_t type){
   //calculate the checksum
   footer.CalcChecksum();
   
-  memcpy(packetLength-fSize, &footer, fSize);
+  memcpy(Packet+(packetLength-fSize), &footer, fSize);
 
     
 }
 
 void SendPacket(){
-  Serial.println("Sending");
+
   Serial.write(Packet, packetLength);
+  memset(Packet, 0, sizeof(Packet));;
 
 }
 

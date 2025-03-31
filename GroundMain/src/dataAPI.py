@@ -16,35 +16,35 @@ class Unpack():
     def int8(self, b: bytes, start: int):
         return struct.unpack('b', b[start:start+1])[0]
 
-    def int16(b: bytes, start: int):
+    def int16(self, b: bytes, start: int):
         return struct.unpack('h', b[start:start+2])[0]
 
-    def int32(b: bytes, start: int):
+    def int32(self, b: bytes, start: int):
         return struct.unpack('i', b[start:start+4])[0]
 
-    def uint8(b: bytes, start: int):
+    def uint8(self, b: bytes, start: int):
         return struct.unpack('B', b[start:start+1])[0]
 
-    def uint16(b: bytes, start: int):
+    def uint16( self,b: bytes, start: int):
         return struct.unpack('H', b[start:start+2])[0]
 
-    def uint32(b: bytes, start: int):
+    def uint32(self, b: bytes, start: int):
         return struct.unpack('I', b[start:start+4])[0]
 
-    def float32(b: bytes, start: int):
+    def float32(self, b: bytes, start: int):
         return struct.unpack('f', b[start:start+4])[0]
     
-    def bit(b: bytes, start: int, bit: int):
+    def bit(self, b: bytes, start: int, bit: int):
         return((b>>start*8+bit) & 1)
     
-    def string(b: bytes, start: int, length: int):
+    def string(self, b: bytes, start: int, length: int):
         return b[start: length].decode('utf-8')
     
 
 
 
 class DataMain():
-    def __init__(self):
+    def __init__(self, startBytes: dict, canID:int):
         
         #Object where all of the collected data is stored
         #Packets are stored in reverse order, so the newest one would have the index of 0
@@ -76,15 +76,16 @@ class DataMain():
             "debug":0x01
         }
         
-        self.CanId = b'\xe6'
-        self.startBytes = b'\x98\x5c'
+        self.canID = canID
+        self.startBytes = startBytes
         
-        self.id = self.startBytes+self.CanId
+  
         
         self.footerLength = 3
         
     def parse_data(self, byteSnipet:bytes):
-        self.packetBuffer.append(byteSnipet)
+        self.packetBuffer.extend(byteSnipet)
+        logging.debug(self.packetBuffer, "packetbuffer")
         #Check the snippet and 2 earlier bytes for a Header Id
         index = self.packetBuffer[len(self.packetBuffer)-len(byteSnipet)-(len(self.id)-1):].find(self.id)
         
@@ -97,7 +98,7 @@ class DataMain():
                 #Check if this packet is fine, else throw it in the trash 
                 if packet.startswith(self.id):
                     #Finally parse the packet
-                    self.parse_packet(packet)
+                    return self.parse_packet(packet)
                 else:
                     logging.debug(f"Packet was fucked up 1:{packet}")
                 #Set the buffer to only store the new packet
@@ -108,26 +109,32 @@ class DataMain():
                 #SOMETHING IS MAJORLY FUCKED UP
                 
                 #implement fix later
-                
+#
         
     
     #A function that proccesses incoming packets from the Can 
     def parse_packet(self, packet:bytes) -> dict: 
 
-        logging.debug(f"Started parsing packet nr{self.PacketCount+1}: {packet}")
+        logging.debug(f"Started parsing packet nr{self.PacketCount+1}: {packet.hex()}")
         
         if (len(packet) < 15):
             logging.warning("Recieved packet with inadequete length:", len(packet))
             return  
         header = {
-            "start": [self.unpack.uint8(packet, 0+i) for i in range(2)], #2 bytes
+            "start": [self.unpack.uint8(packet, (0+i)) for i in range(2)], #2 bytes
             "senderId": self.unpack.uint8(packet, 2), #1 byte
             "length": self.unpack.uint8(packet, 3), #1 byte 
             "packetType": packet[4], #1 byte
             "timestamp": self.unpack.uint32(packet, 5) #4 bytes
         }
+        if len(packet) != header['length']:
+            logging.warning("lengths dont match", packet)
+            return 
+        if header["start"] != self.startBytes or header['senderId'] != self.canID:
+            logging.warning("Packet with wrong startbytes", packet, header['start'], self.startBytes, header["senderId"], self.canID)
+            return 
         
-        #CHeck checksum
+        #Check checksum
         checksum = 0
         #Loop trough all the bytes up untill the footer
         for byte in packet[:header["length"]-self.footerLength]:
@@ -138,7 +145,7 @@ class DataMain():
             return
             
                 
-        byteCount = 7
+        byteCount = 8
 
 
         
@@ -202,7 +209,7 @@ class DataMain():
         self.DataBase.add(data)
         self.dictData.append(data)
         with open(self.path + 'data.json', 'w') as f:
-            json.dump(self.dictData, f)
+            json.dump(self.dictData, f, indent=4)
         
     
     #A function that deals with debug data
@@ -211,7 +218,7 @@ class DataMain():
         self.DebugData.add(data)
         self.dictDebug.append(data)
         with open(self.path + 'debug.json', 'w') as f:
-            json.dump(self.dictDebug, f)
+            json.dump(self.dictDebug, f, indent=4)
             
 def SerialSetup():
     #Find available ports and promt user to choose

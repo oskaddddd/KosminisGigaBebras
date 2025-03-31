@@ -1,1 +1,2654 @@
-[]
+[
+    {
+        "timestamp": 1497532,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1499535,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1501538,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1503541,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1505545,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1507548,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1509551,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1908190,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            -112.61
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1910193,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1912196,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            -112.61
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1914200,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -314.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1916203,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1918205,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1920208,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1922212,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1924215,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1926218,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1928221,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1930225,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1932228,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1934231,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1936234,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            197.08,
+            30.76
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1938238,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1940241,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -314.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1942244,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1944247,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            197.08,
+            30.76
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1946251,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1948254,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1950257,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1952261,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1954264,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1956267,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1958269,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1960273,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1962276,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -314.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1964279,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1966282,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1968286,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1970289,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1972292,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1974295,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1976299,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1978302,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1980305,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1982308,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1984312,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1986315,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1988318,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1990321,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1992325,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1994328,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1996331,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 1998334,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2000337,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2002340,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -314.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2004343,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2006347,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2008350,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -314.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2010353,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2012356,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2014360,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            197.08,
+            -255.96
+        ],
+        "magneticField": [
+            0.49,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2016363,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -194.56,
+            -58.93,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2018366,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            197.08,
+            30.76
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2020369,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2022373,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2024376,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2026379,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2028382,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2030386,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2032389,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -225.28,
+            -202.27,
+            -112.6
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2034392,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2036396,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2038398,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2040401,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2042404,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            61.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2044408,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            317.44,
+            -58.92,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2046411,
+        "angVelocity": [
+            0.0,
+            5.12,
+            -33.28
+        ],
+        "acceleration": [
+            -314.89,
+            -40.93,
+            -112.54
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2048414,
+        "angVelocity": [
+            23.04,
+            61.44,
+            0.0
+        ],
+        "acceleration": [
+            -194.56,
+            53.71,
+            174.13
+        ],
+        "magneticField": [
+            0.47,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2050417,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -194.56,
+            -314.93,
+            30.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2052421,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -194.56,
+            -58.93,
+            286.75
+        ],
+        "magneticField": [
+            0.48,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2054424,
+        "angVelocity": [
+            51.2,
+            5.12,
+            10.24
+        ],
+        "acceleration": [
+            -296.96,
+            61.54,
+            72.14
+        ],
+        "magneticField": [
+            2.43,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2056427,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -10.24,
+            256.08,
+            -101.9
+        ],
+        "magneticField": [
+            2.45,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 69.12,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2058430,
+        "angVelocity": [
+            -2.56,
+            7.67,
+            0.0
+        ],
+        "acceleration": [
+            -122.88,
+            0.07,
+            72.18
+        ],
+        "magneticField": [
+            2.43,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2060434,
+        "angVelocity": [
+            -5.12,
+            2.55,
+            0.0
+        ],
+        "acceleration": [
+            -122.88,
+            0.07,
+            -71.18
+        ],
+        "magneticField": [
+            2.43,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2062437,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            20.48,
+            -255.93,
+            -40.47
+        ],
+        "magneticField": [
+            2.41,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2064440,
+        "angVelocity": [
+            -2.56,
+            -0.01,
+            -0.01
+        ],
+        "acceleration": [
+            135.67,
+            0.08,
+            -71.18
+        ],
+        "magneticField": [
+            2.43,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2066444,
+        "angVelocity": [
+            5.12,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            133.12,
+            -255.92,
+            72.17
+        ],
+        "magneticField": [
+            2.43,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2068447,
+        "angVelocity": [
+            10.24,
+            2.56,
+            0.0
+        ],
+        "acceleration": [
+            -122.88,
+            143.43,
+            -153.11
+        ],
+        "magneticField": [
+            2.4,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2070450,
+        "angVelocity": [
+            -12.8,
+            15.35,
+            0.0
+        ],
+        "acceleration": [
+            -215.04,
+            -173.95,
+            81.94
+        ],
+        "magneticField": [
+            2.09,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2072454,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -143.36,
+            256.25,
+            -122.88
+        ],
+        "magneticField": [
+            2.13,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2074457,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            256.0,
+            256.25,
+            133.12
+        ],
+        "magneticField": [
+            2.14,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2076460,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            112.64,
+            0.26,
+            -122.88
+        ],
+        "magneticField": [
+            2.13,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2078462,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -143.36,
+            0.25,
+            133.12
+        ],
+        "magneticField": [
+            2.14,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2080466,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -143.36,
+            0.25,
+            133.12
+        ],
+        "magneticField": [
+            2.14,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2082469,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -143.36,
+            0.25,
+            -122.88
+        ],
+        "magneticField": [
+            2.13,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2084472,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -143.36,
+            -143.11,
+            -122.88
+        ],
+        "magneticField": [
+            2.13,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2086475,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -143.36,
+            256.25,
+            -122.88
+        ],
+        "magneticField": [
+            2.13,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2088479,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -143.36,
+            -143.11,
+            -122.88
+        ],
+        "magneticField": [
+            2.13,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2090482,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            256.0,
+            -143.11,
+            -122.88
+        ],
+        "magneticField": [
+            2.13,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2092485,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            256.0,
+            256.25,
+            133.12
+        ],
+        "magneticField": [
+            2.14,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2094488,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            112.64,
+            -143.1,
+            276.48
+        ],
+        "magneticField": [
+            2.13,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    },
+    {
+        "timestamp": 2096492,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            256.0,
+            256.25,
+            -122.88
+        ],
+        "magneticField": [
+            2.13,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 66.56,
+        "vocConcentration": 0,
+        "co2Concentration": 0
+    }
+]
