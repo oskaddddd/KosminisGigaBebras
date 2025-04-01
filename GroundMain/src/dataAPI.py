@@ -37,6 +37,9 @@ class Unpack():
     def double(self, b: bytes, start: int):
         return struct.unpack('d', b[start:start+8])[0]
     
+    def long(self, b: bytes, start: int):
+        return struct.unpack('l', b[start:start+4])[0]
+    
     def bit(self, b: bytes, start: int, bit: int):
         return((b>>start*8+bit) & 1)
     
@@ -163,18 +166,22 @@ class DataMain():
                 byteCount+=6
                 payload['magneticField']= [self.unpack.int16(packet, byteCount+i*2)/100*0.92 for i in range(3)] #6 bytes (Values were multiplied by 100 to keep the decimal)
                 byteCount+=6
-                payload['gps']= [self.unpack.float32(packet, byteCount+i*4)/100 for i in range(3)] #12 bytes
-                byteCount+=12
+                payload['gps']= [self.unpack.int32(packet, byteCount+i*4) for i in range(2)] #12 bytes
+                byteCount+=8
                 payload['temprature']=self.unpack.int16(packet, byteCount)/100 #2 bytes (Values were multiplied by 100 to keep the decimal)
                 byteCount+=2
+                payload['velocity'] = [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)] #6 bytes
+                byteCount+=6
+                payload['humidity']=self.unpack.uint8(packet, byteCount) #1 byte
+                byteCount+=1
                 #payload['preasure']=self.unpack.uint16(packet, byteCount) #2 bytes
                 #byteCount+=2
                 #payload['humidity']=self.unpack.uint8(packet, byteCount) #1 byte
                 #byteCount+=1
-                payload['vocConcentration']=self.unpack.uint16(packet, byteCount) #2 bytes
-                byteCount+=2
-                payload['co2Concentration']= self.unpack.uint16(packet, byteCount) #2 bytes
-                byteCount+=2
+                #payload['vocConcentration']=self.unpack.uint16(packet, byteCount) #2 bytes
+                #byteCount+=2
+                #payload['co2Concentration']= self.unpack.uint16(packet, byteCount) #2 bytes
+                #byteCount+=2
 
                 #self.add_data(payload)
 

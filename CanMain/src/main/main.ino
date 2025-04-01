@@ -37,12 +37,13 @@ struct DataPayload {
   int16_t angVelocity[3] {};       // 2 bytes
   int16_t acceleration[3] {};      // 6 bytes (3 * 2 bytes)
   int16_t magneticField[3] {};     // 6 bytes (3 * 2 bytes)
-  double gps[3] {};                 // 12 bytes (3 * 4 bytes)
-  int16_t temperature {};          // 2 bytes
-  //uint16_t pressure;            // 2 bytes
-  //uint8_t humidity;             // 1 byte
-  uint16_t vocConcentration {};    // 2 bytes
-  uint16_t co2Concentration {};    // 2 bytes
+  long gps[2] {}; 
+  uint16_t height {}; 
+  int16_t velocity[3] {} ;           // 8 bytes (2 * 4 bytes)
+  int16_t temperature {};           // 2 bytes
+  uint8_t humidity {};             // 1 byte
+  //uint16_t vocConcentration {};    // 2 bytes
+  //uint16_t co2Concentration {};    // 2 bytes
 };
 #pragma pack(pop)
 
@@ -69,7 +70,7 @@ struct DebugPayload {
 
 
 uint8_t packetLength = 0;
-uint8_t Packet[64] = {};
+uint8_t Packet[255] = {};
 
 #pragma pack(push, 1) 
 struct PacketFooter {
@@ -92,7 +93,7 @@ const byte tx_gps = 3;
 
 SoftwareSerial gps_serial(rx_gps, rx_gps);
 
-#define DHT11_PIN 5
+#define DHT11_PIN 6
 UbxGpsNavPvt<SoftwareSerial> gps(gps_serial);
 
 
@@ -101,12 +102,9 @@ DHT dht11(DHT11_PIN, DHT11);
 
 
 
-
-
-
 const byte address =253;
 
-char error[64] = "" ;
+char error[255] = "" ;
 uint8_t errorLength = 0;
 
 
@@ -119,7 +117,7 @@ void setup() {
   //Setup Serial and LoRa
   Serial.begin(57600); //Rx Tx
 
-  gps_serial.begin(115200);
+  gps.begin(115200);
 
   //Set up wire
   Wire.begin();
@@ -127,7 +125,9 @@ void setup() {
   delay(1000);
 
   GY85.init();
+  dht11.begin();
 
+  delay(100);
   if (!SD.begin()) {
     Serial.println("SD card failed");
     return;
@@ -144,7 +144,7 @@ void setup() {
 void RaiseError(char* message){
   //Get the error length and make sure it doesnt exeed limit
   errorLength = strlen(message);
-  errorLength = (errorLength < 64) ? errorLength : 64;
+  errorLength = (errorLength < 255) ? errorLength : 255;
 
   //Copy the message to the errorMessage to the error object
   memcpy(error, message, errorLength);
@@ -246,17 +246,9 @@ void readSensors() {
   data.angVelocity[0] = GY85.gyro_x(gyroReadings);
   data.angVelocity[1] = GY85.gyro_y(gyroReadings);
   data.angVelocity[2] = GY85.gyro_z(gyroReadings);
-  data.temperature = GY85.temp(gyroReadings);
 
-    // read humidity
-  float humi  = dht11.readHumidity();
-  // read temperature as Celsius
-  float tempC = dht11.readTemperature();
-  // read temperature as Fahrenheit
-  float tempF = dht11.readTemperature(true);
-
-  data.gps[0] = gps_serial.available()+1;
-  Serial.print("1");
+  //data.temperature = dht11.readTemperature()*100;
+  //data.humidity = dht11.readHumidity();
   
 }
 
@@ -331,24 +323,40 @@ void SendPacket(){
   memset(Packet, 0, sizeof(Packet));;
 
 }
-
+int time = millis();
 void loop() {
-  
+  int delay = 1000;
+  if (time + delay > millis()){
+    //Special treatment for the gps cause hes a very special boy
+    
+    if (gps.ready())
+    {   Serial.print("Hello?");
+        Serial.println(gps.lon);
+        data.gps[0] = gps.lon;
+        data.gps[0] = gps.lat;
+        data.height = gps.height/1000;
+        
+        data.velocity[0] = gps.velN/10;
+        data.velocity[1] = gps.velE/10;
+        data.velocity[2] = gps.velN/10;
+    }
+    
+  }
+  else{
+    Serial.print((1))
+    time = millis();
+    readSensors();
+    BuildPacket(0);
+    SendPacket();
+  }
+
   //writeToFile();
   //packets();
-  if (gps.ready())
-    {
-        Serial.print(gps.lon / 10000000.0, 7);
-        Serial.print(',');
-        Serial.print(gps.lat / 10000000.0, 7);
-        Serial.print(',');
-        Serial.print(gps.height / 1000.0, 3);
-        Serial.print(',');
-        Serial.println(gps.gSpeed * 0.0036, 5);
-    }
-  return;
-  readSensors();
-  BuildPacket(0);
+
+  
+  
+
+  
   //Serial.write(Packet, packetLength);
   //SendPacket();
   //delay(300);
