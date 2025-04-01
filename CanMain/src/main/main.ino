@@ -8,9 +8,11 @@
 #include  <SoftwareSerial.h>
 
 //#include  <cstdint>
+#include <UbxGpsNavPvt.h>
 
-#include <TinyGPSPlus.h>
 
+#include <TinyGPS++.h>
+#include "DHT.h"
 
 //Sensors
 #include "GY_85.h"
@@ -35,7 +37,7 @@ struct DataPayload {
   int16_t angVelocity[3] {};       // 2 bytes
   int16_t acceleration[3] {};      // 6 bytes (3 * 2 bytes)
   int16_t magneticField[3] {};     // 6 bytes (3 * 2 bytes)
-  float gps[3] {};                 // 12 bytes (3 * 4 bytes)
+  double gps[3] {};                 // 12 bytes (3 * 4 bytes)
   int16_t temperature {};          // 2 bytes
   //uint16_t pressure;            // 2 bytes
   //uint8_t humidity;             // 1 byte
@@ -65,6 +67,7 @@ struct DebugPayload {
 #pragma pack(pop)
 
 
+
 uint8_t packetLength = 0;
 uint8_t Packet[64] = {};
 
@@ -84,21 +87,21 @@ struct PacketFooter {
 DataPayload data;
 DebugPayload debug;
 
-
-
-
-TinyGPSPlus gps;
-GY_85 GY85;
-
-
-
 const byte rx_gps = 2;
 const byte tx_gps = 3;
-//const byte rx_lora = 5;
-//const byte tx_lora = 4;
+
+SoftwareSerial gps_serial(rx_gps, rx_gps);
+
+#define DHT11_PIN 5
+UbxGpsNavPvt<SoftwareSerial> gps(gps_serial);
 
 
-SoftwareSerial gps_serial(rx_gps, tx_gps);
+GY_85 GY85;
+DHT dht11(DHT11_PIN, DHT11);
+
+
+
+
 
 
 const byte address =253;
@@ -210,13 +213,27 @@ bool setAddressLocal(uint16_t address){
 }
 
 
-
+const float lpAlpha = 0.7;
 void readSensors() {
 
-  int* accelerometerReadings = GY85.readFromAccelerometer();
-  data.acceleration[0] = GY85.accelerometer_x(accelerometerReadings)*100;
-  data.acceleration[1] = GY85.accelerometer_y(accelerometerReadings)*100;
-  data.acceleration[2] = GY85.accelerometer_z(accelerometerReadings)*100;
+  int* acc1 = GY85.readFromAccelerometer();
+  delay(50);
+  int* acc2 = GY85.readFromAccelerometer();
+  int avgAcc[3] {};
+
+  avgAcc[0] = (GY85.accelerometer_x(acc1) + GY85.accelerometer_x(acc2))/2;
+  avgAcc[1] = (GY85.accelerometer_y(acc1) + GY85.accelerometer_y(acc2))/2;
+  avgAcc[2] = (GY85.accelerometer_z(acc1) + GY85.accelerometer_z(acc2))/2;
+  if (!data.acceleration){
+    data.acceleration[0] = avgAcc[0]*100;
+    data.acceleration[1] = avgAcc[1]*100;
+    data.acceleration[2] = avgAcc[2]*100;  
+  }
+  else{
+    data.acceleration[0] = data.acceleration[0]*lpAlpha+(avgAcc[0]*(1.0-lpAlpha)*100);
+    data.acceleration[1] = data.acceleration[1]*lpAlpha+(avgAcc[1]*100*(1.0-lpAlpha)*100);
+    data.acceleration[2] = data.acceleration[2]*lpAlpha+(avgAcc[2]*(1.0-lpAlpha)*100);
+  }
   
   
   int* compassReadings = GY85.readFromCompass();
@@ -231,34 +248,20 @@ void readSensors() {
   data.angVelocity[2] = GY85.gyro_z(gyroReadings);
   data.temperature = GY85.temp(gyroReadings);
 
+    // read humidity
+  float humi  = dht11.readHumidity();
+  // read temperature as Celsius
+  float tempC = dht11.readTemperature();
+  // read temperature as Fahrenheit
+  float tempF = dht11.readTemperature(true);
 
-  if (gps_serial.available() > 0) {
-    if (gps.encode(gps_serial.read())) {
-      if (gps.location.isValid()) {
-        
-        gps.location.lat();
-        gps.location.lng();
-        if (gps.altitude.isValid())
-          Serial.println(gps.altitude.meters());
-        else
-          Serial.println(F("INVALID"));
-      } else {
-        Serial.println(F("- location: INVALID"));
-      }
-
-      if (gps.speed.isValid()) {
-        Serial.print(gps.speed.kmph());
-        Serial.println(F(" km/h"));
-      } else {
-        Serial.println(F("INVALID"));
-      }
-
-      Serial.println();
-    }
-  }
-
-
+  data.gps[0] = gps_serial.available()+1;
+  Serial.print("1");
+  
 }
+
+
+
 
 //Print data to file
 
@@ -333,11 +336,22 @@ void loop() {
   
   //writeToFile();
   //packets();
+  if (gps.ready())
+    {
+        Serial.print(gps.lon / 10000000.0, 7);
+        Serial.print(',');
+        Serial.print(gps.lat / 10000000.0, 7);
+        Serial.print(',');
+        Serial.print(gps.height / 1000.0, 3);
+        Serial.print(',');
+        Serial.println(gps.gSpeed * 0.0036, 5);
+    }
+  return;
   readSensors();
   BuildPacket(0);
   //Serial.write(Packet, packetLength);
-  SendPacket();
-  delay(2000);
+  //SendPacket();
+  //delay(300);
   
   //BuildPacket(1);
   //SendPacket();

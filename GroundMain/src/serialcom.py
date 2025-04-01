@@ -17,7 +17,7 @@ for i, port in enumerate(ports):
 
 
 
-ser1 = Serial(f"/dev/{ports[int(input('Enter1:'))].name if len(nports) != 1 else nports[0].name}", 57600)
+ser1 = Serial(f"/dev/{ports[int(input('Enter1:'))].name if len(nports) != 1 else nports[0].name}", 115200)
 if not mode: ser2 = Serial(f"/dev/{ports[int(input('Enter2:'))].name}", 57600)
 
 
@@ -156,7 +156,7 @@ def setupRadio():
             time.sleep(1) 
             if ser1.in_waiting > 0:
                 read = ser1.read_all()
-                print("\nrecieved message:", read)
+                print("\nrecieved message:", read.decode())
                 
     def input_thread():
         while True:

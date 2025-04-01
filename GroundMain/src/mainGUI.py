@@ -2,7 +2,12 @@ from PyQt6.QtWidgets import *
 from PyQt6 import uic
 from PyQt6.QtCore import QThread, pyqtSignal
 
+from pyqtgraph import PlotWidget
+import pyqtgraph as pg
+import pyqtgraph.opengl as gl
+
 import sys
+
 import qdarktheme
 
 import dataAPI
@@ -48,6 +53,7 @@ class SerialMonitor(QThread):
                     
                     print(i, f"\\x{hex(byte)}")
                 data = DataManager.parse_packet(packet)
+                #print(round(data["acceleration"][0], 2), round(data["acceleration"][1], 2), round(data["acceleration"][2], 2))
                 print(data)
                 if data:
                     self.update_signal.emit(data)
@@ -65,9 +71,10 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         uic.loadUi('GroundMain/assets/UI.ui', self)
         
+        
         self.serial = SerialMonitor()
         self.serial.update_signal.connect(self.updateData)
-        
+    
         self.serial.start()
 
     def updateData(self, data:dict):
@@ -88,10 +95,12 @@ if __name__ == "__main__":
    #             
    #             
    #         sleep(1/pollingRate)
+
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
     qdarktheme.setup_theme()
     
     window = MainWindow()
+    window.show()
     app.exec()
     

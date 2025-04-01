@@ -34,6 +34,9 @@ class Unpack():
     def float32(self, b: bytes, start: int):
         return struct.unpack('f', b[start:start+4])[0]
     
+    def double(self, b: bytes, start: int):
+        return struct.unpack('d', b[start:start+8])[0]
+    
     def bit(self, b: bytes, start: int, bit: int):
         return((b>>start*8+bit) & 1)
     
@@ -156,9 +159,9 @@ class DataMain():
 
                 payload['angVelocity'] = [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)] #6 bytes
                 byteCount+=6
-                payload['acceleration']= [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)] #6 bytes (Values were multiplied by 100 to keep the decimal)
+                payload['acceleration']= [self.unpack.int16(packet, byteCount+i*2)/100/256 for i in range(3)] #6 bytes (Values were multiplied by 100 to keep the decimal)
                 byteCount+=6
-                payload['magneticField']= [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)] #6 bytes (Values were multiplied by 100 to keep the decimal)
+                payload['magneticField']= [self.unpack.int16(packet, byteCount+i*2)/100*0.92 for i in range(3)] #6 bytes (Values were multiplied by 100 to keep the decimal)
                 byteCount+=6
                 payload['gps']= [self.unpack.float32(packet, byteCount+i*4)/100 for i in range(3)] #12 bytes
                 byteCount+=12
@@ -173,7 +176,7 @@ class DataMain():
                 payload['co2Concentration']= self.unpack.uint16(packet, byteCount) #2 bytes
                 byteCount+=2
 
-                self.add_data(payload)
+                #self.add_data(payload)
 
 
             case 0x01:
