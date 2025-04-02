@@ -63,6 +63,10 @@ class gpsWidget(gl.GLViewWidget):
         #Extract gps and height data into a np array
         gps = DataManager.extraxtData("gps")
         height = DataManager.extraxtData("height")
+        
+        print(gps)
+        print(height)
+        print("------------")
 
         result = np.column_stack((gps, height))
         

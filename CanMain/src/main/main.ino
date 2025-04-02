@@ -10,13 +10,14 @@
 //#include  <cstdint>
 #include <UbxGpsNavPvt.h>
 
+#include "DHT_Async.h"
 
 #include <TinyGPS++.h>
-#include <DHT11.h>
 
-DHT11 dht11(6);
+#define DHT_SENSOR_TYPE DHT_TYPE_11
 
-
+static const int DHT_SENSOR_PIN = 6;
+DHT_Async dht_sensor(DHT_SENSOR_PIN, DHT_SENSOR_TYPE);
 //Sensors
 #include "GY_85.h"
 
@@ -131,16 +132,16 @@ void setup() {
 
 
   delay(100);
-  if (!SD.begin()) {
-    Serial.println("SD card failed");
-    return;
-  }
+  //if (!SD.begin()) {
+  //  Serial.println("SD card failed");
+  //  return;
+  //}
 
   //Test if SD card is working
-  file = SD.open("KosminioGigaBebrofailai.txt", FILE_WRITE);
-  if (!file) {
-    Serial.println("SD card file");
-  }
+  //file = SD.open("KosminioGigaBebrofailai.txt", FILE_WRITE);
+  //if (!file) {
+  //  Serial.println("SD card file");
+  //}
 
 }
 
@@ -153,67 +154,7 @@ void RaiseError(char* message){
   memcpy(error, message, errorLength);
 }
 
-void ser_wait(int command_len){
-  while (Serial.available() <= command_len){
-    delay(100);
-    Serial.print("waiting for commands {");Serial.print(command_len); Serial.print("} response");
-  }
-}
-//Enter LoRa bootlader to config stuff
-bool enterBootlader(bool i = 0){
 
-  Serial.print("+++");
-  ser_wait(3);
-
-  if (Serial.readString() == "OK\r\n"){
-    return 1;
-  }
-  //If Entering bootloader failed, restart Lora and try again once
-  else if(i == 0){
-    Serial.print("ATZ");
-    delay(500);
-    while(!Serial){delay(100);}
-    return enterBootlader(1);
-  }
-  else{
-    return 0;
-  }
-
-}
-bool setAddressLocal(uint16_t address){
-  while(!Serial){delay(100);}
-  
-  if (!enterBootlader()){
-    RaiseError("setAddress: Enter bootloader failed");
-  }
-  Serial.print("ATS3=");
-  Serial.println(address);
-  int addressLen = 0;
-
-  while(address/pow(10, addressLen)){
-    addressLen++;
-  }
-  ser_wait(5+addressLen+2); 
-  String resp = Serial.readString();
-
-  if (resp.endsWith("OK\r\n")){
-    Serial.println('AT&W');
-  }
-  else{return 0;}
-
-  ser_wait(6);
-  resp = Serial.readString();
-  if (resp.endsWith("OK\r\n")){
-    Serial.println('ATZ');
-  }
-  else{return 0;}
-
-
-  delay(500);
-  while(!Serial){delay(100);}
-
-  return 1;
-}
 
 
 const float lpAlpha = 0.7;
@@ -250,8 +191,8 @@ void readSensors() {
   data.angVelocity[1] = GY85.gyro_y(gyroReadings);
   data.angVelocity[2] = GY85.gyro_z(gyroReadings);
   
-  data.temperature = dht11.readTemperature();
-  data.humidity = dht11.readHumidity();
+  //data.temperature = dht11.readTemperature();
+  //data.humidity = dht11.readHumidity();
   //Serial.print(data.temperature);
   
 }
@@ -328,31 +269,48 @@ void SendPacket(){
   memset(Packet, 0, sizeof(Packet));;
 
 }
-int time = millis();
-void loop() {
+int time {};
 
-  //if (time + delay > millis()){
-  //  //Special treatment for the gps cause hes a very special boy
-  //  
-  //  if (gps.ready())
-  //  {   Serial.print("Hello?");
-  //      Serial.println(gps.lon);
-  //      data.gps[0] = gps.lon;
-  //      data.gps[0] = gps.lat;
-  //      data.height = gps.height/1000;
-  //      
-  //      data.velocity[0] = gps.velN/10;
-  //      data.velocity[1] = gps.velE/10;
-  //      data.velocity[2] = gps.velN/10;
-  //  }
-  //  
-  //}
+float humidity {};
+float temperature {};
+int del = 500;
+
+void loop() {
+  
+
+  if (dht_sensor.measure( &temperature, &humidity )) {
+        data.temperature = temperature;
+        data.humidity = humidity;
+        //Serial.print("T = ");
+        //Serial.print(temperature, 1);
+        //Serial.print(" deg. C, H = ");
+        //Serial.print(humidity, 1);
+        //Serial.println("%");
+    }
+if (time + del > millis()){
+    //Special treatment for the gps cause hes a very special boy
+    
+    if (gps.ready())
+    {   Serial.print("Hello?");
+        Serial.println(gps.lon);
+        data.gps[0] = gps.lon;
+        data.gps[0] = gps.lat;
+        data.height = gps.height/1000;
+        
+        data.velocity[0] = gps.velN/10;
+        data.velocity[1] = gps.velE/10;
+        data.velocity[2] = gps.velN/10;
+    }
+    return;
+    
+  }
+
 
   readSensors();
   BuildPacket(0);
   SendPacket();
 
-  delay(500);
-
+  //delay(500);
+  time = millis();
 
 }

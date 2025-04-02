@@ -154,7 +154,7 @@ class DataMain():
             return
             
         print(header['length'])
-        byteCount = 8
+        byteCount = 9
 
 
         
@@ -162,23 +162,31 @@ class DataMain():
         
         match header['packetType']:
             case 0x00:
-
+                print(packet[byteCount:byteCount+6])
                 payload['angVelocity'] = [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)] #6 bytes
                 byteCount+=6
+                print(packet[byteCount:byteCount+6])
                 payload['acceleration']= [self.unpack.int16(packet, byteCount+i*2)/100/256 for i in range(3)] #6 bytes (Values were multiplied by 100 to keep the decimal)
                 byteCount+=6
+                print(packet[byteCount:byteCount+6])
                 payload['magneticField']= [self.unpack.int16(packet, byteCount+i*2)/100*0.92 for i in range(3)] #6 bytes (Values were multiplied by 100 to keep the decimal)
                 byteCount+=6
+                print(packet[byteCount:byteCount+8])
                 payload['gps']= [self.unpack.int32(packet, byteCount+i*4) for i in range(2)] #12 bytes
                 byteCount+=8
+                print(packet[byteCount:byteCount+2])
                 payload['height'] = self.unpack.uint16(packet, byteCount)
                 byteCount += 2
+                print(packet[byteCount:byteCount+6])
                 payload['velocity'] = [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)] #6 bytes
                 byteCount+=6
+                print(packet[byteCount:byteCount+2])
                 payload['temprature']=self.unpack.int16(packet, byteCount) #2 bytes (Values were multiplied by 100 to keep the decimal)
                 byteCount+=2
+                print(packet[byteCount:byteCount+1])
                 payload['humidity']=self.unpack.uint8(packet, byteCount) #1 byte
                 byteCount+=1
+           
                 #payload['preasure']=self.unpack.uint16(packet, byteCount) #2 bytes
                 #byteCount+=2
                 #payload['humidity']=self.unpack.uint8(packet, byteCount) #1 byte
@@ -188,7 +196,7 @@ class DataMain():
                 #payload['co2Concentration']= self.unpack.uint16(packet, byteCount) #2 bytes
                 #byteCount+=2
 
-                #self.add_data(payload)
+                self.add_data(payload)
 
 
             case 0x01:
