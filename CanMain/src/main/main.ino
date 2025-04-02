@@ -12,7 +12,8 @@
 
 
 #include <TinyGPS++.h>
-#include "DHT.h"
+#include <DHT11.h>
+
 
 //Sensors
 #include "GY_85.h"
@@ -93,12 +94,12 @@ const byte tx_gps = 3;
 
 SoftwareSerial gps_serial(rx_gps, rx_gps);
 
-#define DHT11_PIN 6
+
 UbxGpsNavPvt<SoftwareSerial> gps(gps_serial);
 
 
 GY_85 GY85;
-DHT dht11(DHT11_PIN, DHT11);
+DHT11 dht11(6);
 
 
 
@@ -125,7 +126,7 @@ void setup() {
   delay(1000);
 
   GY85.init();
-  dht11.begin();
+
 
   delay(100);
   if (!SD.begin()) {
@@ -136,7 +137,7 @@ void setup() {
   //Test if SD card is working
   file = SD.open("KosminioGigaBebrofailai.txt", FILE_WRITE);
   if (!file) {
-    Serial.println("SD card failed");
+    Serial.println("SD card file");
   }
 
 }
@@ -247,8 +248,9 @@ void readSensors() {
   data.angVelocity[1] = GY85.gyro_y(gyroReadings);
   data.angVelocity[2] = GY85.gyro_z(gyroReadings);
 
-  //data.temperature = dht11.readTemperature()*100;
-  //data.humidity = dht11.readHumidity();
+  
+  data.humidity = dht11.readHumidity();
+  data.temperature = dht11.readTemperature();
   
 }
 
@@ -258,7 +260,8 @@ void readSensors() {
 //Print data to file
 
 void WriteToFile() {
-  //file.write(Packet);
+  
+  file.write(Packet, packetLength);
   
 }
 
@@ -325,42 +328,29 @@ void SendPacket(){
 }
 int time = millis();
 void loop() {
-  int delay = 1000;
-  if (time + delay > millis()){
-    //Special treatment for the gps cause hes a very special boy
-    
-    if (gps.ready())
-    {   Serial.print("Hello?");
-        Serial.println(gps.lon);
-        data.gps[0] = gps.lon;
-        data.gps[0] = gps.lat;
-        data.height = gps.height/1000;
-        
-        data.velocity[0] = gps.velN/10;
-        data.velocity[1] = gps.velE/10;
-        data.velocity[2] = gps.velN/10;
-    }
-    
-  }
-  else{
-    Serial.print((1))
-    time = millis();
-    readSensors();
-    BuildPacket(0);
-    SendPacket();
-  }
 
-  //writeToFile();
-  //packets();
+  //if (time + delay > millis()){
+  //  //Special treatment for the gps cause hes a very special boy
+  //  
+  //  if (gps.ready())
+  //  {   Serial.print("Hello?");
+  //      Serial.println(gps.lon);
+  //      data.gps[0] = gps.lon;
+  //      data.gps[0] = gps.lat;
+  //      data.height = gps.height/1000;
+  //      
+  //      data.velocity[0] = gps.velN/10;
+  //      data.velocity[1] = gps.velE/10;
+  //      data.velocity[2] = gps.velN/10;
+  //  }
+  //  
+  //}
 
-  
-  
+  readSensors();
+  BuildPacket(0);
+  SendPacket();
 
-  
-  //Serial.write(Packet, packetLength);
-  //SendPacket();
-  //delay(300);
-  
-  //BuildPacket(1);
-  //SendPacket();
+  delay(500);
+
+
 }

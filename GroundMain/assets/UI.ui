@@ -23,7 +23,7 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="PlotWidget" name="LocationGraph" native="true"/>
+         <widget class="gpsWidget" name="LocationGraph" native="true"/>
         </item>
        </layout>
       </item>
@@ -71,9 +71,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>PlotWidget</class>
+   <class>gpsWidget</class>
    <extends>QWidget</extends>
-   <header>pyqtgraph</header>
+   <header>mainGUI</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
