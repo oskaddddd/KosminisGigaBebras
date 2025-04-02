@@ -14,6 +14,8 @@
 #include <TinyGPS++.h>
 #include <DHT11.h>
 
+DHT11 dht11(6);
+
 
 //Sensors
 #include "GY_85.h"
@@ -38,7 +40,7 @@ struct DataPayload {
   int16_t angVelocity[3] {};       // 2 bytes
   int16_t acceleration[3] {};      // 6 bytes (3 * 2 bytes)
   int16_t magneticField[3] {};     // 6 bytes (3 * 2 bytes)
-  long gps[2] {}; 
+  int32_t gps[2] {}; 
   uint16_t height {}; 
   int16_t velocity[3] {} ;           // 8 bytes (2 * 4 bytes)
   int16_t temperature {};           // 2 bytes
@@ -99,7 +101,7 @@ UbxGpsNavPvt<SoftwareSerial> gps(gps_serial);
 
 
 GY_85 GY85;
-DHT11 dht11(6);
+
 
 
 
@@ -247,10 +249,10 @@ void readSensors() {
   data.angVelocity[0] = GY85.gyro_x(gyroReadings);
   data.angVelocity[1] = GY85.gyro_y(gyroReadings);
   data.angVelocity[2] = GY85.gyro_z(gyroReadings);
-
   
-  data.humidity = dht11.readHumidity();
   data.temperature = dht11.readTemperature();
+  data.humidity = dht11.readHumidity();
+  //Serial.print(data.temperature);
   
 }
 

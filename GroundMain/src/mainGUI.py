@@ -16,7 +16,7 @@ import dataAPI
 from time import sleep
 
 import logging
-from sortedcontainers import sortedlist
+
 from operator import itemgetter
 
 logging.basicConfig(level=logging.DEBUG)
@@ -31,6 +31,17 @@ DataManager = dataAPI.DataMain(startBytes, canID)
 
 
 
+class dataPlotWidget(pg.PlotWidget):
+    def __init__(self, parent=None, background='default', plotItem=None, **kargs):
+        super().__init__(parent, background, plotItem, **kargs)
+        
+    
+        
+    
+
+
+
+
 class gpsWidget(gl.GLViewWidget):
     def __init__(self, *args, devicePixelRatio=None, **kwargs):
         super().__init__(*args, devicePixelRatio=devicePixelRatio, **kwargs)
@@ -39,7 +50,7 @@ class gpsWidget(gl.GLViewWidget):
         grid.setSpacing(10, 10)
         self.addItem(grid)
         
-        self.plot = gl.GLLinePlotItem(pos = [[0, 0, 0], [2, 4, 5], [3, 3, 0], [0, 0, 0]], antialias = False, color = (255, 0, 0, 255), mode = 'line_strip')
+        self.plot = gl.GLLinePlotItem(antialias = False, color = (255, 0, 0, 255), mode = 'line_strip')
         
 
         self.addItem(self.plot)
@@ -47,21 +58,21 @@ class gpsWidget(gl.GLViewWidget):
         self.makeCurrent()
         super().paintGL()
         
-    def updateLines():
-        gpsGetter = itemgetter("gps")
-        heightGetter = itemgetter("height")
+    def updateLines(self):
         
         #Extract gps and height data into a np array
-        gps = np.array(list(map(list, map(gpsGetter, DataManager.DataBase))))
-        height = np.array(list(map(list, map(heightGetter, DataManager.DataBase))))
+        gps = DataManager.extraxtData("gps")
+        height = DataManager.extraxtData("height")
 
         result = np.column_stack((gps, height))
+        
 
         #Normalise the data
         for i in range(3):
             result[:, i] -= result[0][i]
             
-        print(result)
+        self.plot.setData(pos = result)
+            
              
         
             
@@ -81,7 +92,7 @@ class SerialMonitor(QThread):
         self.pollingRate  = 30 #hertz
     
     
-    def start(self):
+    def run(self):
         self.coms = dataAPI.SerialSetup()
         while self.running:
             if self.coms.in_waiting > 0:
@@ -114,32 +125,39 @@ class SerialMonitor(QThread):
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
-        uic.loadUi('GroundMain/assets/UI.ui', self)
+        self.ui = uic.loadUi('GroundMain/assets/UI.ui', self)
         
         
         self.serial = SerialMonitor()
         self.serial.update_signal.connect(self.updateData)
-    
-        #self.serial.start()
+        self.ui.dataDropdown.currentTextChanged.connect(self.dataDropboxChenged)
 
-    def updateData(self, data:dict):
-        print("whahsd")
-        print("Hello", data)
+        self.timeline = np.array([])
+        
+        self.dataType = "height"
+        
+        
+       
+        self.serial.start()
+
+    def updateData(self, data):
+        self.ui.locationPlot.updateLines()
+        
+        self.timeline = DataManager.extraxtData("timestamp")[:]/1000
+        
+        self.ui.dataPlot.plot(self.timeline, DataManager.extraxtData(self.dataType))
+        
+        #self.ui.debugPlot.plot(self.time)
+        
+        
+        
+        
+    def dataDropboxChenged(self, text):
+        self.dataType = text
+        self.ui.dataPlot.plot(self.timeline, DataManager.extraxtData(self.dataType))
 
 if __name__ == "__main__":
-   # coms = dataAPI.SerialSetup()
-   # running = True
-   # pollingRate  = 30 #hertz
-   # while True:
-   #         if coms.in_waiting > 0:
-   #             packet = coms.readline()
-   #             print(packet, "\n\n")
-   #             #data = DataManager.parse_data(packet)
-   #             
-#
-   #             
-   #             
-   #         sleep(1/pollingRate)
+  
 
     app = QApplication(sys.argv)
     app.setStyle('Fusion')

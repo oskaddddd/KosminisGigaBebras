@@ -8,6 +8,9 @@ import logging
 from serial import Serial
 from serial.tools import list_ports as list_ports
 
+from operator import itemgetter
+
+import numpy as np
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -150,7 +153,7 @@ class DataMain():
             logging.warning("Packet corrupted")
             return
             
-                
+        print(header['length'])
         byteCount = 8
 
 
@@ -168,10 +171,12 @@ class DataMain():
                 byteCount+=6
                 payload['gps']= [self.unpack.int32(packet, byteCount+i*4) for i in range(2)] #12 bytes
                 byteCount+=8
-                payload['temprature']=self.unpack.int16(packet, byteCount)/100 #2 bytes (Values were multiplied by 100 to keep the decimal)
-                byteCount+=2
+                payload['height'] = self.unpack.uint16(packet, byteCount)
+                byteCount += 2
                 payload['velocity'] = [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)] #6 bytes
                 byteCount+=6
+                payload['temprature']=self.unpack.int16(packet, byteCount) #2 bytes (Values were multiplied by 100 to keep the decimal)
+                byteCount+=2
                 payload['humidity']=self.unpack.uint8(packet, byteCount) #1 byte
                 byteCount+=1
                 #payload['preasure']=self.unpack.uint16(packet, byteCount) #2 bytes
@@ -229,6 +234,11 @@ class DataMain():
         self.dictDebug.append(data)
         with open(self.path + 'debug.json', 'w') as f:
             json.dump(self.dictDebug, f, indent=4)
+            
+    def extraxtData(self, keyword:str):
+        getter = itemgetter(keyword)
+        
+        return np.array(list(map(list, map(getter, self.DataBase))))
             
 def SerialSetup():
     #Find available ports and promt user to choose
