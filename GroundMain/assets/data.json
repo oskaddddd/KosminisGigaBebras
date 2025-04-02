@@ -1,15 +1,15 @@
 [
     {
-        "timestamp": 1296,
+        "timestamp": 91453,
         "angVelocity": [
             0.0,
             0.0,
             0.0
         ],
         "acceleration": [
-            0.005859375,
-            -1.0546875,
-            0.1453125
+            -0.2432421875,
+            -1.171171875,
+            0.4044921875
         ],
         "magneticField": [
             0.0,
@@ -26,20 +26,20 @@
             0.0,
             0.0
         ],
-        "temprature": 0,
-        "humidity": 0
+        "temprature": 18.6,
+        "humidity": 27
     },
     {
-        "timestamp": 1859,
+        "timestamp": 91858,
         "angVelocity": [
             0.0,
             0.0,
             0.0
         ],
         "acceleration": [
-            0.0099609375,
-            0.76703125,
-            0.24703125
+            -0.242890625,
+            1.17234375,
+            0.403828125
         ],
         "magneticField": [
             0.0,
@@ -56,20 +56,20 @@
             0.0,
             0.0
         ],
-        "temprature": 23,
-        "humidity": 24
+        "temprature": 18.6,
+        "humidity": 27
     },
     {
-        "timestamp": 2419,
+        "timestamp": 92264,
         "angVelocity": [
             0.0,
             0.0,
             0.0
         ],
         "acceleration": [
-            0.011640625,
-            -0.517734375,
-            0.318203125
+            -0.24265625,
+            0.37,
+            0.40453125
         ],
         "magneticField": [
             0.0,
@@ -86,20 +86,20 @@
             0.0,
             0.0
         ],
-        "temprature": 23,
-        "humidity": 24
+        "temprature": 18.6,
+        "humidity": 27
     },
     {
-        "timestamp": 2973,
+        "timestamp": 92675,
         "angVelocity": [
             0.0,
             0.0,
             0.0
         ],
         "acceleration": [
-            0.013984375,
-            1.1429296875,
-            0.366875
+            -0.2425,
+            -0.191640625,
+            0.4050390625
         ],
         "magneticField": [
             0.0,
@@ -116,20 +116,20 @@
             0.0,
             0.0
         ],
-        "temprature": 23,
-        "humidity": 24
+        "temprature": 18.6,
+        "humidity": 27
     },
     {
-        "timestamp": 3529,
+        "timestamp": 93155,
         "angVelocity": [
             0.0,
             0.0,
             0.0
         ],
         "acceleration": [
-            0.015625,
-            -0.371796875,
-            0.4009375
+            -0.2435546875,
+            -0.5848046875,
+            0.405390625
         ],
         "magneticField": [
             0.0,
@@ -146,20 +146,20 @@
             0.0,
             0.0
         ],
-        "temprature": 23,
-        "humidity": 24
+        "temprature": 18.6,
+        "humidity": 27
     },
     {
-        "timestamp": 4098,
+        "timestamp": 93560,
         "angVelocity": [
             0.0,
             0.0,
             0.0
         ],
         "acceleration": [
-            0.016796875,
-            1.245078125,
-            0.424765625
+            -0.243125,
+            -0.86,
+            0.404453125
         ],
         "magneticField": [
             0.0,
@@ -176,20 +176,20 @@
             0.0,
             0.0
         ],
-        "temprature": 23,
-        "humidity": 24
+        "temprature": 18.6,
+        "humidity": 27
     },
     {
-        "timestamp": 4663,
+        "timestamp": 95943,
         "angVelocity": [
             0.0,
             0.0,
             0.0
         ],
         "acceleration": [
-            0.0176171875,
-            -0.183125,
-            0.4414453125
+            -0.243984375,
+            -1.05265625,
+            0.4037890625
         ],
         "magneticField": [
             0.0,
@@ -206,20 +206,20 @@
             0.0,
             0.0
         ],
-        "temprature": 23,
-        "humidity": 24
+        "temprature": 18.6,
+        "humidity": 27
     },
     {
-        "timestamp": 5220,
+        "timestamp": 96360,
         "angVelocity": [
             0.0,
             0.0,
             0.0
         ],
         "acceleration": [
-            0.0181640625,
-            -1.1828515625,
-            0.454296875
+            -0.244609375,
+            1.2553125,
+            0.4044921875
         ],
         "magneticField": [
             0.0,
@@ -236,20 +236,20 @@
             0.0,
             0.0
         ],
-        "temprature": 23,
-        "humidity": 24
+        "temprature": 18.6,
+        "humidity": 27
     },
     {
-        "timestamp": 5788,
+        "timestamp": 96769,
         "angVelocity": [
             0.0,
             0.0,
             0.0
         ],
         "acceleration": [
-            0.0173828125,
-            0.56015625,
-            0.4633203125
+            -0.2450390625,
+            0.4280859375,
+            0.405
         ],
         "magneticField": [
             0.0,
@@ -266,80 +266,20 @@
             0.0,
             0.0
         ],
-        "temprature": 23,
-        "humidity": 24
+        "temprature": 18.6,
+        "humidity": 27
     },
     {
-        "timestamp": 6353,
+        "timestamp": 97176,
         "angVelocity": [
             0.0,
             0.0,
             0.0
         ],
         "acceleration": [
-            0.0168359375,
-            -0.545390625,
-            0.4684375
-        ],
-        "magneticField": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "gps": [
-            0,
-            0
-        ],
-        "height": 0,
-        "velocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "temprature": 23,
-        "humidity": 24
-    },
-    {
-        "timestamp": 6914,
-        "angVelocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "acceleration": [
-            0.0176171875,
-            1.1235546875,
-            0.47203125
-        ],
-        "magneticField": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "gps": [
-            0,
-            0
-        ],
-        "height": 0,
-        "velocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "temprature": 23,
-        "humidity": 24
-    },
-    {
-        "timestamp": 7471,
-        "angVelocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "acceleration": [
-            0.0181640625,
+            -0.2441796875,
             -0.2681640625,
-            0.475703125
+            0.4053515625
         ],
         "magneticField": [
             0.0,
@@ -356,7 +296,7327 @@
             0.0,
             0.0
         ],
-        "temprature": 23,
-        "humidity": 24
+        "temprature": 18.6,
+        "humidity": 27
+    },
+    {
+        "timestamp": 97580,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.2435546875,
+            -0.638359375,
+            0.4055859375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 27
+    },
+    {
+        "timestamp": 98052,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.243125,
+            -1.0146875,
+            0.40578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 27
+    },
+    {
+        "timestamp": 100627,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.2428125,
+            -1.278125,
+            0.4058984375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 101045,
+        "angVelocity": [
+            -0.11,
+            0.11,
+            -0.07
+        ],
+        "acceleration": [
+            -0.2449609375,
+            0.7459375,
+            0.4071484375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 101448,
+        "angVelocity": [
+            -0.1,
+            0.01,
+            0.07
+        ],
+        "acceleration": [
+            -0.2476171875,
+            0.7746484375,
+            0.41390625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 101856,
+        "angVelocity": [
+            0.05,
+            0.12,
+            -0.01
+        ],
+        "acceleration": [
+            -0.2506640625,
+            0.5603515625,
+            0.4104296875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 102259,
+        "angVelocity": [
+            0.1,
+            0.05,
+            0.02
+        ],
+        "acceleration": [
+            -0.2609765625,
+            -0.0402734375,
+            0.402109375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 102665,
+        "angVelocity": [
+            -0.17,
+            0.05,
+            0.36
+        ],
+        "acceleration": [
+            -0.258828125,
+            1.278984375,
+            0.3892578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 103143,
+        "angVelocity": [
+            -0.06,
+            0.12,
+            0.16
+        ],
+        "acceleration": [
+            -0.265546875,
+            0.2283984375,
+            0.3767578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 103548,
+        "angVelocity": [
+            -0.01,
+            0.13,
+            0.36
+        ],
+        "acceleration": [
+            -0.2596875,
+            -0.74140625,
+            0.3680078125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 103952,
+        "angVelocity": [
+            -0.19,
+            0.12,
+            0.23
+        ],
+        "acceleration": [
+            -0.2801953125,
+            -0.951484375,
+            0.367734375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 104360,
+        "angVelocity": [
+            -0.2,
+            0.17,
+            0.3
+        ],
+        "acceleration": [
+            -0.2605859375,
+            -1.0804296875,
+            0.3558203125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 104765,
+        "angVelocity": [
+            -0.2,
+            0.04,
+            0.31
+        ],
+        "acceleration": [
+            -0.2655859375,
+            0.100234375,
+            0.334609375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 105236,
+        "angVelocity": [
+            -0.05,
+            0.19,
+            0.31
+        ],
+        "acceleration": [
+            -0.2585546875,
+            0.82765625,
+            0.3303125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 105655,
+        "angVelocity": [
+            -0.19,
+            0.19,
+            0.33
+        ],
+        "acceleration": [
+            -0.2395703125,
+            -0.4028515625,
+            0.3214453125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 106056,
+        "angVelocity": [
+            -0.22,
+            0.22,
+            0.18
+        ],
+        "acceleration": [
+            -0.2204296875,
+            0.47546875,
+            0.331640625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 106459,
+        "angVelocity": [
+            -0.09,
+            -0.04,
+            0.06
+        ],
+        "acceleration": [
+            -0.226953125,
+            1.0903125,
+            0.3446484375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 106859,
+        "angVelocity": [
+            -0.09,
+            0.03,
+            0.02
+        ],
+        "acceleration": [
+            -0.2127734375,
+            -0.218984375,
+            0.340859375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 107259,
+        "angVelocity": [
+            -0.11,
+            0.11,
+            0.2
+        ],
+        "acceleration": [
+            -0.220390625,
+            -0.0989453125,
+            0.339375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 107731,
+        "angVelocity": [
+            -0.18,
+            0.22,
+            0.4
+        ],
+        "acceleration": [
+            -0.2339453125,
+            -0.600859375,
+            0.3430078125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 27
+    },
+    {
+        "timestamp": 110118,
+        "angVelocity": [
+            -0.21,
+            0.36,
+            0.24
+        ],
+        "acceleration": [
+            -0.232890625,
+            0.9046875,
+            0.329140625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 28
+    },
+    {
+        "timestamp": 110532,
+        "angVelocity": [
+            -0.46,
+            0.38,
+            0.45
+        ],
+        "acceleration": [
+            -0.2403515625,
+            -0.36703125,
+            0.33
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 28
+    },
+    {
+        "timestamp": 110938,
+        "angVelocity": [
+            -0.23,
+            0.25,
+            0.21
+        ],
+        "acceleration": [
+            -0.2338671875,
+            1.068359375,
+            0.3387890625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 28
+    },
+    {
+        "timestamp": 111345,
+        "angVelocity": [
+            0.21,
+            0.0,
+            -0.08
+        ],
+        "acceleration": [
+            -0.257421875,
+            0.2162890625,
+            0.3625390625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 28
+    },
+    {
+        "timestamp": 111753,
+        "angVelocity": [
+            0.34,
+            -0.02,
+            -0.16
+        ],
+        "acceleration": [
+            -0.2563671875,
+            -0.8489453125,
+            0.339296875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 28
+    },
+    {
+        "timestamp": 112228,
+        "angVelocity": [
+            -0.08,
+            0.0,
+            -0.01
+        ],
+        "acceleration": [
+            -0.27671875,
+            -0.774296875,
+            0.3125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 28
+    },
+    {
+        "timestamp": 112648,
+        "angVelocity": [
+            -0.26,
+            0.15,
+            0.1
+        ],
+        "acceleration": [
+            -0.287421875,
+            -0.01890625,
+            0.304296875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 28
+    },
+    {
+        "timestamp": 113126,
+        "angVelocity": [
+            -0.04,
+            0.08,
+            0.19
+        ],
+        "acceleration": [
+            -0.285546875,
+            -0.5448046875,
+            0.3137890625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 28
+    },
+    {
+        "timestamp": 113527,
+        "angVelocity": [
+            -0.17,
+            0.2,
+            0.28
+        ],
+        "acceleration": [
+            -0.2866015625,
+            0.0245703125,
+            0.3063671875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 28
+    },
+    {
+        "timestamp": 113931,
+        "angVelocity": [
+            -0.23,
+            0.17,
+            0.24
+        ],
+        "acceleration": [
+            -0.2943359375,
+            -0.1628125,
+            0.30234375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 28
+    },
+    {
+        "timestamp": 114335,
+        "angVelocity": [
+            -0.27,
+            -0.04,
+            -0.17
+        ],
+        "acceleration": [
+            -0.28453125,
+            0.039453125,
+            0.317109375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 28
+    },
+    {
+        "timestamp": 114737,
+        "angVelocity": [
+            -0.27,
+            -0.02,
+            0.15
+        ],
+        "acceleration": [
+            -0.31515625,
+            0.8841796875,
+            0.315703125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.2,
+        "humidity": 28
+    },
+    {
+        "timestamp": 119392,
+        "angVelocity": [
+            0.01,
+            0.0,
+            0.1
+        ],
+        "acceleration": [
+            -0.2252734375,
+            0.85328125,
+            0.3698046875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 119826,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.161171875,
+            0.597265625,
+            0.404140625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 120231,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.113984375,
+            0.5352734375,
+            0.42703125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 120646,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.08328125,
+            0.3746875,
+            0.44421875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 121121,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.060625,
+            0.379453125,
+            0.45625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 121526,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.044765625,
+            0.2655859375,
+            0.4646875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 121934,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.03484375,
+            0.3030859375,
+            0.4694140625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 122339,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.027890625,
+            0.2121484375,
+            0.4738671875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 122740,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0230078125,
+            0.1484765625,
+            0.4769921875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 123147,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0184375,
+            0.10390625,
+            0.4791796875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 123548,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.01640625,
+            0.072734375,
+            0.480703125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 124015,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.015,
+            0.1680859375,
+            0.481796875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 126399,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.013984375,
+            0.23484375,
+            0.4825390625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 126818,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.01328125,
+            0.2815625,
+            0.4830859375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 127219,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0128125,
+            0.3142578125,
+            0.4834375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 127633,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0124609375,
+            0.3371484375,
+            0.4837109375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 128034,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0110546875,
+            0.3531640625,
+            0.48390625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 128436,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010078125,
+            0.364375,
+            0.4828515625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 18.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 128842,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009375,
+            0.2550390625,
+            0.482109375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 129244,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010078125,
+            0.295703125,
+            0.4827734375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 129715,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010546875,
+            0.3241796875,
+            0.4832421875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 130119,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0108984375,
+            0.3441015625,
+            0.4835546875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 130519,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0111328125,
+            0.358046875,
+            0.4826171875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 130921,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0112890625,
+            0.3678125,
+            0.481953125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 131328,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010234375,
+            0.2574609375,
+            0.48265625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 131734,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0106640625,
+            0.2973828125,
+            0.4831640625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 132137,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0109765625,
+            0.3253515625,
+            0.483515625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 132544,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.011171875,
+            0.344921875,
+            0.48375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 133012,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.011328125,
+            0.3586328125,
+            0.48390625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 133415,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0114453125,
+            0.251015625,
+            0.4840234375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 135799,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0115234375,
+            0.292890625,
+            0.4841015625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 136213,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0115625,
+            0.3221875,
+            0.4841796875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 136637,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0116015625,
+            0.3426953125,
+            0.48421875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 137115,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0104296875,
+            0.2398828125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 137522,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009609375,
+            0.285078125,
+            0.4854296875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 137928,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010234375,
+            0.31671875,
+            0.48390625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 138328,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0094921875,
+            0.3388671875,
+            0.4840234375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 138730,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.008984375,
+            0.354375,
+            0.4841015625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 139130,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0098046875,
+            0.365234375,
+            0.4853515625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 139532,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0103515625,
+            0.3728515625,
+            0.4850390625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 139934,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0107421875,
+            0.3781640625,
+            0.4848046875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 140337,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.011015625,
+            0.2646875,
+            0.4846484375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 140741,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0100390625,
+            0.3024609375,
+            0.483359375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 141138,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0105078125,
+            0.32890625,
+            0.4836328125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 141537,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010859375,
+            0.347421875,
+            0.48265625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 142008,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009921875,
+            0.3603515625,
+            0.4819921875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 142409,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0092578125,
+            0.3694140625,
+            0.4826953125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 142814,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0099609375,
+            0.3757421875,
+            0.4831640625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.0,
+        "humidity": 30
+    },
+    {
+        "timestamp": 145200,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.01046875,
+            0.3801953125,
+            0.483515625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 145622,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0108203125,
+            0.3833203125,
+            0.48375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 146026,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0098828125,
+            0.3855078125,
+            0.48390625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 146425,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0092578125,
+            0.38703125,
+            0.4840234375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 146827,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0087890625,
+            0.2708984375,
+            0.4841015625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 147234,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0096484375,
+            0.306796875,
+            0.4841796875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 147705,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010234375,
+            0.3319140625,
+            0.48421875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 148108,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0094921875,
+            0.3494921875,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 148508,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.008984375,
+            0.361796875,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 148910,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0086328125,
+            0.3704296875,
+            0.4830859375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 149311,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00953125,
+            0.376484375,
+            0.482265625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 149711,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.01015625,
+            0.380703125,
+            0.48171875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 152181,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010625,
+            0.266484375,
+            0.4825
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 152621,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009765625,
+            0.3037109375,
+            0.483046875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 153022,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0091796875,
+            0.212578125,
+            0.482265625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 153430,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009921875,
+            0.2659765625,
+            0.48171875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 153902,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0104296875,
+            0.303359375,
+            0.4825
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 154310,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.01078125,
+            0.32953125,
+            0.483046875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 154717,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0098828125,
+            0.3478515625,
+            0.4834375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 155118,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0104296875,
+            0.3606640625,
+            0.4837109375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 155525,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.01078125,
+            0.3696484375,
+            0.48390625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 155998,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0110546875,
+            0.3759375,
+            0.4840234375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 156399,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010078125,
+            0.3803125,
+            0.4841015625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 156802,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009375,
+            0.3833984375,
+            0.4841796875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.4,
+        "humidity": 30
+    },
+    {
+        "timestamp": 159183,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010078125,
+            0.385546875,
+            0.483046875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 159613,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009375,
+            0.2698828125,
+            0.482265625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 160024,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00890625,
+            0.30609375,
+            0.48171875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 160497,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0085546875,
+            0.3314453125,
+            0.481328125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 160899,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0094921875,
+            0.3491796875,
+            0.4822265625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 161305,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.01015625,
+            0.3616015625,
+            0.4828515625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 161709,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009453125,
+            0.3702734375,
+            0.48328125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 162116,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0089453125,
+            0.2591796875,
+            0.48359375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 162520,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009765625,
+            0.18140625,
+            0.483828125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 162993,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0091796875,
+            0.244140625,
+            0.483984375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 163399,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00875,
+            0.2880859375,
+            0.4829296875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 163810,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0084375,
+            0.318828125,
+            0.483359375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 166192,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0094140625,
+            0.3403515625,
+            0.4836328125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 166611,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010078125,
+            0.2382421875,
+            0.483828125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 167020,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009375,
+            0.2839453125,
+            0.483984375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 167490,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010078125,
+            0.3159375,
+            0.4841015625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 167892,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010546875,
+            0.4555078125,
+            0.4841796875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 168296,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0097265625,
+            0.436015625,
+            0.48421875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 168701,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0103125,
+            0.4223828125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 169101,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010703125,
+            0.4128515625,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 169502,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0109765625,
+            0.288984375,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 169911,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.011171875,
+            0.319453125,
+            0.4830859375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 170316,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.011328125,
+            0.34078125,
+            0.4834375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 170793,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0114453125,
+            0.355703125,
+            0.4837109375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 173179,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0115234375,
+            0.366171875,
+            0.48390625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 173607,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0115625,
+            0.3734765625,
+            0.4840234375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 174010,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0116015625,
+            0.37859375,
+            0.4841015625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 174415,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0116015625,
+            0.3821875,
+            0.4841796875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 174888,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0104296875,
+            0.3846875,
+            0.483046875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 175291,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009609375,
+            0.3864453125,
+            0.4834375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 19.79,
+        "humidity": 30
+    },
+    {
+        "timestamp": 175696,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010234375,
+            0.3876953125,
+            0.4837109375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 176099,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0106640625,
+            0.3885546875,
+            0.48390625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 176499,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0109765625,
+            0.389140625,
+            0.4840234375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 176907,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.01,
+            0.3895703125,
+            0.4829296875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 177384,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0093359375,
+            0.3898828125,
+            0.4821875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 177789,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0088671875,
+            0.390078125,
+            0.4828125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 180175,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.008515625,
+            0.390234375,
+            0.482109375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 180608,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00828125,
+            0.3903515625,
+            0.4827734375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 181010,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009296875,
+            0.3904296875,
+            0.4832421875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 181486,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.008828125,
+            0.27328125,
+            0.4835546875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 181889,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.008515625,
+            0.3084765625,
+            0.4837890625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 182292,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00828125,
+            0.2158984375,
+            0.4839453125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 182699,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009296875,
+            0.26828125,
+            0.4840625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 183107,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.01,
+            0.3049609375,
+            0.484140625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 183512,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0105078125,
+            0.330625,
+            0.4841796875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 183985,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0096875,
+            0.34859375,
+            0.48421875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 184387,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0102734375,
+            0.361171875,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 184795,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010703125,
+            0.37,
+            0.4854296875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 187184,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0098046875,
+            0.376171875,
+            0.485078125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 187612,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0091796875,
+            0.3805078125,
+            0.48484375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 188083,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00875,
+            0.383515625,
+            0.485859375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 188486,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0084375,
+            0.385625,
+            0.48421875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 188888,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0082421875,
+            0.387109375,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 189292,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0092578125,
+            0.3881640625,
+            0.4830859375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 189693,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0099609375,
+            0.2716796875,
+            0.484609375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 190097,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009296875,
+            0.30734375,
+            0.48453125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 190503,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.01,
+            0.3323046875,
+            0.484453125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 190910,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0093359375,
+            0.349765625,
+            0.4844140625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 191381,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0088671875,
+            0.3619921875,
+            0.484375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 191788,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0096875,
+            0.370546875,
+            0.484375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.2,
+        "humidity": 30
+    },
+    {
+        "timestamp": 194177,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0102734375,
+            0.3765625,
+            0.484375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 194680,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00953125,
+            0.38078125,
+            0.484375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 195083,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.008984375,
+            0.3837109375,
+            0.484375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 195487,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0086328125,
+            0.38578125,
+            0.483203125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 195891,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00953125,
+            0.3872265625,
+            0.4835546875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 196295,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.01015625,
+            0.3882421875,
+            0.4837890625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 196776,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010625,
+            0.3889453125,
+            0.4827734375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 197185,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009765625,
+            0.3894140625,
+            0.4832421875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 197599,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0091796875,
+            0.389765625,
+            0.4835546875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 198005,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00875,
+            0.39,
+            0.4837890625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 198411,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0084375,
+            0.39015625,
+            0.4839453125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 198882,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0082421875,
+            0.3902734375,
+            0.4840625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 199287,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0092578125,
+            0.3903515625,
+            0.484140625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 199692,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0099609375,
+            0.3904296875,
+            0.4841796875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 200092,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.01046875,
+            0.39046875,
+            0.48421875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 200500,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0096484375,
+            0.3905078125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 200981,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0090625,
+            0.3905078125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 201383,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00984375,
+            0.3905078125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 201787,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010390625,
+            0.3905078125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 202193,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009609375,
+            0.3905078125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 202682,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010234375,
+            0.3905078125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 203089,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0106640625,
+            0.3905078125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 203499,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0098046875,
+            0.3905078125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 205883,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0091796875,
+            0.3905078125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 206290,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00875,
+            0.3905078125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 206696,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0084375,
+            0.3905078125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 207182,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0082421875,
+            0.3905078125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 207681,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0080859375,
+            0.3905078125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 208087,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00796875,
+            0.3905078125,
+            0.4830859375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 30
+    },
+    {
+        "timestamp": 210556,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0090625,
+            0.3905078125,
+            0.4834375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 210972,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00984375,
+            0.3905078125,
+            0.4837109375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 211378,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010390625,
+            0.3905078125,
+            0.48390625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 211781,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009609375,
+            0.3905078125,
+            0.4840234375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 212183,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0090625,
+            0.3905078125,
+            0.4841015625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 212680,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.008671875,
+            0.3905078125,
+            0.4841796875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 213086,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0083984375,
+            0.3905078125,
+            0.48421875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 215459,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009375,
+            0.3905078125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 215866,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010078125,
+            0.3905078125,
+            0.4854296875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 216268,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010546875,
+            0.3905078125,
+            0.48625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 216674,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0108984375,
+            0.3905078125,
+            0.4868359375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 217078,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0111328125,
+            0.3905078125,
+            0.48609375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 217481,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0101171875,
+            0.3905078125,
+            0.485546875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 20.6,
+        "humidity": 29
+    },
+    {
+        "timestamp": 217961,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0094140625,
+            0.3905078125,
+            0.4863671875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 218369,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010078125,
+            0.3905078125,
+            0.4857421875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 218774,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010546875,
+            0.3905078125,
+            0.484140625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 219181,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0097265625,
+            0.3905078125,
+            0.4830078125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 219660,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0103125,
+            0.5076953125,
+            0.4833984375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 220068,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010703125,
+            0.4725390625,
+            0.483671875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 222447,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0098046875,
+            0.4479296875,
+            0.4838671875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 222856,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0103515625,
+            0.430703125,
+            0.483984375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 223257,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0107421875,
+            0.418671875,
+            0.4841015625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 223663,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.011015625,
+            0.410234375,
+            0.4841796875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 224063,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0112109375,
+            0.4043359375,
+            0.48421875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 224466,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.01015625,
+            0.4001953125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 224869,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010625,
+            0.3973046875,
+            0.4830859375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 225272,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009765625,
+            0.3952734375,
+            0.4834375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 225673,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0091796875,
+            0.3938671875,
+            0.4837109375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 226073,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00875,
+            0.392890625,
+            0.482734375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 226478,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0084375,
+            0.3921875,
+            0.48203125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 226877,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0094140625,
+            0.39171875,
+            0.482734375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 227278,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00890625,
+            0.3913671875,
+            0.483203125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 227755,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0085546875,
+            0.3911328125,
+            0.4835546875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 228157,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0083203125,
+            0.3909765625,
+            0.4837890625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 228576,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0081640625,
+            0.390859375,
+            0.4839453125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 228979,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.008046875,
+            0.39078125,
+            0.4840625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 229450,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.009140625,
+            0.390703125,
+            0.484140625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 231840,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0098828125,
+            0.3906640625,
+            0.4841796875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 232250,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0092578125,
+            0.390625,
+            0.48421875
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 232658,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0087890625,
+            0.390625,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 233063,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0084765625,
+            0.2734375,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 233474,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0082421875,
+            0.30859375,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 233952,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0092578125,
+            0.333203125,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 234354,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0087890625,
+            0.3504296875,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 234757,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0096484375,
+            0.3624609375,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 235162,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0090625,
+            0.3708984375,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 235653,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.00984375,
+            0.376796875,
+            0.4842578125
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 236057,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.010390625,
+            0.3809375,
+            0.4830859375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 236460,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0084375,
+            0.383828125,
+            0.4834375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 238846,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0082421875,
+            0.385859375,
+            0.4837109375
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
+    },
+    {
+        "timestamp": 239253,
+        "angVelocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "acceleration": [
+            -0.0080859375,
+            0.387265625,
+            0.48390625
+        ],
+        "magneticField": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "gps": [
+            0,
+            0
+        ],
+        "height": 0,
+        "velocity": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "temprature": 21.0,
+        "humidity": 28
     }
 ]

@@ -65,10 +65,17 @@ class DataMain():
         
         with open(self.path+"data.json", 'r') as f:
             self.dictData = json.load(f)
-            self.DataBase = SortedList(self.dictData, key=lambda x: -x['timestamp'])
+            if len(self.dictData) != 0:
+                if input("There is data in data.json, clear to delete? y/n:") == 'y':
+                    self.dictData = []
+                
+        self.DataBase = SortedList(self.dictData, key=lambda x: -x['timestamp'])
         with open(self.path+"debug.json", 'r') as f:
             self.dictDebug = json.load(f)
-            self.DebugData = SortedList(self.dictDebug, key=lambda x: -x['timestamp'])
+            if len(self.dictDebug) != 0:
+                if input("There is data in debug.json, clear to delete? y/n:") == 'y':
+                    self.dictDebug = []
+        self.DebugData = SortedList(self.dictDebug, key=lambda x: -x['timestamp'])
         
 
         
@@ -181,7 +188,7 @@ class DataMain():
                 payload['velocity'] = [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)] #6 bytes
                 byteCount+=6
                 print(packet[byteCount:byteCount+2])
-                payload['temprature']=self.unpack.int16(packet, byteCount) #2 bytes (Values were multiplied by 100 to keep the decimal)
+                payload['temprature']=self.unpack.int16(packet, byteCount)/100 #2 bytes (Values were multiplied by 100 to keep the decimal)
                 byteCount+=2
                 print(packet[byteCount:byteCount+1])
                 payload['humidity']=self.unpack.uint8(packet, byteCount) #1 byte
@@ -246,7 +253,7 @@ class DataMain():
     def extraxtData(self, keyword:str):
         getter = itemgetter(keyword)
         
-        return np.array(list(map(list, map(getter, self.DataBase))))
+        return np.array(list(map(getter, self.DataBase)))
             
 def SerialSetup():
     #Find available ports and promt user to choose

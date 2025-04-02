@@ -1,10 +1,9 @@
 //Libraries
-#include  <SD.h> 
+//#include  <SD.h> 
 #include  <SPI.h>
 #include  <Arduino.h>
 #include  <Wire.h>
 
-#include  <HardwareSerial.h> 
 #include  <SoftwareSerial.h>
 
 //#include  <cstdint>
@@ -113,7 +112,7 @@ uint8_t errorLength = 0;
 
 
 
-File file;
+//File file;
 
 void setup() {
   
@@ -158,12 +157,18 @@ void RaiseError(char* message){
 
 
 const float lpAlpha = 0.7;
+
+int* acc2 {};
+int* acc1 {};
+int* compassReadings {};
+float* gyroReadings {};
+int avgAcc[3] {};
+
 void readSensors() {
 
-  int* acc1 = GY85.readFromAccelerometer();
+  acc1 = GY85.readFromAccelerometer();
   delay(50);
-  int* acc2 = GY85.readFromAccelerometer();
-  int avgAcc[3] {};
+  acc2 = GY85.readFromAccelerometer();
 
   avgAcc[0] = (GY85.accelerometer_x(acc1) + GY85.accelerometer_x(acc2))/2;
   avgAcc[1] = (GY85.accelerometer_y(acc1) + GY85.accelerometer_y(acc2))/2;
@@ -180,20 +185,16 @@ void readSensors() {
   }
   
   
-  int* compassReadings = GY85.readFromCompass();
+  compassReadings = GY85.readFromCompass();
   data.angVelocity[0] = GY85.compass_x(compassReadings)*100;
   data.angVelocity[1] = GY85.compass_y(compassReadings)*100;
   data.angVelocity[2] = GY85.compass_z(compassReadings)*100;
  
 
-  float* gyroReadings = GY85.readGyro();
+  gyroReadings = GY85.readGyro();
   data.angVelocity[0] = GY85.gyro_x(gyroReadings);
   data.angVelocity[1] = GY85.gyro_y(gyroReadings);
   data.angVelocity[2] = GY85.gyro_z(gyroReadings);
-  
-  //data.temperature = dht11.readTemperature();
-  //data.humidity = dht11.readHumidity();
-  //Serial.print(data.temperature);
   
 }
 
@@ -202,11 +203,11 @@ void readSensors() {
 
 //Print data to file
 
-void WriteToFile() {
-  
-  file.write(Packet, packetLength);
-  
-}
+//void WriteToFile() {
+//  
+//  file.write(Packet, packetLength);
+//  
+//}
 
 
 
@@ -264,22 +265,26 @@ void BuildPacket(uint8_t type){
 }
 
 void SendPacket(){
-
+  if (Serial.availableForWrite() >= packetLength){
   Serial.write(Packet, packetLength);
-  memset(Packet, 0, sizeof(Packet));;
+  memset(Packet, 0, sizeof(Packet));
+  }
+
 
 }
-int time {};
+
+
+
+unsigned long time {};
 
 float humidity {};
 float temperature {};
-int del = 500;
+int del = 300;
 
 void loop() {
-  
 
   if (dht_sensor.measure( &temperature, &humidity )) {
-        data.temperature = temperature;
+        data.temperature = temperature*100;
         data.humidity = humidity;
         //Serial.print("T = ");
         //Serial.print(temperature, 1);
@@ -287,7 +292,7 @@ void loop() {
         //Serial.print(humidity, 1);
         //Serial.println("%");
     }
-if (time + del > millis()){
+  if (time + del > millis()){
     //Special treatment for the gps cause hes a very special boy
     
     if (gps.ready())
@@ -310,7 +315,7 @@ if (time + del > millis()){
   BuildPacket(0);
   SendPacket();
 
-  //delay(500);
+  delay(30);
   time = millis();
 
 }

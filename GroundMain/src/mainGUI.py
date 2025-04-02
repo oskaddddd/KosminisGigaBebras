@@ -138,17 +138,23 @@ class MainWindow(QMainWindow):
 
         self.timeline = np.array([])
         
+        
         self.dataType = "height"
         
+        if len(DataManager.dictData) != 0:
+            self.updateData(0)
         
        
         self.serial.start()
 
     def updateData(self, data):
-        self.ui.locationPlot.updateLines()
+        
+        #self.ui.locationPlot.updateLines()
+        
         
         self.timeline = DataManager.extraxtData("timestamp")[:]/1000
         
+        self.ui.dataPlot.clear()
         self.ui.dataPlot.plot(self.timeline, DataManager.extraxtData(self.dataType))
         
         #self.ui.debugPlot.plot(self.time)
@@ -158,6 +164,7 @@ class MainWindow(QMainWindow):
         
     def dataDropboxChenged(self, text):
         self.dataType = text
+        self.ui.dataPlot.clear()
         self.ui.dataPlot.plot(self.timeline, DataManager.extraxtData(self.dataType))
 
 if __name__ == "__main__":
