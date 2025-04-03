@@ -180,18 +180,17 @@ class DataMain():
                 payload['memUsage'] = self.unpack.uint16(packet, byteCount) #2 bytes
                 byteCount+=2
 
-                payload['gy91'] = bool(self.unpack.bit(packet, byteCount, 0))
-                payload['dht11'] = bool(self.unpack.bit(packet, byteCount, 1))
-                payload['voc'] = bool(self.unpack.bit(packet, byteCount, 2))
-                payload['co2'] = bool(self.unpack.bit(packet, byteCount, 3))
-                payload['sdCard'] = bool(self.unpack.bit(packet, byteCount, 4))
-                byteCount+=1
-                #All above combined are 1 byte 
-
-                payload['message'] = self.unpack.string(packet, byteCount, header['length'])
-                byteCount+=(header['length']-byteCount)
-
-                self.debug_data(payload)
+                #payload['gy85'] = bool(self.unpack.bit(packet, byteCount, 0))
+                #payload['dht11'] = bool(self.unpack.bit(packet, byteCount, 1))
+                #payload['gps'] = bool(self.unpack.bit(packet, byteCount, 2))
+                #payload['sdCard'] = bool(self.unpack.bit(packet, byteCount, 4))
+                #byteCount+=1
+                ##All above combined are 1 byte 
+#
+                #payload['message'] = self.unpack.string(packet, byteCount, header['length'])
+                #byteCount+=(header['length']-byteCount)
+#
+                #self.debug_data(payload)
             
         return payload
             

@@ -46,20 +46,64 @@ struct DataPayload {
 
 #pragma pack(push, 1) 
 struct DebugPayload {
-  uint16_t packetCount {};
-  uint16_t batteryVoltage {};
+  uint16_t packetCount = 0;
+  float batteryVoltage {};
   uint16_t memUsage {};
   uint8_t sensors {};
 
-  void setSensorStatus(int index, bool status) {
-    //On
-    if (status) {
-      sensors |= (1 << index);  //Shift the 1 to the index, and use OR 
-    } 
-    //Off
-    else {
-      sensors &= ~(1 << index);  //Shift the 1 to the index, invert with not, and use AND
+  int getIndex(const char* device){
+    if (device && *device){
+      switch (device[strlen(device)-1]){
+        //gY
+        case 'y':
+          return 0;
+          break;
+        //dhT
+        case 't':
+          return 1;
+          break;
+        //gpS
+        case 's':
+          return 2;
+          break;
+        //sD
+        case 'd':
+          return 3;
+          break;
+
+        default:
+          return -1;
+      }
     }
+    else {return -1;}
+  }
+
+  void setSensorStatus(const char* device, bool status) {
+    //On
+    int index = getIndex(device);
+
+    if (index != -1){
+      //On
+      if (status) {
+        sensors |= (1 << index);  //Shift the 1 to the index, and use OR 
+      } 
+      //Off
+      else {
+        sensors &= ~(1 << index);  //Shift the 1 to the index, invert with not, and use AND
+      }
+    }
+    
+    
+
+  }
+  bool readStatus(const char* device) {
+    int index = getIndex(device);
+
+    if (index != -1){
+      return (sensors >> index) & 1;  // Shift the n-th bit to the rightmost, then AND with 1
+    }
+    return 0;
+    
   }
 };
 #pragma pack(pop)
@@ -101,7 +145,7 @@ const byte tx_gps = 3;
 SoftwareSerial gps_serial(rx_gps, tx_gps);
 
 
-const byte address =253;
+const byte address =64;
 
 char error[64] = "" ;
 uint8_t errorLength = 0;
@@ -125,6 +169,7 @@ void setup() {
 
   GY85.init();
 
+<<<<<<< Updated upstream
   if (!SD.begin()) {
     Serial.println("SD card failed");
     return;
@@ -135,6 +180,18 @@ void setup() {
   if (!file) {
     Serial.println("SD card failed");
   }
+=======
+
+  delay(100);
+  //if (SD.begin(10)) {
+  //  file = SD.open("data.txt", FILE_WRITE);
+  //  if (file) {
+  //    debug.setSensorStatus("sd", true);
+  //  }  
+  //}
+
+  
+>>>>>>> Stashed changes
 
 }
 
@@ -267,6 +324,18 @@ void WriteToFile() {
   
 }
 
+void ReadDebug(){
+  debug.batteryVoltage = (1.1 * 1024.0) / analogRead(A0);
+  extern int __heap_start, *__brkval;
+  int free_memory;
+  if ((int)__brkval == 0) {
+    free_memory = ((int)&free_memory) - ((int)&__heap_start);
+  } else {
+    free_memory = ((int)&free_memory) - ((int)__brkval);
+  }
+  debug.memUsage = free_memory;
+
+}
 
 
 
@@ -301,7 +370,7 @@ void BuildPacket(uint8_t type){
 
     //Adjust the error to it's MaxLength
     uint8_t maxErrorLength = 63 - (hSize + dSize);
-    errorLength = (errorLength <= maxErrorLength) ? errorLength : maxErrorLength;
+    errorLength = 0;(errorLength <= maxErrorLength) ? errorLength : maxErrorLength;
 
     packetLength = hSize + dSize + errorLength +fSize; 
 
@@ -310,7 +379,7 @@ void BuildPacket(uint8_t type){
     //Copy data to the packet
     memcpy(Packet, &header, hSize);
     memcpy(Packet + hSize, &debug, dSize);
-    memcpy(Packet + hSize + dSize, &error, errorLength);
+    //memcpy(Packet + hSize + dSize, &error, errorLength);
 
   }
 
@@ -323,6 +392,7 @@ void BuildPacket(uint8_t type){
 }
 
 void SendPacket(){
+<<<<<<< Updated upstream
   Serial.println("Sending");
   Serial.write(Packet, packetLength);
 
@@ -340,4 +410,73 @@ void loop() {
   
   //BuildPacket(1);
   //SendPacket();
+=======
+  if (Serial.availableForWrite() >= packetLength){
+    Serial.write(Packet, packetLength);
+    memset(Packet, 0, sizeof(Packet));
+    debug.packetCount+=1;
+  }
+
+
+}
+
+
+
+unsigned long time {};
+
+float humidity {};
+float temperature {};
+int del = 300;
+int debugCount = 0;
+
+void loop() {
+
+  if (dht_sensor.measure( &temperature, &humidity )) {
+        debug.setSensorStatus("dht", true);
+        data.temperature = temperature*100;
+        data.humidity = humidity;
+    }
+  if (time + del > millis()){
+    //Special treatment for the gps cause hes a very special boy
+    
+    if (gps.ready())
+    { 
+      debug.setSensorStatus("gps", true);  
+      
+      Serial.println(gps.lon);
+      data.gps[0] = gps.lon;
+      data.gps[0] = gps.lat;
+      data.height = gps.height/1000;
+      
+      data.velocity[0] = gps.velN/10;
+      data.velocity[1] = gps.velE/10;
+      data.velocity[2] = gps.velN/10;
+    }
+    return;
+    
+  }
+
+  if (debugCount >= 5){
+    //ReadDebug();
+    //BuildPacket(1);
+    //SendPacket();
+    //debugCount = 0;
+//
+  }
+  else{
+    readSensors();
+    BuildPacket(0);
+    SendPacket();
+    debugCount += 1;
+  }
+  
+  //if (debug.readStatus("gps")){
+  //  WriteToFile();
+  //}
+  
+
+  delay(30);
+  time = millis();
+
+>>>>>>> Stashed changes
 }
