@@ -44,7 +44,7 @@ class Unpack():
         return struct.unpack('l', b[start:start+4])[0]
     
     def bit(self, b: bytes, start: int, bit: int):
-        return((b>>start*8+bit) & 1)
+        return((b[start]>>bit) & 1)
     
     def string(self, b: bytes, start: int, length: int):
         return b[start: length].decode('utf-8')
@@ -211,21 +211,19 @@ class DataMain():
                 payload['packetCount'] = self.unpack.uint16(packet, byteCount) #2 bytes
                 byteCount+=2
 
-                payload['baterryVoltage'] = self.unpack.uint16(packet, byteCount) #2 bytes (Values were multiplied by 100 to keep the decimal)
-                byteCount+=2
+                payload['baterryVoltage'] = self.unpack.float32(packet, byteCount) #2 bytes (Values were multiplied by 100 to keep the decimal)
+                byteCount+=4
 
                 payload['memUsage'] = self.unpack.uint16(packet, byteCount) #2 bytes
                 byteCount+=2
 
                 payload['gy91'] = bool(self.unpack.bit(packet, byteCount, 0))
                 payload['dht11'] = bool(self.unpack.bit(packet, byteCount, 1))
-                payload['voc'] = bool(self.unpack.bit(packet, byteCount, 2))
-                payload['co2'] = bool(self.unpack.bit(packet, byteCount, 3))
                 payload['sdCard'] = bool(self.unpack.bit(packet, byteCount, 4))
                 byteCount+=1
                 #All above combined are 1 byte 
-
-                payload['message'] = self.unpack.string(packet, byteCount, header['length'])
+                print(payload)
+                #payload['message'] = self.unpack.string(packet, byteCount, header['length'])
                 byteCount+=(header['length']-byteCount)
 
                 self.debug_data(payload)

@@ -1,5 +1,5 @@
 //Libraries
-//#include  <SD.h> 
+#include  <SD.h> 
 #include  <SPI.h>
 #include  <Arduino.h>
 #include  <Wire.h>
@@ -49,23 +49,66 @@ struct DataPayload {
   //uint16_t co2Concentration {};    // 2 bytes
 };
 #pragma pack(pop)
-
 #pragma pack(push, 1) 
 struct DebugPayload {
-  uint16_t packetCount {};
-  uint16_t batteryVoltage {};
+  uint16_t packetCount = 0;
+  float batteryVoltage {};
   uint16_t memUsage {};
   uint8_t sensors {};
 
-  void setSensorStatus(int index, bool status) {
-    //On
-    if (status) {
-      sensors |= (1 << index);  //Shift the 1 to the index, and use OR 
-    } 
-    //Off
-    else {
-      sensors &= ~(1 << index);  //Shift the 1 to the index, invert with not, and use AND
+  int getIndex(const char* device){
+    if (device && *device){
+      switch (device[strlen(device)-1]){
+        //gY
+        case 'y':
+          return 0;
+          break;
+        //dhT
+        case 't':
+          return 1;
+          break;
+        //gpS
+        case 's':
+          return 2;
+          break;
+        //sD
+        case 'd':
+          return 3;
+          break;
+
+        default:
+          return -1;
+      }
     }
+    else {return -1;}
+  }
+
+  void setSensorStatus(const char* device, bool status) {
+    //On
+    int index = getIndex(device);
+
+    if (index != -1){
+      //On
+      if (status) {
+        sensors |= (1 << index);  //Shift the 1 to the index, and use OR 
+      } 
+      //Off
+      else {
+        sensors &= ~(1 << index);  //Shift the 1 to the index, invert with not, and use AND
+      }
+    }
+    
+    
+
+  }
+  bool readStatus(const char* device) {
+    int index = getIndex(device);
+
+    if (index != -1){
+      return (sensors >> index) & 1;  // Shift the n-th bit to the rightmost, then AND with 1
+    }
+    return 0;
+    
   }
 };
 #pragma pack(pop)
@@ -73,7 +116,7 @@ struct DebugPayload {
 
 
 uint8_t packetLength = 0;
-uint8_t Packet[255] = {};
+uint8_t Packet[64] = {};
 
 #pragma pack(push, 1) 
 struct PacketFooter {
@@ -107,12 +150,12 @@ GY_85 GY85;
 
 const byte address =253;
 
-char error[255] = "" ;
+char error[64] = "" ;
 uint8_t errorLength = 0;
 
 
 
-//File file;
+File file;
 
 void setup() {
   
@@ -131,28 +174,35 @@ void setup() {
 
 
   delay(100);
-  //if (!SD.begin()) {
-  //  Serial.println("SD card failed");
-  //  return;
+  //if (SD.begin(10)) {
+  //  file = SD.open("data.txt", FILE_WRITE);
+  //  if (file) {
+  //    debug.setSensorStatus("sd", true);
+  //  }  
   //}
-
-  //Test if SD card is working
-  //file = SD.open("KosminioGigaBebrofailai.txt", FILE_WRITE);
-  //if (!file) {
-  //  Serial.println("SD card file");
-  //}
-
 }
 
 void RaiseError(char* message){
   //Get the error length and make sure it doesnt exeed limit
   errorLength = strlen(message);
-  errorLength = (errorLength < 255) ? errorLength : 255;
+  errorLength = (errorLength < 64) ? errorLength : 64;
 
   //Copy the message to the errorMessage to the error object
   memcpy(error, message, errorLength);
 }
 
+void ReadDebug(){
+  debug.batteryVoltage = (1.1 * 1024.0) / analogRead(A0);
+  extern int __heap_start, *__brkval;
+  int free_memory;
+  if ((int)__brkval == 0) {
+    free_memory = ((int)&free_memory) - ((int)&__heap_start);
+  } else {
+    free_memory = ((int)&free_memory) - ((int)__brkval);
+  }
+  debug.memUsage = free_memory;
+
+}
 
 
 
@@ -195,6 +245,7 @@ void readSensors() {
   data.angVelocity[0] = GY85.gyro_x(gyroReadings);
   data.angVelocity[1] = GY85.gyro_y(gyroReadings);
   data.angVelocity[2] = GY85.gyro_z(gyroReadings);
+  debug.setSensorStatus("gy", true);
   
 }
 
@@ -268,6 +319,7 @@ void SendPacket(){
   if (Serial.availableForWrite() >= packetLength){
   Serial.write(Packet, packetLength);
   memset(Packet, 0, sizeof(Packet));
+  debug.packetCount += 1;
   }
 
 
@@ -280,10 +332,12 @@ unsigned long time {};
 float humidity {};
 float temperature {};
 int del = 300;
+int debugCount = 0;
 
 void loop() {
 
   if (dht_sensor.measure( &temperature, &humidity )) {
+        debug.setSensorStatus("dht", true);
         data.temperature = temperature*100;
         data.humidity = humidity;
         //Serial.print("T = ");
@@ -311,10 +365,27 @@ void loop() {
   }
 
 
-  readSensors();
-  BuildPacket(0);
-  SendPacket();
+  if (debugCount < 5){
+    readSensors();
+    BuildPacket(0);
+    SendPacket();
+    debugCount+=1;
+    //Serial.println("LALA");
 
+
+  }
+  else{
+    //Serial.println(1);
+    ReadDebug();
+    //Serial.println(2);
+    BuildPacket(1);
+    //Serial.println(3);
+    SendPacket();
+    //Serial.println(4);
+    debugCount = 0;
+
+  }
+  
   delay(30);
   time = millis();
 

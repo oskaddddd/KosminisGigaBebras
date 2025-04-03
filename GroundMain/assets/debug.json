@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "timestamp": 14568,
+        "packetCount": 29,
+        "baterryVoltage": 1.4330788850784302,
+        "memUsage": 440,
+        "gy91": true,
+        "dht11": true,
+        "sdCard": false
+    },
+    {
+        "timestamp": 16898,
+        "packetCount": 35,
+        "baterryVoltage": 1.4330788850784302,
+        "memUsage": 440,
+        "gy91": true,
+        "dht11": true,
+        "sdCard": false
+    }
+]
