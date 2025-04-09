@@ -4,14 +4,14 @@
 #include  <Arduino.h>
 #include  <Wire.h>
 
-#include  <SoftwareSerial.h>
+
 
 //#include  <cstdint>
-#include <UbxGpsNavPvt.h>
+//#include <UbxGpsNavPvt.h>
 
 #include "DHT_Async.h"
 
-#include <TinyGPS++.h>
+#include <TinyGPSPlus.h>
 
 #define DHT_SENSOR_TYPE DHT_TYPE_11
 
@@ -40,9 +40,9 @@ struct DataPayload {
   int16_t angVelocity[3] {};       // 2 bytes
   int16_t acceleration[3] {};      // 6 bytes (3 * 2 bytes)
   int16_t magneticField[3] {};     // 6 bytes (3 * 2 bytes)
-  int32_t gps[2] {}; 
+  uint32_t gps[2] {}; 
   uint16_t height {}; 
-  int16_t velocity[3] {} ;           // 8 bytes (2 * 4 bytes)
+  int16_t velocity {};           // 8 bytes (2 * 4 bytes)
   int16_t temperature {};           // 2 bytes
   uint8_t humidity {};             // 1 byte
   //uint16_t vocConcentration {};    // 2 bytes
@@ -51,7 +51,7 @@ struct DataPayload {
 #pragma pack(pop)
 #pragma pack(push, 1) 
 struct DebugPayload {
-  uint16_t packetCount = 0;
+  uint16_t packetCount = 1;
   float batteryVoltage {};
   uint16_t memUsage {};
   uint8_t sensors {};
@@ -134,13 +134,8 @@ struct PacketFooter {
 DataPayload data;
 DebugPayload debug;
 
-const byte rx_gps = 2;
-const byte tx_gps = 3;
 
-SoftwareSerial gps_serial(rx_gps, rx_gps);
-
-
-UbxGpsNavPvt<SoftwareSerial> gps(gps_serial);
+TinyGPSPlus gps;
 
 
 GY_85 GY85;
@@ -161,9 +156,8 @@ void setup() {
   
   
   //Setup Serial and LoRa
-  Serial.begin(57600); //Rx Tx
+  Serial.begin(115200); //Rx Tx
 
-  gps.begin(115200);
 
   //Set up wire
   Wire.begin();
@@ -194,13 +188,15 @@ void RaiseError(char* message){
 void ReadDebug(){
   debug.batteryVoltage = (1.1 * 1024.0) / analogRead(A0);
   extern int __heap_start, *__brkval;
-  int free_memory;
-  if ((int)__brkval == 0) {
-    free_memory = ((int)&free_memory) - ((int)&__heap_start);
-  } else {
-    free_memory = ((int)&free_memory) - ((int)__brkval);
-  }
-  debug.memUsage = free_memory;
+  int freeRam = 0;
+
+  extern int __heap_start,*__brkval;
+
+  int v;
+
+  freeRam = (int)&v - (__brkval == 0  ? (int)&__heap_start : (int) __brkval);  
+
+  debug.memUsage = freeRam;
 
 }
 
@@ -335,35 +331,28 @@ int del = 300;
 int debugCount = 0;
 
 void loop() {
-
   if (dht_sensor.measure( &temperature, &humidity )) {
-        debug.setSensorStatus("dht", true);
-        data.temperature = temperature*100;
-        data.humidity = humidity;
-        //Serial.print("T = ");
-        //Serial.print(temperature, 1);
-        //Serial.print(" deg. C, H = ");
-        //Serial.print(humidity, 1);
-        //Serial.println("%");
-    }
-  if (time + del > millis()){
-    //Special treatment for the gps cause hes a very special boy
-    
-    if (gps.ready())
-    {   Serial.print("Hello?");
-        Serial.println(gps.lon);
-        data.gps[0] = gps.lon;
-        data.gps[0] = gps.lat;
-        data.height = gps.height/1000;
-        
-        data.velocity[0] = gps.velN/10;
-        data.velocity[1] = gps.velE/10;
-        data.velocity[2] = gps.velN/10;
-    }
-    return;
-    
+    debug.setSensorStatus("dht", true);
+    data.temperature = temperature*100;
+    data.humidity = humidity;
+  } 
+  
+  for(int i = 0; i < Serial.available(); i++){
+      gps.encode(Serial.read());
   }
+  if (time + del > millis()){return;}
 
+ 
+  if (gps.location.isValid())
+  {  
+    debug.setSensorStatus("gps", true);
+    data.gps[0] = gps.location.lng() * pow(10, 6);
+    data.gps[1] = gps.location.lat() * pow(10, 6);
+    data.height = gps.altitude.isValid() ? gps.altitude.meters() : 0;
+    
+    data.velocity = gps.speed.isValid() ? gps.speed.mps()*100 : 0;
+  }
+  
 
   if (debugCount < 5){
     readSensors();
@@ -386,7 +375,7 @@ void loop() {
 
   }
   
-  delay(30);
+  //delay(30);
   time = millis();
 
 }

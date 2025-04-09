@@ -17,7 +17,11 @@ print(values)
 
 import dataAPI
 import numpy as np
+
+print(np.array(list(enumerate([2, 45, 1, 3]))))
+print(range(5))
 DataManager = dataAPI.DataMain([0, 0], 1)
+
 def updateLines():
         gpsGetter = itemgetter("humidity")
         heightGetter = itemgetter("height")
@@ -33,3 +37,4 @@ def updateLines():
             
         print(result)
 updateLines()
+

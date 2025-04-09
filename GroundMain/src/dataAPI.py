@@ -81,9 +81,10 @@ class DataMain():
         
         
         self.unpack = Unpack()
-        self.PacketCount = 0
+        self.packetCount = 0
         
         self.packetBuffer = bytearray()
+        
         
         
         
@@ -131,7 +132,7 @@ class DataMain():
     #A function that proccesses incoming packets from the Can 
     def parse_packet(self, packet:bytes) -> dict: 
 
-        logging.debug(f"Started parsing packet nr{self.PacketCount+1}: {packet.hex()}")
+        logging.debug(f"Started parsing packet nr{self.packetCount+1}: {packet.hex()}")
         
         if (len(packet) < 15):
             logging.warning("Recieved packet with inadequete length:", len(packet))
@@ -163,34 +164,34 @@ class DataMain():
         print(header['length'])
         byteCount = 9
 
-
+        self.packetCount += 1
         
         payload = {'timestamp': header['timestamp']}
         
         match header['packetType']:
             case 0x00:
-                print(packet[byteCount:byteCount+6])
+                #print(packet[byteCount:byteCount+6])
                 payload['angVelocity'] = [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)] #6 bytes
                 byteCount+=6
-                print(packet[byteCount:byteCount+6])
+                #print(packet[byteCount:byteCount+6])
                 payload['acceleration']= [self.unpack.int16(packet, byteCount+i*2)/100/256 for i in range(3)] #6 bytes (Values were multiplied by 100 to keep the decimal)
                 byteCount+=6
-                print(packet[byteCount:byteCount+6])
+                #print(packet[byteCount:byteCount+6])
                 payload['magneticField']= [self.unpack.int16(packet, byteCount+i*2)/100*0.92 for i in range(3)] #6 bytes (Values were multiplied by 100 to keep the decimal)
                 byteCount+=6
-                print(packet[byteCount:byteCount+8])
-                payload['gps']= [self.unpack.int32(packet, byteCount+i*4) for i in range(2)] #12 bytes
+                #print(packet[byteCount:byteCount+8])
+                payload['gps']= [self.unpack.uint32(packet, byteCount+i*4) for i in range(2)] #12 bytes
                 byteCount+=8
-                print(packet[byteCount:byteCount+2])
+                #print(packet[byteCount:byteCount+2])
                 payload['height'] = self.unpack.uint16(packet, byteCount)
                 byteCount += 2
-                print(packet[byteCount:byteCount+6])
-                payload['velocity'] = [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)] #6 bytes
-                byteCount+=6
-                print(packet[byteCount:byteCount+2])
+                #print(packet[byteCount:byteCount+2])
+                payload['velocity'] = self.unpack.int16(packet, byteCount)/100 #6 bytes
+                byteCount+=2
+                #print(packet[byteCount:byteCount+2])
                 payload['temprature']=self.unpack.int16(packet, byteCount)/100 #2 bytes (Values were multiplied by 100 to keep the decimal)
                 byteCount+=2
-                print(packet[byteCount:byteCount+1])
+                #print(packet[byteCount:byteCount+1])
                 payload['humidity']=self.unpack.uint8(packet, byteCount) #1 byte
                 byteCount+=1
            
@@ -204,6 +205,8 @@ class DataMain():
                 #byteCount+=2
 
                 self.add_data(payload)
+                print(payload)
+                return 'data'
 
 
             case 0x01:
@@ -217,9 +220,10 @@ class DataMain():
                 payload['memUsage'] = self.unpack.uint16(packet, byteCount) #2 bytes
                 byteCount+=2
 
-                payload['gy91'] = bool(self.unpack.bit(packet, byteCount, 0))
-                payload['dht11'] = bool(self.unpack.bit(packet, byteCount, 1))
-                payload['sdCard'] = bool(self.unpack.bit(packet, byteCount, 4))
+                payload['gy'] = bool(self.unpack.bit(packet, byteCount, 0))
+                payload['dht'] = bool(self.unpack.bit(packet, byteCount, 1))
+                payload['gps'] = bool(self.unpack.bit(packet, byteCount, 2))
+                payload['sd'] = bool(self.unpack.bit(packet, byteCount, 3))
                 byteCount+=1
                 #All above combined are 1 byte 
                 print(payload)
@@ -227,8 +231,9 @@ class DataMain():
                 byteCount+=(header['length']-byteCount)
 
                 self.debug_data(payload)
+                return 'debug'
             
-        return payload
+        
             
 
     #A function that adds data to the main DataStore

@@ -41,45 +41,103 @@
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <item>
-             <widget class="QCheckBox" name="checkBox_2">
+             <widget class="QCheckBox" name="gyCheckbox">
               <property name="enabled">
-               <bool>true</bool>
+               <bool>false</bool>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
               </property>
               <property name="text">
-               <string>CheckBox</string>
+               <string>GY85</string>
               </property>
               <property name="checkable">
                <bool>true</bool>
               </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="checkBox">
-              <property name="text">
-               <string>CheckBox</string>
+              <property name="checked">
+               <bool>false</bool>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBox_4">
+             <widget class="QCheckBox" name="dhtCheckbox">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
+              </property>
               <property name="text">
-               <string>CheckBox</string>
+               <string>DHT11</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBox_3">
+             <widget class="QCheckBox" name="gpsCheckbox">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
+              </property>
               <property name="text">
-               <string>CheckBox</string>
+               <string>GPS</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="sdCheckbox">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
+              </property>
+              <property name="text">
+               <string>SD </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="ramLabel">
+              <property name="text">
+               <string>RAM: 0</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="vccLabel">
+              <property name="text">
+               <string>VCC: 0 </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lossLabel">
+              <property name="text">
+               <string>LOSS: 0</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </item>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
-             <widget class="dataPlotWidget" name="packetPlot" native="true"/>
+             <widget class="dataPlotWidget" name="debugPlot" native="true"/>
             </item>
            </layout>
           </item>

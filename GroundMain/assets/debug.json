@@ -1,20 +1,1012 @@
 [
     {
-        "timestamp": 14568,
-        "packetCount": 29,
-        "baterryVoltage": 1.4330788850784302,
-        "memUsage": 440,
-        "gy91": true,
-        "dht11": true,
-        "sdCard": false
+        "timestamp": 27855,
+        "packetCount": 78,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
     },
     {
-        "timestamp": 16898,
-        "packetCount": 35,
-        "baterryVoltage": 1.4330788850784302,
-        "memUsage": 440,
-        "gy91": true,
-        "dht11": true,
-        "sdCard": false
+        "timestamp": 29927,
+        "packetCount": 84,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 31998,
+        "packetCount": 90,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 34070,
+        "packetCount": 96,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 36142,
+        "packetCount": 102,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 38212,
+        "packetCount": 108,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 40284,
+        "packetCount": 114,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 42355,
+        "packetCount": 120,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 44427,
+        "packetCount": 126,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 46498,
+        "packetCount": 132,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 48570,
+        "packetCount": 138,
+        "baterryVoltage": 1.431257963180542,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 50641,
+        "packetCount": 144,
+        "baterryVoltage": 1.431257963180542,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 52713,
+        "packetCount": 150,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 54784,
+        "packetCount": 156,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 56855,
+        "packetCount": 162,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 58927,
+        "packetCount": 168,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 60998,
+        "packetCount": 174,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 63070,
+        "packetCount": 180,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 65141,
+        "packetCount": 186,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 67213,
+        "packetCount": 192,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 69284,
+        "packetCount": 198,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 71356,
+        "packetCount": 204,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 73427,
+        "packetCount": 210,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 75499,
+        "packetCount": 216,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 77571,
+        "packetCount": 222,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 79642,
+        "packetCount": 228,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 81714,
+        "packetCount": 234,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 83785,
+        "packetCount": 240,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 85857,
+        "packetCount": 246,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 87928,
+        "packetCount": 252,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 90000,
+        "packetCount": 258,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 92070,
+        "packetCount": 264,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 94142,
+        "packetCount": 270,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 96214,
+        "packetCount": 276,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 98285,
+        "packetCount": 282,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 100357,
+        "packetCount": 288,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 102428,
+        "packetCount": 294,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 104500,
+        "packetCount": 300,
+        "baterryVoltage": 1.4276299476623535,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 106571,
+        "packetCount": 306,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 108642,
+        "packetCount": 312,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 110713,
+        "packetCount": 318,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 112785,
+        "packetCount": 324,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 114856,
+        "packetCount": 330,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 116928,
+        "packetCount": 336,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 119000,
+        "packetCount": 342,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 121071,
+        "packetCount": 348,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 123143,
+        "packetCount": 354,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 125214,
+        "packetCount": 360,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 127286,
+        "packetCount": 366,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 129357,
+        "packetCount": 372,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 131429,
+        "packetCount": 378,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 133500,
+        "packetCount": 384,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 135572,
+        "packetCount": 390,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 137644,
+        "packetCount": 396,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 139715,
+        "packetCount": 402,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 141787,
+        "packetCount": 408,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 143858,
+        "packetCount": 414,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 145929,
+        "packetCount": 420,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 148000,
+        "packetCount": 426,
+        "baterryVoltage": 1.4349044561386108,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 150072,
+        "packetCount": 432,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 152143,
+        "packetCount": 438,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 154215,
+        "packetCount": 444,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 156286,
+        "packetCount": 450,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 158358,
+        "packetCount": 456,
+        "baterryVoltage": 1.4294416904449463,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 160430,
+        "packetCount": 462,
+        "baterryVoltage": 1.4276299476623535,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 162500,
+        "packetCount": 468,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 164572,
+        "packetCount": 474,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 166643,
+        "packetCount": 480,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 168715,
+        "packetCount": 486,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 170786,
+        "packetCount": 492,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 172858,
+        "packetCount": 498,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 174929,
+        "packetCount": 504,
+        "baterryVoltage": 1.4349044561386108,
+        "memUsage": 504,
+        "gy": true,
+        "dht": false,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 177001,
+        "packetCount": 510,
+        "baterryVoltage": 1.436734676361084,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 179072,
+        "packetCount": 516,
+        "baterryVoltage": 1.436734676361084,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 181143,
+        "packetCount": 522,
+        "baterryVoltage": 1.436734676361084,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 183215,
+        "packetCount": 528,
+        "baterryVoltage": 1.442253589630127,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 185286,
+        "packetCount": 534,
+        "baterryVoltage": 1.436734676361084,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 187358,
+        "packetCount": 540,
+        "baterryVoltage": 1.4349044561386108,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 189429,
+        "packetCount": 546,
+        "baterryVoltage": 1.436734676361084,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 191501,
+        "packetCount": 552,
+        "baterryVoltage": 1.4441026449203491,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 193572,
+        "packetCount": 558,
+        "baterryVoltage": 1.44781494140625,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 195644,
+        "packetCount": 564,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 197715,
+        "packetCount": 570,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 199787,
+        "packetCount": 576,
+        "baterryVoltage": 1.4404091835021973,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 201859,
+        "packetCount": 582,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 203930,
+        "packetCount": 588,
+        "baterryVoltage": 1.436734676361084,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 206002,
+        "packetCount": 594,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 208073,
+        "packetCount": 600,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 210145,
+        "packetCount": 606,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 212216,
+        "packetCount": 612,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 214288,
+        "packetCount": 618,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 216358,
+        "packetCount": 624,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 218430,
+        "packetCount": 630,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 220502,
+        "packetCount": 636,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 222573,
+        "packetCount": 642,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 224645,
+        "packetCount": 648,
+        "baterryVoltage": 1.436734676361084,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 226716,
+        "packetCount": 654,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 228788,
+        "packetCount": 660,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 230859,
+        "packetCount": 666,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 232930,
+        "packetCount": 672,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
+    },
+    {
+        "timestamp": 235001,
+        "packetCount": 678,
+        "baterryVoltage": 1.4385696649551392,
+        "memUsage": 504,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": false
     }
 ]

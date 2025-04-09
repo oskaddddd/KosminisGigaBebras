@@ -13,11 +13,9 @@ import qdarktheme
 
 import dataAPI
 
-from time import sleep
-
 import logging
 
-from operator import itemgetter
+import time
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -72,10 +70,11 @@ class gpsWidget(gl.GLViewWidget):
         
 
         #Normalise the data
-        for i in range(3):
-            result[:, i] -= result[0][i]
-            
-        self.plot.setData(pos = result)
+        if len(gps) != 0 and len(height) != 0:
+            for i in range(3):
+                result[:, i] -= result[0][i]
+
+            self.plot.setData(pos = result)
             
              
         
@@ -86,7 +85,7 @@ class gpsWidget(gl.GLViewWidget):
     
         
 class SerialMonitor(QThread):
-    update_signal = pyqtSignal(dict)
+    update_signal = pyqtSignal(str)
     
     def __init__(self):
         super().__init__()
@@ -110,14 +109,17 @@ class SerialMonitor(QThread):
                 for i, byte  in enumerate(packet):
                     
                     print(i, f"\\x{hex(byte)}")
-                data = DataManager.parse_packet(packet)
+                pType = DataManager.parse_packet(packet)
                 #print(round(data["acceleration"][0], 2), round(data["acceleration"][1], 2), round(data["acceleration"][2], 2))
-                print(data)
-                if data:
-                    self.update_signal.emit(data)
+                #print(data)
+                if pType:
+                    self.update_signal.emit(pType)
+                    
+                    
+                    
                 
                 
-            sleep(1/self.pollingRate)
+            time.sleep(1/self.pollingRate)
     
     
     #        
@@ -131,15 +133,18 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.ui = uic.loadUi('GroundMain/assets/UI.ui', self)
         
-        
+       
         self.serial = SerialMonitor()
         self.serial.update_signal.connect(self.updateData)
         self.ui.dataDropdown.currentTextChanged.connect(self.dataDropboxChenged)
+ 
 
         self.timeline = np.array([])
+        self.debugPlotData = []
         
         
         self.dataType = "height"
+        
         
         if len(DataManager.dictData) != 0:
             self.updateData(0)
@@ -147,15 +152,35 @@ class MainWindow(QMainWindow):
        
         self.serial.start()
 
-    def updateData(self, data):
+    def updateData(self, pType):
         
-        #self.ui.locationPlot.updateLines()
+        tStamp = round(time.time())
         
+        #if len(self.debugPlotData) < tStamp+1:
+        #    self.debugPlotData.append(0)
+        #self.debugPlotData[tStamp] += 1
+        #
+        #self.ui.debugPlot.clear()
+        #self.ui.debugPlot.plot(list(range(tStamp)), self.debugPlotData)
         
-        self.timeline = DataManager.extraxtData("timestamp")[:]/1000
+        if pType == 'data':
+            self.ui.locationPlot.updateLines()
+
+            self.timeline = DataManager.extraxtData("timestamp")[:]/1000
+            
+            self.ui.dataPlot.clear()
+            self.ui.dataPlot.plot(self.timeline, DataManager.extraxtData(self.dataType))
         
-        self.ui.dataPlot.clear()
-        self.ui.dataPlot.plot(self.timeline, DataManager.extraxtData(self.dataType))
+        elif pType == 'debug':
+            self.ui.ramLabel.setText(f"RAM: {DataManager.DebugData[0]['memUsage']}B")
+            #self.ui.vccLabel.setText(f"VCC: {round(DataManager.DebugData[0]['baterryVoltage']}")
+            self.ui.lossLabel.setText(f"LOSS: {round(1-(DataManager.packetCount/DataManager.DebugData[0]['packetCount']), 4)*100}%")
+            self.ui.gyCheckbox.setChecked(DataManager.DebugData[0]["gy"])
+            self.ui.dhtCheckbox.setChecked( DataManager.DebugData[0]["dht"])
+            self.ui.gpsCheckbox.setChecked( DataManager.DebugData[0]["gps"])
+            self.ui.sdCheckbox.setChecked(DataManager.DebugData[0]["sd"])
+            
+            print(f"PACKETS:: {DataManager.packetCount} {DataManager.DebugData[0]['packetCount']}")
         
         #self.ui.debugPlot.plot(self.time)
         
