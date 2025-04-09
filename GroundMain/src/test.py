@@ -19,22 +19,14 @@ import dataAPI
 import numpy as np
 
 print(np.array(list(enumerate([2, 45, 1, 3]))))
-print(range(5))
+
 DataManager = dataAPI.DataMain([0, 0], 1)
+gps = DataManager.extraxtData("gps")
+height = DataManager.extraxtData("height")
+result = np.column_stack((gps, height))
+for i in range(3):
+    result[:, i] -= result[len(result)-1][i]
+    result[:, :2] /= 100
+print(result)
 
-def updateLines():
-        gpsGetter = itemgetter("humidity")
-        heightGetter = itemgetter("height")
-        
-        #Extract gps and height data into a np array
-        gps = np.array(list(map(gpsGetter, DataManager.DataBase)))
-        height = np.array(list(map(heightGetter, DataManager.DataBase)))
-
-        result = np.column_stack((gps, height))
-
-        #Normalise the data
-        
-            
-        print(result)
-updateLines()
 

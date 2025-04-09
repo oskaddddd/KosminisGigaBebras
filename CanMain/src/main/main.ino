@@ -327,7 +327,7 @@ unsigned long time {};
 
 float humidity {};
 float temperature {};
-int del = 300;
+int del = 1000;
 int debugCount = 0;
 
 void loop() {

@@ -56,25 +56,6 @@ class gpsWidget(gl.GLViewWidget):
         self.makeCurrent()
         super().paintGL()
         
-    def updateLines(self):
-        
-        #Extract gps and height data into a np array
-        gps = DataManager.extraxtData("gps")
-        height = DataManager.extraxtData("height")
-        
-        print(gps)
-        print(height)
-        print("------------")
-
-        result = np.column_stack((gps, height))
-        
-
-        #Normalise the data
-        if len(gps) != 0 and len(height) != 0:
-            for i in range(3):
-                result[:, i] -= result[0][i]
-
-            self.plot.setData(pos = result)
             
              
         
@@ -147,11 +128,35 @@ class MainWindow(QMainWindow):
         
         
         if len(DataManager.dictData) != 0:
-            self.updateData(0)
+            self.updateData("data")
         
        
         self.serial.start()
+        
+    def updateLines(self):
+        
+        #Extract gps and height data into a np array
+        gps = DataManager.extraxtData("gps")
+        height = DataManager.extraxtData("height")
+        
+        #print(gps)
+        #print(height)
+        #print("------------")
 
+        result = np.column_stack((gps, height))
+        
+
+        #Normalise the data
+        if len(gps) != 0 and len(height) != 0:
+            for i in range(3):
+                result[:, i] -= result[len(result)-1][i]
+                print(result)
+            result[:, :2] //= 100
+            result[:, 2] //= 10
+
+            self.ui.locationPlot.plot.setData(pos = result)
+        print(result)
+            
     def updateData(self, pType):
         
         tStamp = round(time.time())
@@ -164,15 +169,16 @@ class MainWindow(QMainWindow):
         #self.ui.debugPlot.plot(list(range(tStamp)), self.debugPlotData)
         
         if pType == 'data':
-            self.ui.locationPlot.updateLines()
+            self.updateLines()
 
             self.timeline = DataManager.extraxtData("timestamp")[:]/1000
             
             self.ui.dataPlot.clear()
             self.ui.dataPlot.plot(self.timeline, DataManager.extraxtData(self.dataType))
+            
         
         elif pType == 'debug':
-            self.ui.ramLabel.setText(f"RAM: {DataManager.DebugData[0]['memUsage']}B")
+            self.ui.ramLabel.setText(f"RAM: {round((1-(DataManager.DebugData[0]['memUsage']/2048))*100)}%")
             #self.ui.vccLabel.setText(f"VCC: {round(DataManager.DebugData[0]['baterryVoltage']}")
             self.ui.lossLabel.setText(f"LOSS: {round(1-(DataManager.packetCount/DataManager.DebugData[0]['packetCount']), 4)*100}%")
             self.ui.gyCheckbox.setChecked(DataManager.DebugData[0]["gy"])
