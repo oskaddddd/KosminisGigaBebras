@@ -1,0 +1,12 @@
+[submodule "modules/GY-85-arduino"]
+	path = modules/GY-85-arduino
+	url = https://github.com/sqrtmo/GY-85-arduino.git
+[submodule "modules/SD"]
+	path = modules/SD
+	url = https://github.com/arduino-libraries/SD.git
+[submodule "modules/TinyGPSPlus"]
+	path = modules/TinyGPSPlus
+	url = https://github.com/mikalhart/TinyGPSPlus.git
+[submodule "modules/DHT_Sensors_Non-Blocking"]
+	path = modules/DHT_Sensors_Non-Blocking
+	url = https://github.com/toannv17/DHT-Sensors-Non-Blocking.git
