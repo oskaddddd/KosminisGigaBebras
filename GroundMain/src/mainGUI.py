@@ -32,8 +32,30 @@ DataManager = dataAPI.DataMain(startBytes, canID)
 class dataPlotWidget(pg.PlotWidget):
     def __init__(self, parent=None, background='default', plotItem=None, **kargs):
         super().__init__(parent, background, plotItem, **kargs)
+        self.plotItem.showGrid(x=True, y=True, alpha=0.5)
         
     
+        
+class timeSlider(QSlider):
+    def __init__(self, parent=None):
+        super().__init__(parent),
+        
+        self.time = DataManager.DataBase[0]["timestamp"]
+        
+        self.setValue(100)
+        
+        self.valueChanged.connect(self.updateTime)
+        
+    def updateTime(value):
+        timeIndex = DataManager.DataBase[0]["timestamp"]*value//100
+        
+        DataManager.DataBase.bisect_left({"timestamp":100})
+        
+        
+    
+        
+        
+
         
     
 
@@ -45,7 +67,7 @@ class gpsWidget(gl.GLViewWidget):
         super().__init__(*args, devicePixelRatio=devicePixelRatio, **kwargs)
         grid = gl.GLGridItem()
         grid.setSize(800, 800)
-        grid.setSpacing(10, 10)
+        grid.setSpacing(1, 1)
         self.addItem(grid)
         
         self.plot = gl.GLLinePlotItem(antialias = False, color = (255, 0, 0, 255), mode = 'line_strip')
@@ -114,6 +136,7 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.ui = uic.loadUi('GroundMain/assets/UI.ui', self)
         
+        self.startTime = round(time.time())
        
         self.serial = SerialMonitor()
         self.serial.update_signal.connect(self.updateData)
@@ -121,10 +144,13 @@ class MainWindow(QMainWindow):
  
 
         self.timeline = np.array([])
-        self.debugPlotData = []
+        self.debugPlotData = [0]
+        self.debugPlotDebug = [0]
         
         
         self.dataType = "height"
+        self.pens = [pg.mkPen(color = "w"), pg.mkPen(color = 'r')]
+        
         
         
         if len(DataManager.dictData) != 0:
@@ -132,6 +158,9 @@ class MainWindow(QMainWindow):
         
        
         self.serial.start()
+        
+        
+        
         
     def updateLines(self):
         
@@ -159,16 +188,19 @@ class MainWindow(QMainWindow):
             
     def updateData(self, pType):
         
-        tStamp = round(time.time())
-        
-        #if len(self.debugPlotData) < tStamp+1:
-        #    self.debugPlotData.append(0)
-        #self.debugPlotData[tStamp] += 1
+        #tStamp = round(time.time()) - self.startTime
         #
-        #self.ui.debugPlot.clear()
-        #self.ui.debugPlot.plot(list(range(tStamp)), self.debugPlotData)
+        #while len(self.debugPlotData) < tStamp+1:
+        #    self.debugPlotData.append(0)
+        #while len(self.debugPlotDebug) < tStamp+1:
+        #    self.debugPlotData.append(0)
+        
+        
+        
         
         if pType == 'data':
+            
+            #self.debugPlotData[tStamp] += 1
             self.updateLines()
 
             self.timeline = DataManager.extraxtData("timestamp")[:]/1000
@@ -178,6 +210,9 @@ class MainWindow(QMainWindow):
             
         
         elif pType == 'debug':
+            #self.debugPlotDebug[tStamp] += 1
+            
+            
             self.ui.ramLabel.setText(f"RAM: {round((1-(DataManager.DebugData[0]['memUsage']/2048))*100)}%")
             #self.ui.vccLabel.setText(f"VCC: {round(DataManager.DebugData[0]['baterryVoltage']}")
             self.ui.lossLabel.setText(f"LOSS: {round(1-(DataManager.packetCount/DataManager.DebugData[0]['packetCount']), 4)*100}%")
@@ -188,6 +223,10 @@ class MainWindow(QMainWindow):
             
             print(f"PACKETS:: {DataManager.packetCount} {DataManager.DebugData[0]['packetCount']}")
         
+        #self.ui.debugPlot.clear()
+        #self.ui.debugPlot.plot(list(range(tStamp)), self.debugPlotData, pen = self.pens[0])
+        #self.ui.debugPlot.plot(list(range(tStamp)), self.debugPlotDebug, pen = self.pens[1])
+#
         #self.ui.debugPlot.plot(self.time)
         
         

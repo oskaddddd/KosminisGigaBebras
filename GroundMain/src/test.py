@@ -1,5 +1,6 @@
 from sortedcontainers import SortedList
 from operator import itemgetter
+import time
 a = [0, 1, 2, 3,4 , 5, 6, 7]
 snip = [3, 4, 5]
 print(a[len(a)-5:len(a)-3])
@@ -19,8 +20,21 @@ import dataAPI
 import numpy as np
 
 print(np.array(list(enumerate([2, 45, 1, 3]))))
+t = round(time.time())
+debugPlotData = []
+
+
+def update():
+    tStamp = round(time.time())-t
+  
+    while (len(debugPlotData) < tStamp+1):
+        debugPlotData.append([0, 0])
+    debugPlotData[tStamp][0] += 1
+    print(debugPlotData[:, 0])
 
 DataManager = dataAPI.DataMain([0, 0], 1)
+
+print("busd", DataManager.DataBase[DataManager.DataBase.bisect_left({"timestamp":100})])
 gps = DataManager.extraxtData("gps")
 height = DataManager.extraxtData("height")
 result = np.column_stack((gps, height))

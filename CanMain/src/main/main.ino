@@ -141,7 +141,7 @@ TinyGPSPlus gps;
 GY_85 GY85;
 
 
-
+File file;
 
 const byte address =253;
 
@@ -149,8 +149,6 @@ char error[64] = "" ;
 uint8_t errorLength = 0;
 
 
-
-File file;
 
 void setup() {
   
@@ -168,12 +166,16 @@ void setup() {
 
 
   delay(100);
-  //if (SD.begin(10)) {
-  //  file = SD.open("data.txt", FILE_WRITE);
-  //  if (file) {
-  //    debug.setSensorStatus("sd", true);
-  //  }  
-  //}
+  if (SD.begin(10)) {
+    File file = SD.open("duom.txt", FILE_WRITE);
+    if (file){
+      file.println("--------");
+      debug.setSensorStatus("sd", true);
+      file.close();
+    }
+    
+    
+  }
 }
 
 void RaiseError(char* message){
@@ -250,11 +252,18 @@ void readSensors() {
 
 //Print data to file
 
-//void WriteToFile() {
-//  
-//  file.write(Packet, packetLength);
-//  
-//}
+void WriteToFile() {
+  file = SD.open("duom.txt", FILE_WRITE);
+  if (file) {
+    
+    file.write(Packet, packetLength);
+    debug.setSensorStatus("sd", true);
+  }  
+  else{debug.setSensorStatus("sd", false);}
+  file.close();
+  
+  
+}
 
 
 
@@ -314,9 +323,11 @@ void BuildPacket(uint8_t type){
 void SendPacket(){
   if (Serial.availableForWrite() >= packetLength){
   Serial.write(Packet, packetLength);
+  }
+  WriteToFile();
+
   memset(Packet, 0, sizeof(Packet));
   debug.packetCount += 1;
-  }
 
 
 }
