@@ -28,14 +28,14 @@ fullID = bytes([byte for byte in startBytes]+[canID])
 DataManager = dataAPI.DataMain(startBytes, canID)
 
 
-
+#2D plot widget
 class dataPlotWidget(pg.PlotWidget):
     def __init__(self, parent=None, background='default', plotItem=None, **kargs):
         super().__init__(parent, background, plotItem, **kargs)
         self.plotItem.showGrid(x=True, y=True, alpha=0.5)
         
     
-        
+#Time slider widget      
 class timeSlider(QSlider):
     def __init__(self, parent=None):
         super().__init__(parent),
@@ -52,16 +52,7 @@ class timeSlider(QSlider):
         DataManager.DataBase.bisect_left({"timestamp":100})
         
         
-    
-        
-        
-
-        
-    
-
-
-
-
+#3D plot widget for GPS
 class gpsWidget(gl.GLViewWidget):
     def __init__(self, *args, devicePixelRatio=None, **kwargs):
         super().__init__(*args, devicePixelRatio=devicePixelRatio, **kwargs)
@@ -77,44 +68,52 @@ class gpsWidget(gl.GLViewWidget):
     def paintGL(self):
         self.makeCurrent()
         super().paintGL()
-        
-            
-             
-        
-            
     
     def setTimeDot(time):
         pass
     
-        
+     
+#Class responsible for parsing packets   
 class SerialMonitor(QThread):
     update_signal = pyqtSignal(str)
     
     def __init__(self):
         super().__init__()
-        
-        
+
         self.running = True
-        self.pollingRate  = 30 #hertz
+        self.pollingRate = 30 #hertz
     
     
     def run(self):
+        #Setup serial
         self.coms = dataAPI.SerialSetup()
+        
+        #Serial loop
         while self.running:
+            #If data iavailable
             if self.coms.in_waiting > 0:
+                
+                #Read until the startbytes of a new packet are reached
                 packet = self.coms.read_until(fullID)
                 print()
-                #check if /r/n is before start bytes
+                #Check if /r/n (endbytes) are before the start bytes
                 if packet[(len(packet)-len(fullID)-2):(len(packet)-len(fullID))] != b'\r\n':
                     logging.warning("\\r\\n not before start bytes", packet[(len(packet)-len(fullID)-2):(len(packet)-len(fullID))])
                     continue
+                
+                #Remove the startbytes from the end of the packet and since they were lost from the beggining of the packet, add them back
+                #(startbytes + packet - startbytes)
                 packet = fullID + packet[:(len(packet)-len(fullID))]
+                
+                #Debug the packet to the terminal
                 for i, byte  in enumerate(packet):
-                    
-                    print(i, f"\\x{hex(byte)}")
+                    logging.debug(i, f"\\x{hex(byte)}")
+                
+                #Parse the packet
+                #Get the type of packet ('data', 'debug')
                 pType = DataManager.parse_packet(packet)
-                #print(round(data["acceleration"][0], 2), round(data["acceleration"][1], 2), round(data["acceleration"][2], 2))
-                #print(data)
+                
+                #If PacketType is valid, send it back
                 if pType:
                     self.update_signal.emit(pType)
                     
@@ -125,121 +124,127 @@ class SerialMonitor(QThread):
             time.sleep(1/self.pollingRate)
     
     
-    #        
-    #def start(self):
-    #    self.running = True
-    #    self.run()
         
     
 class MainWindow(QMainWindow):
     def __init__(self):
+        #Init the UI
         super(MainWindow, self).__init__()
         self.ui = uic.loadUi('GroundMain/assets/UI.ui', self)
         
+        #Get the start time of the code to display packets/second graph 
         self.startTime = round(time.time())
-       
-        self.serial = SerialMonitor()
-        self.serial.update_signal.connect(self.updateData)
-        self.ui.dataDropdown.currentTextChanged.connect(self.dataDropboxChenged)
- 
-
-        self.timeline = np.array([])
+        #Arrays for staring data for amount of packets recieved per second
         self.debugPlotData = [0]
         self.debugPlotDebug = [0]
-        
-        
-        self.dataType = "height"
         self.pens = [pg.mkPen(color = "w"), pg.mkPen(color = 'r')]
+
+        #Initialise the serialMonitor Class responsible for managing incoming data
+        self.serial = SerialMonitor()
+        self.serial.update_signal.connect(self.updateData)
         
+        #Connect the data selection dropdown to a function responsible for changing the data on the graph
+        self.ui.dataDropdown.currentTextChanged.connect(self.dataDropboxChenged)
+        self.dataType = "height"
+ 
+        #A list of all the timestamps recieved from the CanSat for the X axis of graphs 
+        #(not related to starttime. Startime is local time, while timeline is as reported by cansat)
+        self.timeline = np.array([])
         
-        
+        #If data was not cleared, display it
         if len(DataManager.dictData) != 0:
             self.updateData("data")
         
-       
+        #Start listening for packets
         self.serial.start()
         
         
         
         
-    def updateLines(self):
+    def updateGpsPlot(self):
         
         #Extract gps and height data into a np array
         gps = DataManager.extraxtData("gps")
         height = DataManager.extraxtData("height")
-        
-        #print(gps)
-        #print(height)
-        #print("------------")
-
         result = np.column_stack((gps, height))
         
 
         #Normalise the data
         if len(gps) != 0 and len(height) != 0:
             for i in range(3):
-                result[:, i] -= result[len(result)-1][i]
-                print(result)
-            result[:, :2] //= 100
-            result[:, 2] //= 10
-
-            self.ui.locationPlot.plot.setData(pos = result)
-        print(result)
+                #Normalise so that the canSat is always at (0;0)
+                result[:, i] -= result[0][i]
             
+            #Gps returned with 6 digits after decimal accuracy (as an int *10^6)
+            #6 dec - 0.11m; 5 dec - 1.1m; 4 dec - 11m...
+            #So gps devided by 100, 1 unit = 11m
+            result[:, :2] //= 100
+            
+            #Height devided by 10, so 1 unit = 10 meters
+            result[:, 2] //= 10
+            
+            #DECIAML IS NOT KEPT, EVERYTHING IS IN INT FORM
+
+            #Plot the data
+            self.ui.locationPlot.plot.setData(pos = result)
+       
+    #Handles ploting when new data is recieved      
     def updateData(self, pType):
         
-        #tStamp = round(time.time()) - self.startTime
-        #
-        #while len(self.debugPlotData) < tStamp+1:
-        #    self.debugPlotData.append(0)
-        #while len(self.debugPlotDebug) < tStamp+1:
-        #    self.debugPlotData.append(0)
+        #Calculate the local time (Since start of program)
+        tStamp = round(time.time()) - self.startTime
+        
+        #Expand {packets per second} arrays, till their lentgh is equal to program runtime in seconds
+        while len(self.debugPlotData) < tStamp+1:
+            self.debugPlotData.append(0)
+        while len(self.debugPlotDebug) < tStamp+1:
+            self.debugPlotDebug.append(0)
         
         
-        
-        
-        if pType == 'data':
+        match pType:
+            #Eecieved a data packet
+            case "data":
+                #Add 1, to count of data packets recieved this second
+                self.debugPlotData[tStamp] += 1
+                
+                #Update the gps plot
+                self.updateGpsPlot()
+                
+                #Update the entire timeline (x axis of graphs displaying CanSat data)
+                self.timeline = DataManager.extraxtData("timestamp")[:]/1000
+                
+                #Clear the data plot and draw a new graph with the updated data
+                self.ui.dataPlot.clear()
+                self.ui.dataPlot.plot(self.timeline, DataManager.extraxtData(self.dataType))
             
-            #self.debugPlotData[tStamp] += 1
-            self.updateLines()
-
-            self.timeline = DataManager.extraxtData("timestamp")[:]/1000
+            #Recieved a debug packet 
+            case "debug":
+                #Add 1, to count of debug packets recieved this second
+                self.debugPlotDebug[tStamp] += 1
             
-            self.ui.dataPlot.clear()
-            self.ui.dataPlot.plot(self.timeline, DataManager.extraxtData(self.dataType))
+                #Set all the sensor checkboxes to their status
+                self.ui.ramLabel.setText(f"RAM: {round((1-(DataManager.DebugData[0]['memUsage']/2048))*100)}%")
+                #self.ui.vccLabel.setText(f"VCC: {round(DataManager.DebugData[0]['baterryVoltage']}")
+                self.ui.lossLabel.setText(f"LOSS: {round(1-(DataManager.packetCount/DataManager.DebugData[0]['packetCount']), 4)*100}%")
+                self.ui.gyCheckbox.setChecked(DataManager.DebugData[0]["gy"])
+                self.ui.dhtCheckbox.setChecked( DataManager.DebugData[0]["dht"])
+                self.ui.gpsCheckbox.setChecked( DataManager.DebugData[0]["gps"])
+                self.ui.sdCheckbox.setChecked(DataManager.DebugData[0]["sd"])
+                
             
-        
-        elif pType == 'debug':
-            #self.debugPlotDebug[tStamp] += 1
-            
-            
-            self.ui.ramLabel.setText(f"RAM: {round((1-(DataManager.DebugData[0]['memUsage']/2048))*100)}%")
-            #self.ui.vccLabel.setText(f"VCC: {round(DataManager.DebugData[0]['baterryVoltage']}")
-            self.ui.lossLabel.setText(f"LOSS: {round(1-(DataManager.packetCount/DataManager.DebugData[0]['packetCount']), 4)*100}%")
-            self.ui.gyCheckbox.setChecked(DataManager.DebugData[0]["gy"])
-            self.ui.dhtCheckbox.setChecked( DataManager.DebugData[0]["dht"])
-            self.ui.gpsCheckbox.setChecked( DataManager.DebugData[0]["gps"])
-            self.ui.sdCheckbox.setChecked(DataManager.DebugData[0]["sd"])
-            
-            print(f"PACKETS:: {DataManager.packetCount} {DataManager.DebugData[0]['packetCount']}")
-        
-        #self.ui.debugPlot.clear()
-        #self.ui.debugPlot.plot(list(range(tStamp)), self.debugPlotData, pen = self.pens[0])
-        #self.ui.debugPlot.plot(list(range(tStamp)), self.debugPlotDebug, pen = self.pens[1])
-#
-        #self.ui.debugPlot.plot(self.time)
+        #Plot the {packets per second} graphs
+        self.ui.debugPlot.clear()
+        self.ui.debugPlot.plot(list(range(tStamp)), self.debugPlotData, pen = self.pens[0])
+        self.ui.debugPlot.plot(list(range(tStamp)), self.debugPlotDebug, pen = self.pens[1])
         
         
-        
-        
+    #Fucntion handling the change of the data type selection dropdown
     def dataDropboxChenged(self, text):
         self.dataType = text
         self.ui.dataPlot.clear()
         self.ui.dataPlot.plot(self.timeline, DataManager.extraxtData(self.dataType))
 
 if __name__ == "__main__":
-  
-
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
     qdarktheme.setup_theme()

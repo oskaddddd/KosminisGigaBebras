@@ -130,13 +130,15 @@ class DataMain():
         
     
     #A function that proccesses incoming packets from the Can 
-    def parse_packet(self, packet:bytes) -> dict: 
+    def parse_packet(self, packet:bytes) -> str: # returns the type of packet parsed 
 
         logging.debug(f"Started parsing packet nr{self.packetCount+1}: {packet.hex()}")
         
         if (len(packet) < 15):
             logging.warning("Recieved packet with inadequete length:", len(packet))
             return  
+        
+        #Parse the header
         header = {
             "start": [self.unpack.uint8(packet, (0+i)) for i in range(2)], #2 bytes
             "senderId": self.unpack.uint8(packet, 2), #1 byte
@@ -144,6 +146,8 @@ class DataMain():
             "packetType": packet[4], #1 byte
             "timestamp": self.unpack.uint32(packet, 5) #4 bytes
         }
+        
+        #Check if lenght of the packet and the expected length match
         if len(packet) != header['length']:
             logging.warning("lengths dont match", packet)
             return 
@@ -151,7 +155,7 @@ class DataMain():
             logging.warning("Packet with wrong startbytes", packet, header['start'], self.startBytes, header["senderId"], self.canID)
             return 
         
-        #Check checksum
+  
         checksum = 0
         #Loop trough all the bytes up untill the footer
         for byte in packet[:header["length"]-self.footerLength]:
@@ -161,54 +165,39 @@ class DataMain():
             logging.warning("Packet corrupted")
             return
             
-        print(header['length'])
         byteCount = 9
 
+        #Add 1 to recieved packet count
         self.packetCount += 1
         
         payload = {'timestamp': header['timestamp']}
         
         match header['packetType']:
+            #Data packet
             case 0x00:
-                #print(packet[byteCount:byteCount+6])
                 payload['angVelocity'] = [self.unpack.int16(packet, byteCount+i*2)/100 for i in range(3)] #6 bytes
                 byteCount+=6
-                #print(packet[byteCount:byteCount+6])
                 payload['acceleration']= [self.unpack.int16(packet, byteCount+i*2)/100/256 for i in range(3)] #6 bytes (Values were multiplied by 100 to keep the decimal)
                 byteCount+=6
-                #print(packet[byteCount:byteCount+6])
                 payload['magneticField']= [self.unpack.int16(packet, byteCount+i*2)/100*0.92 for i in range(3)] #6 bytes (Values were multiplied by 100 to keep the decimal)
                 byteCount+=6
-                #print(packet[byteCount:byteCount+8])
                 payload['gps']= [self.unpack.uint32(packet, byteCount+i*4) for i in range(2)] #12 bytes
                 byteCount+=8
-                #print(packet[byteCount:byteCount+2])
                 payload['height'] = self.unpack.uint16(packet, byteCount)
                 byteCount += 2
-                #print(packet[byteCount:byteCount+2])
                 payload['velocity'] = self.unpack.int16(packet, byteCount)/100 #6 bytes
                 byteCount+=2
-                #print(packet[byteCount:byteCount+2])
                 payload['temprature']=self.unpack.int16(packet, byteCount)/100 #2 bytes (Values were multiplied by 100 to keep the decimal)
                 byteCount+=2
-                #print(packet[byteCount:byteCount+1])
                 payload['humidity']=self.unpack.uint8(packet, byteCount) #1 byte
                 byteCount+=1
-           
-                #payload['preasure']=self.unpack.uint16(packet, byteCount) #2 bytes
-                #byteCount+=2
-                #payload['humidity']=self.unpack.uint8(packet, byteCount) #1 byte
-                #byteCount+=1
-                #payload['vocConcentration']=self.unpack.uint16(packet, byteCount) #2 bytes
-                #byteCount+=2
-                #payload['co2Concentration']= self.unpack.uint16(packet, byteCount) #2 bytes
-                #byteCount+=2
-
+                
+                
                 self.add_data(payload)
-                print(payload)
+                logging.debug("Payload:", payload)
                 return 'data'
 
-
+            #Debug packet
             case 0x01:
 
                 payload['packetCount'] = self.unpack.uint16(packet, byteCount) #2 bytes
@@ -226,7 +215,7 @@ class DataMain():
                 payload['sd'] = bool(self.unpack.bit(packet, byteCount, 3))
                 byteCount+=1
                 #All above combined are 1 byte 
-                print(payload)
+                logging.debug("Payload:", payload)
                 #payload['message'] = self.unpack.string(packet, byteCount, header['length'])
                 byteCount+=(header['length']-byteCount)
 
@@ -236,28 +225,31 @@ class DataMain():
         
             
 
-    #A function that adds data to the main DataStore
+    #A function that deals with all the data
     def add_data(self, data: dict):
-        #Add the data to 
         self.DataBase.add(data)
         self.dictData.append(data)
+        
+        #Dump data into json
         with open(self.path + 'data.json', 'w') as f:
             json.dump(self.dictData, f, indent=4)
         
     
-    #A function that deals with debug data
+    #A function that deals with all the debug data
     def debug_data(self, data: dict):
-        #Add the data to 
         self.DebugData.add(data)
         self.dictDebug.append(data)
+        
+        #Dump debug data to json
         with open(self.path + 'debug.json', 'w') as f:
             json.dump(self.dictDebug, f, indent=4)
-            
+    #Funcion to get all of certain value from the sorted list
     def extraxtData(self, keyword:str):
         getter = itemgetter(keyword)
-        
         return np.array(list(map(getter, self.DataBase)))
-            
+
+
+#Establishes serial communication with the radio        
 def SerialSetup():
     #Find available ports and promt user to choose
     ports = list_ports.comports()
@@ -282,7 +274,4 @@ def SerialSetup():
     return ser
 
 if __name__ == "__main__":
-    
-            
-
-        pass
+    pass
