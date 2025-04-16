@@ -25,14 +25,21 @@ startBytes = [0x98, 0x98]
 canID = 0xff
 
 fullID = bytes([byte for byte in startBytes]+[canID])
-DataManager = dataAPI.DataMain(startBytes, canID)
 
+DataManager = dataAPI.DataMain(startBytes, canID)
+print("Hello")
 
 #2D plot widget
-class dataPlotWidget(pg.PlotWidget):
+class dataPlotWidget(PlotWidget):
+    
+    
     def __init__(self, parent=None, background='default', plotItem=None, **kargs):
         super().__init__(parent, background, plotItem, **kargs)
         self.plotItem.showGrid(x=True, y=True, alpha=0.5)
+        self.marker = pg.ScatterPlotItem(pos = np.array([[0, 0], [10, 10]]), pxMode = True, size = 20, brush=pg.mkBrush(255, 0, 0, 255))
+        self.marker.__init__()
+        #self.marker.setData
+        self.plotItem.addItem(self.marker)
         
     
 #Time slider widget      
@@ -44,11 +51,12 @@ class timeSlider(QSlider):
         self.time = DataManager.DataBase[0]["timestamp"]
         self.timeRange = DataManager.DataBase[0]["timestamp"] - DataManager.DataBase[len(DataManager.DataBase)-1]["timestamp"]
         
-        self.maxValue = 1000
-        
-        self.setValue(self.maxValue)
         
         self.valueChanged.connect(self.updateSliderVal)
+        
+        self.maxValue = 1000
+        self.setMaximum(self.maxValue)
+        self.setValue(self.maxValue)
         
 
         
@@ -67,10 +75,9 @@ class timeSlider(QSlider):
         index = DataManager.DataBase.bisect_left({"timestamp":expectedTime })
         
         self.time = DataManager.DataBase[index]["timestamp"]
-        logging.debug(f"ratio:{value/self.maxValue}\ntimerange:{self.timeRange}\nexpectedTime:{expectedTime}\TIME:{self.time}\nIndex:{index}\nRangeLen:{len(DataManager.DataBase)}")
-        self.timeUpdated.emit(self.time)
-        #print(self.time)
-        #print()
+        logging.debug(f"ratio:{value/self.maxValue}\n-timerange:{self.timeRange}\n-expectedTime:{expectedTime}\n-TIME:{self.time}\n-Index:{index}\n-RangeLen:{len(DataManager.DataBase)}")
+        self.timeUpdated.emit(index)
+
         
     
         
@@ -85,16 +92,19 @@ class gpsWidget(gl.GLViewWidget):
         grid.setSpacing(1, 1)
         self.addItem(grid)
         
-        self.plot = gl.GLLinePlotItem(antialias = False, color = (255, 0, 0, 255), mode = 'line_strip')
+        self.plot = gl.GLLinePlotItem(antialias = False, color = (255, 255, 255, 255), mode = 'line_strip')
+        self.markerDot = gl.GLScatterPlotItem(pos = np.array([[0, 0, 0]]), size = 10, color = (255, 0, 0, 255))
+        #self.markerDot.setData(pos = [[0, 0, 0]], size = 1, color = 'r')
+
+        self.addItem(self.markerDot)
         
 
         self.addItem(self.plot)
     def paintGL(self):
         self.makeCurrent()
         super().paintGL()
-    
-    def setTimeDot(time):
-        pass
+        
+
     
      
 #Class responsible for parsing packets   
@@ -110,7 +120,9 @@ class SerialMonitor(QThread):
     
     def run(self):
         #Setup serial
+        print("asd")
         self.coms = dataAPI.SerialSetup()
+        print("miau")
         
         #Serial loop
         while self.running:
@@ -181,20 +193,28 @@ class MainWindow(QMainWindow):
         if len(DataManager.dictData) != 0:
             self.updateData("data")
         
-        self.ui.timeSlider.timeUpdated.connect(self.setDotsOnGraphs)
+        self.ui.timeSlider.timeUpdated.connect(self.updateGraphMarkers)
         
         #Start listening for packets
         self.serial.start()
         
         
-    def setDotsOnGraphs(self, timestamp):
-        print(f"time: {timestamp}")
+    def updateGraphMarkers(self, index):
+        dot = DataManager.DataBase[index]
+        gpsDot = np.array([[*dot["gps"], dot["height"]]], dtype=np.float32)
+        gpsDot[0]-=np.array([*DataManager.DataBase[0]["gps"], DataManager.DataBase[0]["height"]])
+        gpsDot[0, :2] /= 100
+        gpsDot[0, 2] /= 10
+        print(gpsDot)
+        self.ui.locationPlot.markerDot.setData(pos = gpsDot)
+        
+        
         
     def updateGpsPlot(self):
         
         #Extract gps and height data into a np array
-        gps = DataManager.extraxtData("gps")
-        height = DataManager.extraxtData("height")
+        gps = DataManager.extraxtData("gps", np.float32)
+        height = DataManager.extraxtData("height", np.float32)
         result = np.column_stack((gps, height))
         
 
@@ -204,13 +224,13 @@ class MainWindow(QMainWindow):
                 #Normalise so that the canSat is always at (0;0)
                 result[:, i] -= result[0][i]
             
-            #Gps returned with 6 digits after decimal accuracy (as an int *10^6)
+            #Gps returned with 6 digits after decimal (as an int *10^6)
             #6 dec - 0.11m; 5 dec - 1.1m; 4 dec - 11m...
             #So gps devided by 100, 1 unit = 11m
-            result[:, :2] //= 100
+            result[:, :2] /= 100
             
             #Height devided by 10, so 1 unit = 10 meters
-            result[:, 2] //= 10
+            result[:, 2] /= 10
             
             #DECIAML IS NOT KEPT, EVERYTHING IS IN INT FORM
 

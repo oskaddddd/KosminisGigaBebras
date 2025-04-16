@@ -68,13 +68,12 @@ class DataMain():
             if len(self.dictData) != 0:
                 if input("There is data in data.json, clear to delete? y/n:") == 'y':
                     self.dictData = []
+                else:
+                    with open(self.path+"debug.json", 'r') as f:
+                        self.dictDebug = json.load(f)
+                        self.dictDebug = []
                 
         self.DataBase = SortedList(self.dictData, key=lambda x: -x['timestamp'])
-        with open(self.path+"debug.json", 'r') as f:
-            self.dictDebug = json.load(f)
-            if len(self.dictDebug) != 0:
-                if input("There is data in debug.json, clear to delete? y/n:") == 'y':
-                    self.dictDebug = []
         self.DebugData = SortedList(self.dictDebug, key=lambda x: -x['timestamp'])
         
 
@@ -203,8 +202,8 @@ class DataMain():
                 payload['packetCount'] = self.unpack.uint16(packet, byteCount) #2 bytes
                 byteCount+=2
 
-                payload['baterryVoltage'] = self.unpack.float32(packet, byteCount) #2 bytes (Values were multiplied by 100 to keep the decimal)
-                byteCount+=4
+                payload['baterryVoltage'] = self.unpack.uint16(packet, byteCount)/100 #2 bytes (Values were multiplied by 100 to keep the decimal)
+                byteCount+=2
 
                 payload['memUsage'] = self.unpack.uint16(packet, byteCount) #2 bytes
                 byteCount+=2
@@ -248,9 +247,9 @@ class DataMain():
         with open(self.path + 'debug.json', 'w') as f:
             json.dump(self.dictDebug, f, indent=4)
     #Funcion to get all of certain value from the sorted list
-    def extraxtData(self, keyword:str):
+    def extraxtData(self, keyword:str, dtype:np.dtype = np.int32):
         getter = itemgetter(keyword)
-        return np.array(list(map(getter, self.DataBase)))
+        return np.array(list(map(getter, self.DataBase)), dtype=dtype)
 
 
 #Establishes serial communication with the radio        

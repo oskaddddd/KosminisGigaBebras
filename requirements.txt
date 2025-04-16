@@ -1,0 +1,7 @@
+numpy
+PyQt6
+pyqtgraph
+pyserial
+sortedcontainers
+PyOpenGL 
+PyOpenGL_accelerate
