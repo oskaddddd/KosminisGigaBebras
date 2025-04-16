@@ -39,9 +39,10 @@ struct DataPayload {
 #pragma pack(push, 1) 
 struct DebugPayload {
   uint16_t packetCount = 1;        // 1 byte
-  uint16_t batteryVoltage {};         // 4 bytes
+  uint16_t batteryVoltage {};      // 4 bytes
   uint16_t memUsage {};            // 2 bytes
   uint8_t sensors {};              // 1 byte (sensor status stored in individual bits)
+  uint16_t photoresistor {};       // 2 bytes
 
   //Get the bit index of a sensor 
   int getIndex(const char* device){
@@ -130,6 +131,7 @@ DebugPayload debug;
 static const int DHT_SENSOR_PIN = 6;
 DHT_Async dht_sensor(DHT_SENSOR_PIN, DHT_SENSOR_TYPE);
 
+const int photores_pin = A6;  
 
 TinyGPSPlus gps;
 GY_85 GY85;
@@ -151,6 +153,9 @@ void setup() {
   //Setup GY85
   GY85.init();
   delay(100);
+
+  //Setups photoeresistor
+  pinMode(photores_pin, INPUT);
 
   //Setup the SD card
   if (SD.begin(10)) {
@@ -320,18 +325,22 @@ void BuildPacket(uint8_t type){
 //Send the packet
 void SendPacket(){
   //Transmit the packet
-  if (Serial.availableForWrite() >= packetLength){
-    Serial.write(Packet, packetLength);
-  }
+  if (debug.photoeresistor > 100){
+    if (Serial.availableForWrite() >= packetLength){
+      Serial.write(Packet, packetLength);
 
+      //Add one to the packet count only if the packet is acutually sent
+      debug.packetCount += 1;
+    }
+  }
+  
   //Write the packet to SD
   WriteToFile();
 
   //Clear the packet buffer
   memset(Packet, 0, sizeof(Packet));
 
-  //Add one to the packet count
-  debug.packetCount += 1;
+  
 
 
 }
@@ -371,6 +380,8 @@ void loop() {
   //Everything above needs to run with no delay, everything below runs according to del variable
   if (time + del > millis()){return;}
 
+  //Check photoresistor value
+  debug.photoresistor = analogRead(photores_pin);
   //Get new gps data
   if (gps.location.isValid())
   {  

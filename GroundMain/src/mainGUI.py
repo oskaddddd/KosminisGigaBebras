@@ -37,19 +37,43 @@ class dataPlotWidget(pg.PlotWidget):
     
 #Time slider widget      
 class timeSlider(QSlider):
+    timeUpdated = pyqtSignal(int)
     def __init__(self, parent=None):
         super().__init__(parent),
         
         self.time = DataManager.DataBase[0]["timestamp"]
+        self.timeRange = DataManager.DataBase[0]["timestamp"] - DataManager.DataBase[len(DataManager.DataBase)-1]["timestamp"]
         
-        self.setValue(100)
+        self.maxValue = 1000
         
-        self.valueChanged.connect(self.updateTime)
+        self.setValue(self.maxValue)
         
-    def updateTime(value):
-        timeIndex = DataManager.DataBase[0]["timestamp"]*value//100
+        self.valueChanged.connect(self.updateSliderVal)
         
-        DataManager.DataBase.bisect_left({"timestamp":100})
+
+        
+    #Called to update the slide object, when new data is recieved and timestamp range expands
+    def updateTimerange(self):
+        self.timeRange = DataManager.DataBase[0]["timestamp"] - DataManager.DataBase[len(DataManager.DataBase)-1]["timestamp"]
+        self.setValue(round(self.time/self.timeRange*self.maxValue))
+        #DataManager.DataBase.bisect_left({"timestamp":100})
+    
+    def inputTimestamp(self, timestamp):
+        index = DataManager.DataBase.bisect_left({"timestamp":timestamp})
+        
+    #Called when the slider value is changed
+    def updateSliderVal(self, value):
+        expectedTime = (self.timeRange*value/self.maxValue) + DataManager.DataBase[len(DataManager.DataBase)-1]["timestamp"]
+        index = DataManager.DataBase.bisect_left({"timestamp":expectedTime })
+        
+        self.time = DataManager.DataBase[index]["timestamp"]
+        logging.debug(f"ratio:{value/self.maxValue}\ntimerange:{self.timeRange}\nexpectedTime:{expectedTime}\TIME:{self.time}\nIndex:{index}\nRangeLen:{len(DataManager.DataBase)}")
+        self.timeUpdated.emit(self.time)
+        #print(self.time)
+        #print()
+        
+    
+        
         
         
 #3D plot widget for GPS
@@ -146,6 +170,8 @@ class MainWindow(QMainWindow):
         #Connect the data selection dropdown to a function responsible for changing the data on the graph
         self.ui.dataDropdown.currentTextChanged.connect(self.dataDropboxChenged)
         self.dataType = "height"
+        
+    
  
         #A list of all the timestamps recieved from the CanSat for the X axis of graphs 
         #(not related to starttime. Startime is local time, while timeline is as reported by cansat)
@@ -155,11 +181,14 @@ class MainWindow(QMainWindow):
         if len(DataManager.dictData) != 0:
             self.updateData("data")
         
+        self.ui.timeSlider.timeUpdated.connect(self.setDotsOnGraphs)
+        
         #Start listening for packets
         self.serial.start()
         
         
-        
+    def setDotsOnGraphs(self, timestamp):
+        print(f"time: {timestamp}")
         
     def updateGpsPlot(self):
         

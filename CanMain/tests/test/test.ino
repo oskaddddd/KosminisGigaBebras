@@ -1,23 +1,15 @@
-#include  <SoftwareSerial.h>
+#include  <Arduino.h>
 
 
-const byte rx_gps = 2;
-const byte tx_gps = 3;
-
-
-
-SoftwareSerial gps_serial(rx_gps, rx_gps);
+const uint8_t pp = A6;
 
 void setup() {
-    Serial.begin(115200);  // Connect to PC
-    gps_serial.begin(115200);   // GPS baud rate (change if needed)
+    Serial.begin(9600);  // Connect to PC
+    pinMode(pp, INPUT); 
 }
 
+
 void loop() {
-    while (gps_serial.available()) {
-        Serial.write(gps_serial.read());  // Forward GPS data to PC
-    }
-    while (Serial.available()) {
-        gps_serial.write(Serial.read());  // Send PC commands to GPS
-    }
+  Serial.println(analogRead(pp));
+  delay(100);
 }

@@ -21,9 +21,9 @@
     <item row="2" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
-       <widget class="QSlider" name="timeSlider">
+       <widget class="timeSlider" name="timeSlider">
         <property name="maximum">
-         <number>100</number>
+         <number>1000</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -216,6 +216,11 @@
    <extends>QWidget</extends>
    <header>mainGUI</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>timeSlider</class>
+   <extends>QSlider</extends>
+   <header>mainGUI</header>
   </customwidget>
  </customwidgets>
  <tabstops>

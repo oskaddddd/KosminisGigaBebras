@@ -215,6 +215,10 @@ class DataMain():
                 payload['sd'] = bool(self.unpack.bit(packet, byteCount, 3))
                 byteCount+=1
                 #All above combined are 1 byte 
+                
+                payload['photoresistor'] = self.unpack.uint16(packet, byteCount) #2 bytes
+                byteCount += 2
+                
                 logging.debug("Payload:", payload)
                 #payload['message'] = self.unpack.string(packet, byteCount, header['length'])
                 byteCount+=(header['length']-byteCount)
