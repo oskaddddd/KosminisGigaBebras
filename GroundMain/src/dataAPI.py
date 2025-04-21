@@ -12,6 +12,7 @@ from operator import itemgetter
 
 import numpy as np
 
+
 logging.basicConfig(level=logging.DEBUG)
 
 #A class to parse bytes into data based on type
@@ -253,16 +254,20 @@ class DataMain():
 
 
 #Establishes serial communication with the radio        
-def SerialSetup():
-    #Find available ports and promt user to choose
-    ports = list_ports.comports()
-    print("\nChoose port:")
-    for i, port in enumerate(ports):
-        if port.description!="n/a":
-            print(f"({port.description})")
-            print(f"-{i}- {port.name} {port.description}")
-        
-    ser = Serial(f"/dev/{ports[int(input('Choose:'))].name}", 57600)
+def SerialSetup(name:str = None, baund = 57600):
+    
+    if not name:
+        #Find available ports and promt user to choose
+        ports = list_ports.comports()
+        print("\nChoose port:")
+        for i, port in enumerate(ports):
+            if port.description!="n/a":
+                print(f"({port.description})")
+                print(f"-{i}- {port.name} {port.description}")
+
+        ser = Serial(f"/dev/{ports[int(input('Choose:'))].name}", baund)
+    else:
+        ser = Serial(f"/dev/{name}", baund)
     
     #Wait till serial initialises
     i = 0

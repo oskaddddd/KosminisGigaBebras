@@ -17,6 +17,7 @@ import logging
 
 import time
 
+
 logging.basicConfig(level=logging.DEBUG)
 
 
@@ -36,11 +37,19 @@ class dataPlotWidget(PlotWidget):
     def __init__(self, parent=None, background='default', plotItem=None, **kargs):
         super().__init__(parent, background, plotItem, **kargs)
         self.plotItem.showGrid(x=True, y=True, alpha=0.5)
-        self.marker = pg.ScatterPlotItem(pos = np.array([[0, 0], [10, 10]]), pxMode = True, size = 20, brush=pg.mkBrush(255, 0, 0, 255))
-        self.marker.__init__()
-        #self.marker.setData
-        self.plotItem.addItem(self.marker)
         
+        self.curve = pg.PlotDataItem(pen = pg.mkPen('g', ))
+        self.addItem(self.curve)
+        self.curve1 = pg.PlotDataItem(pen = pg.mkPen('b', ))
+        self.addItem(self.curve1)
+        self.markerLine = pg.InfiniteLine(pos=0, pen = pg.mkPen('r'))
+        self.addItem(self.markerLine)
+        
+        
+        #self.marker.__init__()
+    def marker(self, x):
+        self.markerLine.setPos(x)
+        #self.plotItem.addLine(x = x, y=None,  pen=pg.mkPen('r', width=1))
     
 #Time slider widget      
 class timeSlider(QSlider):
@@ -48,22 +57,29 @@ class timeSlider(QSlider):
     def __init__(self, parent=None):
         super().__init__(parent),
         
-        self.time = DataManager.DataBase[0]["timestamp"]
-        self.timeRange = DataManager.DataBase[0]["timestamp"] - DataManager.DataBase[len(DataManager.DataBase)-1]["timestamp"]
+class SliderManager():
+    def __init__(self, slider:timeSlider):
+        self.time = 0
+        self.timeRange = 0
+        if len(DataManager.DataBase) != 0:
+            self.time = DataManager.DataBase[0]["timestamp"]
+            self.timeRange = DataManager.DataBase[0]["timestamp"] - DataManager.DataBase[len(DataManager.DataBase)-1]["timestamp"]
         
         
-        self.valueChanged.connect(self.updateSliderVal)
-        
-        self.maxValue = 1000
-        self.setMaximum(self.maxValue)
-        self.setValue(self.maxValue)
-        
-
-        
+        self.slider = slider
+        slider.valueChanged.connect(self.updateSliderVal)
     #Called to update the slide object, when new data is recieved and timestamp range expands
     def updateTimerange(self):
+        if not len(DataManager.DataBase):
+            logging.debug("Not updating time range, len(DataBase) = 0")
+            return
+        
+        logging.debug("Updating time range")
         self.timeRange = DataManager.DataBase[0]["timestamp"] - DataManager.DataBase[len(DataManager.DataBase)-1]["timestamp"]
-        self.setValue(round(self.time/self.timeRange*self.maxValue))
+        if self.timeRange == 0:
+            self.slider.setValue(self.slider.maximum())
+        else:
+            self.slider.setValue(round(self.time/self.timeRange*self.slider.maximum()))
         #DataManager.DataBase.bisect_left({"timestamp":100})
     
     def inputTimestamp(self, timestamp):
@@ -71,13 +87,15 @@ class timeSlider(QSlider):
         
     #Called when the slider value is changed
     def updateSliderVal(self, value):
-        expectedTime = (self.timeRange*value/self.maxValue) + DataManager.DataBase[len(DataManager.DataBase)-1]["timestamp"]
+        if self.timeRange == 0:
+            return
+        
+        expectedTime = (self.timeRange*value/self.slider.maximum()) + DataManager.DataBase[len(DataManager.DataBase)-1]["timestamp"]
         index = DataManager.DataBase.bisect_left({"timestamp":expectedTime })
         
         self.time = DataManager.DataBase[index]["timestamp"]
-        logging.debug(f"ratio:{value/self.maxValue}\n-timerange:{self.timeRange}\n-expectedTime:{expectedTime}\n-TIME:{self.time}\n-Index:{index}\n-RangeLen:{len(DataManager.DataBase)}")
-        self.timeUpdated.emit(index)
-
+        logging.debug(f"ratio:{value/self.slider.maximum()}\n-timerange:{self.timeRange}\n-expectedTime:{expectedTime}\n-TIME:{self.time}\n-Index:{index}\n-RangeLen:{len(DataManager.DataBase)}")
+        self.slider.timeUpdated.emit(index)
         
     
         
@@ -121,7 +139,7 @@ class SerialMonitor(QThread):
     def run(self):
         #Setup serial
         print("asd")
-        self.coms = dataAPI.SerialSetup()
+        self.coms = dataAPI.SerialSetup("ttyUSB0")
         print("miau")
         
         #Serial loop
@@ -142,8 +160,8 @@ class SerialMonitor(QThread):
                 packet = fullID + packet[:(len(packet)-len(fullID))]
                 
                 #Debug the packet to the terminal
-                for i, byte  in enumerate(packet):
-                    logging.debug(i, f"\\x{hex(byte)}")
+                #for i, byte  in enumerate(packet):
+                #    logging.debug(i, f"\\x{hex(byte)}")
                 
                 #Parse the packet
                 #Get the type of packet ('data', 'debug')
@@ -156,11 +174,18 @@ class SerialMonitor(QThread):
                     
                     
                 
-                
+            
             time.sleep(1/self.pollingRate)
     
-    
-        
+class one_second_loop(QThread):
+    signal = pyqtSignal()
+    def __init__(self):
+        super().__init__()
+    def run(self):
+        while 1:
+            self.signal.emit()
+            time.sleep(1)
+            
     
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -172,8 +197,10 @@ class MainWindow(QMainWindow):
         self.startTime = round(time.time())
         #Arrays for staring data for amount of packets recieved per second
         self.debugPlotData = [0]
-        self.debugPlotDebug = [0]
-        self.pens = [pg.mkPen(color = "w"), pg.mkPen(color = 'r')]
+        #self.debugPlotDebug = [0]
+        self.pens = [pg.mkPen(color = "w"), pg.mkPen(color = 'r'), pg.mkPen(color = 'b')]
+        
+        
 
         #Initialise the serialMonitor Class responsible for managing incoming data
         self.serial = SerialMonitor()
@@ -182,6 +209,14 @@ class MainWindow(QMainWindow):
         #Connect the data selection dropdown to a function responsible for changing the data on the graph
         self.ui.dataDropdown.currentTextChanged.connect(self.dataDropboxChenged)
         self.dataType = "height"
+        
+        #self.ui.debugPlot.curve.pen = self.pens[1]
+        #self.ui.debugPlot.curve1.pen = self.pens[2]
+        
+        self.valid_gps_index = 0
+        
+        self.sliderManager = SliderManager(self.ui.timeSlider)
+        
         
     
  
@@ -198,6 +233,10 @@ class MainWindow(QMainWindow):
         #Start listening for packets
         self.serial.start()
         
+        self.one_second_loop = one_second_loop()
+        self.one_second_loop.signal.connect(self.updateDebugPlot)
+        self.one_second_loop.start()
+        
         
     def updateGraphMarkers(self, index):
         dot = DataManager.DataBase[index]
@@ -207,17 +246,28 @@ class MainWindow(QMainWindow):
         gpsDot[0, 2] /= 10
         print(gpsDot)
         self.ui.locationPlot.markerDot.setData(pos = gpsDot)
+        self.ui.dataPlot.marker(self.sliderManager.time/1000)
+        #self.ui.debugPlot.marker(self.sliderManager.time/1000)
         
         
         
     def updateGpsPlot(self):
         
         #Extract gps and height data into a np array
-        gps = DataManager.extraxtData("gps", np.float32)
-        height = DataManager.extraxtData("height", np.float32)
-        result = np.column_stack((gps, height))
         
-
+        gps = DataManager.extraxtData("gps", np.float32)
+        
+        #Ignore the invalid gps data
+        if len(gps) != 0 and gps[0][0] == 0:
+            self.valid_gps_index = len(gps)-1
+            return
+        
+        height = DataManager.extraxtData("height", np.float32)
+        
+        startIndex = len(gps)-self.valid_gps_index
+        result = np.column_stack((gps[:startIndex], height[:startIndex]))
+        
+        
         #Normalise the data
         if len(gps) != 0 and len(height) != 0:
             for i in range(3):
@@ -231,30 +281,33 @@ class MainWindow(QMainWindow):
             
             #Height devided by 10, so 1 unit = 10 meters
             result[:, 2] /= 10
-            
-            #DECIAML IS NOT KEPT, EVERYTHING IS IN INT FORM
 
             #Plot the data
             self.ui.locationPlot.plot.setData(pos = result)
-       
-    #Handles ploting when new data is recieved      
-    def updateData(self, pType):
-        
+    def updateDebugPlot(self, newPackets = 0):
+                
         #Calculate the local time (Since start of program)
         tStamp = round(time.time()) - self.startTime
         
         #Expand {packets per second} arrays, till their lentgh is equal to program runtime in seconds
         while len(self.debugPlotData) < tStamp+1:
             self.debugPlotData.append(0)
-        while len(self.debugPlotDebug) < tStamp+1:
-            self.debugPlotDebug.append(0)
+        #while len(self.debugPlotDebug) < tStamp+1:
+        #    self.debugPlotDebug.append(0)
+        self.debugPlotData[tStamp] += newPackets
         
+        self.ui.debugPlot.curve.setData(x = list(range(tStamp+1)), y = self.debugPlotData)
         
+    #Handles ploting when new data is recieved      
+    def updateData(self, pType):
+ 
+        self.sliderManager.updateTimerange()
+        self.updateDebugPlot(1)
+                
         match pType:
+            
             #Eecieved a data packet
             case "data":
-                #Add 1, to count of data packets recieved this second
-                self.debugPlotData[tStamp] += 1
                 
                 #Update the gps plot
                 self.updateGpsPlot()
@@ -263,18 +316,20 @@ class MainWindow(QMainWindow):
                 self.timeline = DataManager.extraxtData("timestamp")[:]/1000
                 
                 #Clear the data plot and draw a new graph with the updated data
-                self.ui.dataPlot.clear()
-                self.ui.dataPlot.plot(self.timeline, DataManager.extraxtData(self.dataType))
+                
+                self.ui.dataPlot.curve.setData(x = self.timeline, y = DataManager.extraxtData(self.dataType))
+                
             
             #Recieved a debug packet 
             case "debug":
-                #Add 1, to count of debug packets recieved this second
-                self.debugPlotDebug[tStamp] += 1
+                ##Add 1, to count of debug packets recieved this second
+                #self.debugPlotDebug[tStamp] += 1
             
                 #Set all the sensor checkboxes to their status
                 self.ui.ramLabel.setText(f"RAM: {round((1-(DataManager.DebugData[0]['memUsage']/2048))*100)}%")
-                #self.ui.vccLabel.setText(f"VCC: {round(DataManager.DebugData[0]['baterryVoltage']}")
-                self.ui.lossLabel.setText(f"LOSS: {round(1-(DataManager.packetCount/DataManager.DebugData[0]['packetCount']), 4)*100}%")
+                self.ui.vccLabel.setText(f"VCC: {DataManager.DebugData[0]['baterryVoltage']}")
+                loss = (1 - (DataManager.packetCount / DataManager.DebugData[0]['packetCount'])) * 100
+                self.ui.lossLabel.setText(f"LOSS: {loss:.2f}%")
                 self.ui.gyCheckbox.setChecked(DataManager.DebugData[0]["gy"])
                 self.ui.dhtCheckbox.setChecked( DataManager.DebugData[0]["dht"])
                 self.ui.gpsCheckbox.setChecked( DataManager.DebugData[0]["gps"])
@@ -282,16 +337,19 @@ class MainWindow(QMainWindow):
                 
             
         #Plot the {packets per second} graphs
-        self.ui.debugPlot.clear()
-        self.ui.debugPlot.plot(list(range(tStamp)), self.debugPlotData, pen = self.pens[0])
-        self.ui.debugPlot.plot(list(range(tStamp)), self.debugPlotDebug, pen = self.pens[1])
+        #self.ui.debugPlot.curve1.setData(x = list(range(tStamp+1)), y = self.debugPlotDebug, pen = self.pens[0])
+        #self.ui.debugPlot.plot(list(range(tStamp+1)), self.debugPlotDebug, pen = self.pens[1])
+        #self.ui.debugPlot.marker(self.ui.timeSlider.time/1000)
         
         
     #Fucntion handling the change of the data type selection dropdown
     def dataDropboxChenged(self, text):
         self.dataType = text
-        self.ui.dataPlot.clear()
-        self.ui.dataPlot.plot(self.timeline, DataManager.extraxtData(self.dataType))
+        self.ui.dataPlot.curve.setData(x = self.timeline, y = DataManager.extraxtData(self.dataType))
+        self.ui.dataPlot.centerOn(self.ui.dataPlot.curve)
+        self.ui.dataPlot.plotItem.enableAutoRange('xy', True)
+        self.ui.dataPlot.plotItem.autoRange()
+        
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

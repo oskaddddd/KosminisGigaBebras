@@ -325,7 +325,7 @@ void BuildPacket(uint8_t type){
 //Send the packet
 void SendPacket(){
   //Transmit the packet
-  if (debug.photoeresistor > 100){
+  if (debug.photoresistor > 100){
     if (Serial.availableForWrite() >= packetLength){
       Serial.write(Packet, packetLength);
 
