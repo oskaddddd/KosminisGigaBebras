@@ -166,6 +166,21 @@
           </item>
           <item>
            <property name="text">
+            <string>velocity</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>magneticField</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>acceleration</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
             <string>humidity</string>
            </property>
           </item>

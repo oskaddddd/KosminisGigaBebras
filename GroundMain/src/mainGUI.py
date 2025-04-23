@@ -29,7 +29,7 @@ canID = 0xff
 fullID = bytes([byte for byte in startBytes]+[canID])
 
 DataManager = dataAPI.DataMain(startBytes, canID)
-print("Hello")
+#print("Hello")
 
 #2D plot widget
 class dataPlotWidget(PlotWidget):
@@ -172,9 +172,9 @@ class SerialMonitor(QThread):
     
     def run(self):
         #Setup serial
-        print("asd")
+
         self.coms = dataAPI.SerialSetup("ttyUSB0")
-        print("miau")
+
         
         #Serial loop
         while self.running:
@@ -183,7 +183,7 @@ class SerialMonitor(QThread):
                 
                 #Read until the startbytes of a new packet are reached
                 packet = self.coms.read_until(fullID)
-                print()
+
                 #Check if /r/n (endbytes) are before the start bytes
                 if packet[(len(packet)-len(fullID)-2):(len(packet)-len(fullID))] != b'\r\n':
                     logging.warning("\\r\\n not before start bytes", packet[(len(packet)-len(fullID)-2):(len(packet)-len(fullID))])
@@ -278,7 +278,7 @@ class MainWindow(QMainWindow):
         gpsDot[0]-=np.array([*DataManager.DataBase[0]["gps"], DataManager.DataBase[0]["height"]])
         gpsDot[0, :2] /= 100
         gpsDot[0, 2] /= 10
-        print(gpsDot)
+        #print(gpsDot)
         self.ui.locationPlot.markerDot.setData(pos = gpsDot)
         
         self.ui.locationPlot.setCameraPosition(pos = QVector3D(*gpsDot[0]))
@@ -352,8 +352,18 @@ class MainWindow(QMainWindow):
                 self.timeline = DataManager.extraxtData("timestamp")[:]/1000
                 
                 #Clear the data plot and draw a new graph with the updated data
-                
-                self.ui.dataPlot.curve.setData(x = self.timeline, y = DataManager.extraxtData(self.dataType))
+                if self.dataType in ["acceleration", "magneticField"]:
+                    #dat = DataManager.extraxtData(self.dataType, np.float32)
+                    #magnitudes = np.linalg.norm(dat, axis=1)
+                    #print("dat", dat, "\nmag:", magnitudes)
+                    self.ui.dataPlot.curve.setData(\
+                        x = self.timeline,\
+                        y = np.linalg.norm(DataManager.extraxtData(self.dataType, np.float32), axis=1))
+                else:
+                    self.ui.dataPlot.curve.setData(\
+                        x = self.timeline, \
+                        y = DataManager.extraxtData(self.dataType))
+                #self.ui.dataPlot.curve.setData(x = self.timeline, y = DataManager.extraxtData(self.dataType))
                 
             
             #Recieved a debug packet 
@@ -381,7 +391,18 @@ class MainWindow(QMainWindow):
     #Fucntion handling the change of the data type selection dropdown
     def dataDropboxChenged(self, text):
         self.dataType = text
-        self.ui.dataPlot.curve.setData(x = self.timeline, y = DataManager.extraxtData(self.dataType))
+        if self.dataType in ["acceleration", "magneticField"]:
+            #dat = DataManager.extraxtData(self.dataType, np.float32)
+            #magnitudes = np.linalg.norm(dat, axis=1)
+            #print("dat", dat, "\nmag:", magnitudes)
+            self.ui.dataPlot.curve.setData(\
+                x = self.timeline,\
+                y = np.linalg.norm(DataManager.extraxtData(self.dataType, np.float32), axis=1))
+        else:
+            self.ui.dataPlot.curve.setData(\
+                x = self.timeline, \
+                y = DataManager.extraxtData(self.dataType))
+            
         self.ui.dataPlot.centerOn(self.ui.dataPlot.curve)
         self.ui.dataPlot.plotItem.enableAutoRange('xy', True)
         self.ui.dataPlot.plotItem.autoRange()
