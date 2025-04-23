@@ -14,7 +14,7 @@
    <string>Mapplot</string>
   </property>
   <property name="toolButtonStyle">
-   <enum>Qt::ToolButtonIconOnly</enum>
+   <enum>Qt::ToolButtonStyle::ToolButtonIconOnly</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
@@ -26,12 +26,9 @@
          <number>1000</number>
         </property>
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
        </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="timeSpinbox"/>
       </item>
      </layout>
     </item>
@@ -63,7 +60,7 @@
                <bool>false</bool>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::RightToLeft</enum>
+               <enum>Qt::LayoutDirection::RightToLeft</enum>
               </property>
               <property name="text">
                <string>GY85</string>
@@ -82,7 +79,7 @@
                <bool>false</bool>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::RightToLeft</enum>
+               <enum>Qt::LayoutDirection::RightToLeft</enum>
               </property>
               <property name="text">
                <string>DHT11</string>
@@ -95,7 +92,7 @@
                <bool>false</bool>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::RightToLeft</enum>
+               <enum>Qt::LayoutDirection::RightToLeft</enum>
               </property>
               <property name="text">
                <string>GPS</string>
@@ -108,7 +105,7 @@
                <bool>false</bool>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::RightToLeft</enum>
+               <enum>Qt::LayoutDirection::RightToLeft</enum>
               </property>
               <property name="text">
                <string>SD </string>
@@ -139,7 +136,7 @@
             <item>
              <spacer name="verticalSpacer">
               <property name="orientation">
-               <enum>Qt::Vertical</enum>
+               <enum>Qt::Orientation::Vertical</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -198,7 +195,7 @@
      <x>0</x>
      <y>0</y>
      <width>797</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>

@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import *
 from PyQt6 import uic
 from PyQt6.QtCore import QThread, pyqtSignal
+from PyQt6.QtGui import QVector3D
 
 from pyqtgraph import PlotWidget
 import pyqtgraph as pg
@@ -63,23 +64,56 @@ class SliderManager():
         self.timeRange = 0
         if len(DataManager.DataBase) != 0:
             self.time = DataManager.DataBase[0]["timestamp"]
-            self.timeRange = DataManager.DataBase[0]["timestamp"] - DataManager.DataBase[len(DataManager.DataBase)-1]["timestamp"]
+            self.timeRange = DataManager.DataBase[0]["timestamp"] - DataManager.DataBase[-1]["timestamp"]
         
         
         self.slider = slider
-        slider.valueChanged.connect(self.updateSliderVal)
+        self.slider.valueChanged.connect(self.updateSliderVal)
+        self.slider.setMaximum(len(DataManager.DataBase))
     #Called to update the slide object, when new data is recieved and timestamp range expands
     def updateTimerange(self):
         if not len(DataManager.DataBase):
             logging.debug("Not updating time range, len(DataBase) = 0")
             return
         
-        logging.debug("Updating time range")
-        self.timeRange = DataManager.DataBase[0]["timestamp"] - DataManager.DataBase[len(DataManager.DataBase)-1]["timestamp"]
-        if self.timeRange == 0:
+        #Function to handle if slider is at a maximum
+        def doMaximum():
+            self.time = DataManager.DataBase[0]["timestamp"]
+            self.slider.blockSignals(True)
             self.slider.setValue(self.slider.maximum())
+            self.slider.blockSignals(False)
+            self.slider.timeUpdated.emit(0)
+        
+        logging.debug("Updating time range")
+        #Calculate the timerange
+        self.timeRange = DataManager.DataBase[0]["timestamp"] - DataManager.DataBase[len(DataManager.DataBase)-1]["timestamp"]
+        
+        maximum = False
+        #Check if slider is at the maximum and store it
+        if self.slider.value() == self.slider.maximum():
+            maximum = True
+        
+        #Extend the slider range to match the amount of data, with a max of 1000
+        if len(DataManager.DataBase) < 1000:
+            self.slider.setMaximum(len(DataManager.DataBase))
+            
+            if maximum:
+                doMaximum()
+                return
+            
         else:
-            self.slider.setValue(round(self.time/self.timeRange*self.slider.maximum()))
+            if maximum:
+                doMaximum()
+                return
+            
+            self.slider.blockSignals(True)
+            #Handle division by 0 case
+            if self.timeRange == 0:
+                self.slider.setValue(self.slider.maximum())
+            #Calculate and set the value of the slider
+            else:
+                self.slider.setValue(round((self.time-DataManager.DataBase[-1]["timestamp"])/self.timeRange*self.slider.maximum()))
+            self.slider.blockSignals(False)
         #DataManager.DataBase.bisect_left({"timestamp":100})
     
     def inputTimestamp(self, timestamp):
@@ -90,7 +124,7 @@ class SliderManager():
         if self.timeRange == 0:
             return
         
-        expectedTime = (self.timeRange*value/self.slider.maximum()) + DataManager.DataBase[len(DataManager.DataBase)-1]["timestamp"]
+        expectedTime = (self.timeRange*value/self.slider.maximum()) + DataManager.DataBase[-1]["timestamp"]
         index = DataManager.DataBase.bisect_left({"timestamp":expectedTime })
         
         self.time = DataManager.DataBase[index]["timestamp"]
@@ -246,6 +280,8 @@ class MainWindow(QMainWindow):
         gpsDot[0, 2] /= 10
         print(gpsDot)
         self.ui.locationPlot.markerDot.setData(pos = gpsDot)
+        
+        self.ui.locationPlot.setCameraPosition(pos = QVector3D(*gpsDot[0]))
         self.ui.dataPlot.marker(self.sliderManager.time/1000)
         #self.ui.debugPlot.marker(self.sliderManager.time/1000)
         

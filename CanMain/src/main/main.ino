@@ -354,7 +354,7 @@ float humidity {};
 float temperature {};
 
 //Delay between packets
-int del = 1000;
+int del = 500;
 
 //After how many normal packets should a debug packet be sent
 uint8_t debugFreq = 5;
