@@ -233,9 +233,9 @@ void readSensors() {
   //Read compass data
   compassReadings = GY85.readFromCompass();
   //Data multiplied by 100 to keep decimal
-  data.angVelocity[0] = GY85.compass_x(compassReadings)*100;
-  data.angVelocity[1] = GY85.compass_y(compassReadings)*100;
-  data.angVelocity[2] = GY85.compass_z(compassReadings)*100;
+  data.magneticField[0] = GY85.compass_x(compassReadings)*100;
+  data.magneticField[1] = GY85.compass_y(compassReadings)*100;
+  data.magneticField[2] = GY85.compass_z(compassReadings)*100;
  
   //Read compass data
   gyroReadings = GY85.readGyro();
