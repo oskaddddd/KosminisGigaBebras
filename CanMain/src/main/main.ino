@@ -52,13 +52,6 @@ struct DataPayload {
   int16_t temperature = 20;          // 2 bytes | 2 bytes * 1
   uint8_t humidity = 30;             // 1 bytes | 1 bytes * 1
   uint16_t co2 {};
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 };
 #pragma pack(pop)
 
@@ -175,13 +168,6 @@ const uint8_t photores_pin = A6;
 const uint8_t speaker_pin = 8;
 
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 TinyGPSPlus gps;
 GY_85 GY85;
@@ -208,20 +194,11 @@ File file;
 
 void setup() {
   
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  
-  //Setup Serial and LoRa
-  Serial.begin(57600); //Rx Tx
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
-  gps_serial.begin(115200);
+  //Data is sent to the radio over tx and the gps data is reciever over rx.
+  //To upload code, remove the thingy connecting gps to the rx pin.
+  //GPS can't use software serial cause it's simply too slow and drops data.
+  Serial.begin(115200);
 
   //Set up wire
   Wire.begin();
@@ -276,6 +253,7 @@ void ser_wait(int command_len){
       file.close();
     }
     tone(speaker_pin, 200);
+    
     
     
 >>>>>>> Stashed changes
@@ -358,54 +336,13 @@ void readSensors() {
   data.angVelocity[1] = GY85.compass_y(compassReadings)*100;
   data.angVelocity[2] = GY85.compass_z(compassReadings)*100;
  
+  //Read compass data
+  gyroReadings = GY85.readGyro();
+  //Data multiplied by 100 to keep decimal
+  data.angVelocity[0] = GY85.gyro_x(gyroReadings)*100;
+  data.angVelocity[1] = GY85.gyro_y(gyroReadings)*100;
+  data.angVelocity[2] = GY85.gyro_z(gyroReadings)*100;
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  float* gyroReadings = GY85.readGyro();
-  data.angVelocity[0] = GY85.gyro_x(gyroReadings);
-  data.angVelocity[1] = GY85.gyro_y(gyroReadings);
-  data.angVelocity[2] = GY85.gyro_z(gyroReadings);
-  data.temperature = GY85.temp(gyroReadings);
-
-
-  if (gps_serial.available() > 0) {
-    if (gps.encode(gps_serial.read())) {
-      if (gps.location.isValid()) {
-        
-        gps.location.lat();
-        gps.location.lng();
-        if (gps.altitude.isValid())
-          Serial.println(gps.altitude.meters());
-        else
-          Serial.println(F("INVALID"));
-      } else {
-        Serial.println(F("- location: INVALID"));
-      }
-
-      if (gps.speed.isValid()) {
-        Serial.print(gps.speed.kmph());
-        Serial.println(F(" km/h"));
-      } else {
-        Serial.println(F("INVALID"));
-      }
-
-      Serial.println();
-    }
-  }
-
-
-}
-
-//Print data to file
-
-void WriteToFile() {
-  //file.write(Packet);
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
   data.co2 = CO2_sensor.getCorrectedPPM(data.temperature, data.humidity);
   //Set the gy85 as working int he debug packet
   debug.setSensorStatus("gy", true);
