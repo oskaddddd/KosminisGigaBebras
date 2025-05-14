@@ -56,10 +56,23 @@ class DataMain():
         
         with open(self.path+"data.json", 'r') as f:
             self.dictData = json.load(f)
+<<<<<<< Updated upstream
             self.DataBase = SortedList(self.dictData, key=lambda x: -x['timestamp'])
         with open(self.path+"debug.json", 'r') as f:
             self.dictDebug = json.load(f)
             self.DebugData = SortedList(self.dictDebug, key=lambda x: -x['timestamp'])
+=======
+            if len(self.dictData) != 0:
+                if input("There is data in data.json, clear to delete? y/n:") == 'y':
+                    self.dictData = []
+                else:
+                    with open(self.path+"debug.json", 'r') as f:
+                        self.dictDebug = json.load(f)
+                        
+                
+        self.DataBase = SortedList(self.dictData, key=lambda x: -x['timestamp'])
+        self.DebugData = SortedList(self.dictDebug, key=lambda x: -x['timestamp'])
+>>>>>>> Stashed changes
         
 
         
@@ -157,6 +170,7 @@ class DataMain():
                 byteCount+=12
                 payload['temprature']=self.unpack.int16(packet, byteCount)/100 #2 bytes (Values were multiplied by 100 to keep the decimal)
                 byteCount+=2
+<<<<<<< Updated upstream
                 #payload['preasure']=self.unpack.uint16(packet, byteCount) #2 bytes
                 #byteCount+=2
                 #payload['humidity']=self.unpack.uint8(packet, byteCount) #1 byte
@@ -168,6 +182,17 @@ class DataMain():
 
                 self.add_data(payload)
 
+=======
+                payload['humidity']=self.unpack.uint8(packet, byteCount) #1 byte
+                byteCount+=1
+                payload['co2'] = self.unpack.uint16(packet, byteCount)
+                byteCount+=2
+                
+                
+                self.add_data(payload)
+                logging.debug("Payload:", payload)
+                return 'data'
+>>>>>>> Stashed changes
 
             case 0x01:
 

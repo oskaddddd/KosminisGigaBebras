@@ -32,6 +32,7 @@ struct PacketHeader {
 
 #pragma pack(push, 1)
 struct DataPayload {
+<<<<<<< Updated upstream
   int16_t angVelocity[3] {};       // 2 bytes
   int16_t acceleration[3] {};      // 6 bytes (3 * 2 bytes)
   int16_t magneticField[3] {};     // 6 bytes (3 * 2 bytes)
@@ -41,6 +42,17 @@ struct DataPayload {
   //uint8_t humidity;             // 1 byte
   uint16_t vocConcentration {};    // 2 bytes
   uint16_t co2Concentration {};    // 2 bytes
+=======
+  int16_t angVelocity[3] {};       // 6 bytes | 2 bytes * 3 
+  int16_t acceleration[3] {};      // 6 bytes | 2 bytes * 3 
+  int16_t magneticField[3] {};     // 6 bytes | 2 bytes * 3 
+  uint32_t gps[2] {};              // 8 bytes | 4 bytes * 2
+  uint16_t height {};              // 2 bytes | 2 bytes * 1
+  int16_t velocity {};             // 2 bytes | 2 bytes * 1
+  int16_t temperature = 20;          // 2 bytes | 2 bytes * 1
+  uint8_t humidity = 30;             // 1 bytes | 1 bytes * 1
+  uint16_t co2 {};
+>>>>>>> Stashed changes
 };
 #pragma pack(pop)
 
@@ -130,6 +142,34 @@ DebugPayload debug;
 
 
 
+<<<<<<< Updated upstream
+=======
+//Libraries, all of them can be found in the libs folder
+#include  <SD.h> 
+#include  <SPI.h>
+#include  <Wire.h>
+
+//Sensors
+#include "GY_85.h"
+#include "DHT_Async.h"
+#include <TinyGPSPlus.h>
+#include <MQ135.h>
+
+
+//Setup the dht11
+#define DHT_SENSOR_TYPE DHT_TYPE_11
+static const uint8_t DHT_SENSOR_PIN = 2;
+DHT_Async dht_sensor(DHT_SENSOR_PIN, DHT_SENSOR_TYPE);
+
+
+#define PIN_MQ135 A0
+MQ135 CO2_sensor(PIN_MQ135);
+
+const uint8_t photores_pin = A6; 
+const uint8_t speaker_pin = 8;
+
+
+>>>>>>> Stashed changes
 
 TinyGPSPlus gps;
 GY_85 GY85;
@@ -156,9 +196,12 @@ File file;
 
 void setup() {
   
+<<<<<<< Updated upstream
   
   //Setup Serial and LoRa
   Serial.begin(57600); //Rx Tx
+=======
+>>>>>>> Stashed changes
 
   gps_serial.begin(115200);
 
@@ -204,10 +247,20 @@ void RaiseError(char* message){
   memcpy(error, message, errorLength);
 }
 
+<<<<<<< Updated upstream
 void ser_wait(int command_len){
   while (Serial.available() <= command_len){
     delay(100);
     Serial.print("waiting for commands {");Serial.print(command_len); Serial.print("} response");
+=======
+      //Mark SD as working and close the file
+      debug.setSensorStatus("sd", true);
+      file.close();
+    }
+    tone(speaker_pin, 200);
+    
+    
+>>>>>>> Stashed changes
   }
 }
 //Enter LoRa bootlader to config stuff
@@ -260,11 +313,17 @@ bool setAddressLocal(uint16_t address){
   else{return 0;}
 
 
+<<<<<<< Updated upstream
   delay(500);
   while(!Serial){delay(100);}
 
   return 1;
 }
+=======
+//Low pass filter smoothing constant
+const float lpAlpha = 0.5;
+int avgAcc[3] {};
+>>>>>>> Stashed changes
 
 
 
@@ -282,6 +341,7 @@ void readSensors() {
   data.angVelocity[2] = GY85.compass_z(compassReadings)*100;
  
 
+<<<<<<< Updated upstream
   float* gyroReadings = GY85.readGyro();
   data.angVelocity[0] = GY85.gyro_x(gyroReadings);
   data.angVelocity[1] = GY85.gyro_y(gyroReadings);
@@ -321,6 +381,11 @@ void readSensors() {
 
 void WriteToFile() {
   //file.write(Packet);
+=======
+  data.co2 = CO2_sensor.getCorrectedPPM(data.temperature, data.humidity);
+  //Set the gy85 as working int he debug packet
+  debug.setSensorStatus("gy", true);
+>>>>>>> Stashed changes
   
 }
 
@@ -426,7 +491,16 @@ unsigned long time {};
 
 float humidity {};
 float temperature {};
+<<<<<<< Updated upstream
 int del = 300;
+=======
+
+//Delay between packets
+int del = 200;
+
+//After how many normal packets should a debug packet be sent
+uint8_t debugFreq = 5;
+>>>>>>> Stashed changes
 int debugCount = 0;
 
 void loop() {

@@ -1,1 +1,193 @@
+<<<<<<< Updated upstream
 []
+=======
+[
+    {
+        "timestamp": 377083,
+        "packetCount": 1418,
+        "baterryVoltage": 1.22,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 978
+    },
+    {
+        "timestamp": 378667,
+        "packetCount": 1424,
+        "baterryVoltage": 1.2,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 998
+    },
+    {
+        "timestamp": 380247,
+        "packetCount": 1430,
+        "baterryVoltage": 1.22,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 971
+    },
+    {
+        "timestamp": 381831,
+        "packetCount": 1436,
+        "baterryVoltage": 1.58,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 688
+    },
+    {
+        "timestamp": 383412,
+        "packetCount": 1442,
+        "baterryVoltage": 1.64,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 666
+    },
+    {
+        "timestamp": 384994,
+        "packetCount": 1448,
+        "baterryVoltage": 1.26,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 944
+    },
+    {
+        "timestamp": 386577,
+        "packetCount": 1454,
+        "baterryVoltage": 1.22,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 975
+    },
+    {
+        "timestamp": 388159,
+        "packetCount": 1460,
+        "baterryVoltage": 1.23,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 966
+    },
+    {
+        "timestamp": 389741,
+        "packetCount": 1466,
+        "baterryVoltage": 1.22,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 980
+    },
+    {
+        "timestamp": 391331,
+        "packetCount": 1472,
+        "baterryVoltage": 1.23,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 965
+    },
+    {
+        "timestamp": 392915,
+        "packetCount": 1478,
+        "baterryVoltage": 1.25,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 946
+    },
+    {
+        "timestamp": 394497,
+        "packetCount": 1484,
+        "baterryVoltage": 1.24,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 953
+    },
+    {
+        "timestamp": 396076,
+        "packetCount": 1490,
+        "baterryVoltage": 1.22,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 973
+    },
+    {
+        "timestamp": 397658,
+        "packetCount": 1496,
+        "baterryVoltage": 1.3,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 898
+    },
+    {
+        "timestamp": 399239,
+        "packetCount": 1502,
+        "baterryVoltage": 1.36,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 845
+    },
+    {
+        "timestamp": 400820,
+        "packetCount": 1508,
+        "baterryVoltage": 1.32,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 882
+    },
+    {
+        "timestamp": 402411,
+        "packetCount": 1514,
+        "baterryVoltage": 1.33,
+        "memUsage": 493,
+        "gy": true,
+        "dht": true,
+        "gps": true,
+        "sd": true,
+        "photoresistor": 872
+    }
+]
+>>>>>>> Stashed changes
