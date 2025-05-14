@@ -113,6 +113,19 @@
              </widget>
             </item>
             <item>
+             <widget class="QCheckBox" name="co2Checkbox">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LayoutDirection::RightToLeft</enum>
+              </property>
+              <property name="text">
+               <string>CO2</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QLabel" name="ramLabel">
               <property name="text">
                <string>RAM: 0</string>
@@ -162,6 +175,16 @@
           <item>
            <property name="text">
             <string>height</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>co2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>wind</string>
            </property>
           </item>
           <item>

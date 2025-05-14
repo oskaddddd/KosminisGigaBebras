@@ -72,7 +72,6 @@ class DataMain():
                 else:
                     with open(self.path+"debug.json", 'r') as f:
                         self.dictDebug = json.load(f)
-                        self.dictDebug = []
                 
         self.DataBase = SortedList(self.dictData, key=lambda x: -x['timestamp'])
         self.DebugData = SortedList(self.dictDebug, key=lambda x: -x['timestamp'])
@@ -191,6 +190,8 @@ class DataMain():
                 byteCount+=2
                 payload['humidity']=self.unpack.uint8(packet, byteCount) #1 byte
                 byteCount+=1
+                payload['co2'] = self.unpack.uint16(packet, byteCount)
+                byteCount+=2
                 
                 
                 self.add_data(payload)
@@ -213,6 +214,7 @@ class DataMain():
                 payload['dht'] = bool(self.unpack.bit(packet, byteCount, 1))
                 payload['gps'] = bool(self.unpack.bit(packet, byteCount, 2))
                 payload['sd'] = bool(self.unpack.bit(packet, byteCount, 3))
+                payload['co2'] = bool(self.unpack.bit(packet, byteCount, 4))
                 byteCount+=1
                 #All above combined are 1 byte 
                 

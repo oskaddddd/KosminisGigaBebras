@@ -248,6 +248,10 @@ class MainWindow(QMainWindow):
         #self.ui.debugPlot.curve1.pen = self.pens[2]
         
         self.valid_gps_index = 0
+        for i in range(1, len(DataManager.DataBase)):
+            if DataManager.DataBase[-i]["gps"][0] != 0:
+                self.valid_gps_index = i
+                break
         
         self.sliderManager = SliderManager(self.ui.timeSlider)
         
@@ -274,7 +278,10 @@ class MainWindow(QMainWindow):
         
     def updateGraphMarkers(self, index):
         dot = DataManager.DataBase[index]
-        gpsDot = np.array([[*dot["gps"], dot["height"]]], dtype=np.float32)
+        if dot["gps"][0] != 0:
+            gpsDot = np.array([[*dot["gps"], dot["height"]]], dtype=np.float32)
+        else:
+            gpsDot = np.array([[*DataManager.DataBase[-self.valid_gps_index]["gps"], DataManager.DataBase[-self.valid_gps_index]["height"]]], dtype=np.float32)
         gpsDot[0]-=np.array([*DataManager.DataBase[0]["gps"], DataManager.DataBase[0]["height"]])
         gpsDot[0, :2] /= 100
         gpsDot[0, 2] /= 10
@@ -300,8 +307,7 @@ class MainWindow(QMainWindow):
         
         height = DataManager.extraxtData("height", np.float32)
         
-        startIndex = len(gps)-self.valid_gps_index
-        result = np.column_stack((gps[:startIndex], height[:startIndex]))
+        result = np.column_stack((gps[:-self.valid_gps_index+1], height[:-self.valid_gps_index+1]))
         
         
         #Normalise the data
@@ -380,6 +386,7 @@ class MainWindow(QMainWindow):
                 self.ui.dhtCheckbox.setChecked( DataManager.DebugData[0]["dht"])
                 self.ui.gpsCheckbox.setChecked( DataManager.DebugData[0]["gps"])
                 self.ui.sdCheckbox.setChecked(DataManager.DebugData[0]["sd"])
+                self.ui.co2Checkbox.setChecked(DataManager.DebugData[0]["co2"])
                 
             
         #Plot the {packets per second} graphs
@@ -391,17 +398,34 @@ class MainWindow(QMainWindow):
     #Fucntion handling the change of the data type selection dropdown
     def dataDropboxChenged(self, text):
         self.dataType = text
-        if self.dataType in ["acceleration", "magneticField"]:
-            #dat = DataManager.extraxtData(self.dataType, np.float32)
-            #magnitudes = np.linalg.norm(dat, axis=1)
-            #print("dat", dat, "\nmag:", magnitudes)
-            self.ui.dataPlot.curve.setData(\
-                x = self.timeline,\
-                y = np.linalg.norm(DataManager.extraxtData(self.dataType, np.float32), axis=1))
-        else:
-            self.ui.dataPlot.curve.setData(\
-                x = self.timeline, \
-                y = DataManager.extraxtData(self.dataType))
+        match text:
+            case "acceleration" | "magneticField":
+                #dat = DataManager.extraxtData(self.dataType, np.float32)
+                #magnitudes = np.linalg.norm(dat, axis=1)
+                #print("dat", dat, "\nmag:", magnitudes)
+                self.ui.dataPlot.curve.setData(\
+                    x = self.timeline,\
+                    y = np.linalg.norm(DataManager.extraxtData(self.dataType, np.float32), axis=1)\
+                )
+            
+            case "wind":
+                gpsData = DataManager.extraxtData("gps", np.float32)
+                print(gpsData[:-self.valid_gps_index].shape, gpsData[:-self.valid_gps_index+1].shape)
+                deltaTimes = self.timeline[self.valid_gps_index:]+self.timeline[self.valid_gps_index-1:-1]
+                
+                gpsDifference = gpsData[0:-self.valid_gps_index] - gpsData[1:-self.valid_gps_index+1]
+                
+                print(gpsDifference)
+                self.ui.dataPlot.curve.setData(\
+                    x = self.timeline[:-self.valid_gps_index],\
+                    y = (np.linalg.norm(gpsDifference, axis=1)*0.11)/deltaTimes\
+                )
+            
+            case _:
+                self.ui.dataPlot.curve.setData(\
+                    x = self.timeline, \
+                    y = DataManager.extraxtData(self.dataType, np.float32)\
+                )
             
         self.ui.dataPlot.centerOn(self.ui.dataPlot.curve)
         self.ui.dataPlot.plotItem.enableAutoRange('xy', True)

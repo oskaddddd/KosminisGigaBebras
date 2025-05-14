@@ -30,8 +30,9 @@ struct DataPayload {
   uint32_t gps[2] {};              // 8 bytes | 4 bytes * 2
   uint16_t height {};              // 2 bytes | 2 bytes * 1
   int16_t velocity {};             // 2 bytes | 2 bytes * 1
-  int16_t temperature {};          // 2 bytes | 2 bytes * 1
-  uint8_t humidity {};             // 1 bytes | 1 bytes * 1
+  int16_t temperature = 20;          // 2 bytes | 2 bytes * 1
+  uint8_t humidity = 30;             // 1 bytes | 1 bytes * 1
+  uint16_t co2 {};           // 1 bytes | 1 bytes * 1
 };
 #pragma pack(pop)
 
@@ -59,6 +60,8 @@ struct DebugPayload {
         case 's': return 2; break;
         //sD
         case 'd': return 3; break;
+        //co2
+        case '2': return 4; break;
 
         default: return -1;
       }
@@ -124,12 +127,19 @@ DebugPayload debug;
 #include "GY_85.h"
 #include "DHT_Async.h"
 #include <TinyGPSPlus.h>
+#include <MQ135.h>
 
 
 //Setup the dht11
 #define DHT_SENSOR_TYPE DHT_TYPE_11
 static const int DHT_SENSOR_PIN = 6;
 DHT_Async dht_sensor(DHT_SENSOR_PIN, DHT_SENSOR_TYPE);
+
+#define PIN_MQ135 A0
+
+MQ135 CO2_sensor(PIN_MQ135);
+
+
 
 const int photores_pin = A6;  
 
@@ -184,7 +194,6 @@ void ReadDebug(){
   debug.batteryVoltage = (1.1 * 1023.0*100) / analogRead(A0);
 
   //Stolen code to get the ram usage
-  extern int __heap_start, *__brkval;
   extern int __heap_start,*__brkval;
   int v;
 
@@ -244,9 +253,11 @@ void readSensors() {
   data.angVelocity[1] = GY85.gyro_y(gyroReadings)*100;
   data.angVelocity[2] = GY85.gyro_z(gyroReadings)*100;
 
+  data.co2 = CO2_sensor.getCorrectedPPM(data.temperature, data.humidity);
+
   //Set the gy85 as working int he debug packet
   debug.setSensorStatus("gy", true);
-  
+  debug.setSensorStatus("co2", true);
 }
 
 //Write data to file

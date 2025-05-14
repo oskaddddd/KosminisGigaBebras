@@ -3,7 +3,8 @@ from operator import itemgetter
 import time
 a = [0, 1, 2, 3,4 , 5, 6, 7]
 snip = [3, 4, 5]
-print(a[:len(a)-2])
+print(a[0:-2], a[1:-2+1])
+print(a[2:], a[2-1:-1])
 print(a[len(a)-5:len(a)-3])
 print(a[len(a)-len(snip)-2:])
 print(a[:6], a[6:])
