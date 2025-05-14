@@ -52,6 +52,9 @@ struct DataPayload {
   int16_t temperature = 20;          // 2 bytes | 2 bytes * 1
   uint8_t humidity = 30;             // 1 bytes | 1 bytes * 1
   uint16_t co2 {};
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 };
 #pragma pack(pop)
@@ -169,6 +172,9 @@ const uint8_t photores_pin = A6;
 const uint8_t speaker_pin = 8;
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 TinyGPSPlus gps;
@@ -197,9 +203,12 @@ File file;
 void setup() {
   
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   
   //Setup Serial and LoRa
   Serial.begin(57600); //Rx Tx
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -342,6 +351,7 @@ void readSensors() {
  
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   float* gyroReadings = GY85.readGyro();
   data.angVelocity[0] = GY85.gyro_x(gyroReadings);
   data.angVelocity[1] = GY85.gyro_y(gyroReadings);
@@ -382,6 +392,8 @@ void readSensors() {
 void WriteToFile() {
   //file.write(Packet);
 =======
+=======
+>>>>>>> Stashed changes
   data.co2 = CO2_sensor.getCorrectedPPM(data.temperature, data.humidity);
   //Set the gy85 as working int he debug packet
   debug.setSensorStatus("gy", true);
