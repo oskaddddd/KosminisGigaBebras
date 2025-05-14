@@ -53,6 +53,9 @@ struct DataPayload {
   uint8_t humidity = 30;             // 1 bytes | 1 bytes * 1
   uint16_t co2 {};
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -173,6 +176,9 @@ const uint8_t speaker_pin = 8;
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -204,9 +210,12 @@ void setup() {
   
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   
   //Setup Serial and LoRa
   Serial.begin(57600); //Rx Tx
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -352,6 +361,7 @@ void readSensors() {
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   float* gyroReadings = GY85.readGyro();
   data.angVelocity[0] = GY85.gyro_x(gyroReadings);
   data.angVelocity[1] = GY85.gyro_y(gyroReadings);
@@ -392,6 +402,8 @@ void readSensors() {
 void WriteToFile() {
   //file.write(Packet);
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   data.co2 = CO2_sensor.getCorrectedPPM(data.temperature, data.humidity);

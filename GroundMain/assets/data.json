@@ -1,21 +1,5 @@
-<<<<<<< Updated upstream
-[]
-=======
 [
     {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        "timestamp": 3410,
-        "angVelocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "acceleration": [
-            -0.045703125,
-            0.1171875,
-            -0.1359375
-=======
         "timestamp": 1592,
         "angVelocity": [
             -1.11,
@@ -26,7 +10,6 @@
             -0.11015625,
             0.0828515625,
             0.2019140625
->>>>>>> Stashed changes
         ],
         "magneticField": [
             0.0,
@@ -38,27 +21,11 @@
             0
         ],
         "height": 0,
-        "velocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
+        "velocity": 0.0,
         "temprature": 0.0,
         "humidity": 0
     },
     {
-<<<<<<< Updated upstream
-        "timestamp": 3816,
-        "angVelocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "acceleration": [
-            -0.0776953125,
-            0.08203125,
-            -0.23109375
-=======
         "timestamp": 1863,
         "angVelocity": [
             10.22,
@@ -69,7 +36,6 @@
             -0.154453125,
             0.10953125,
             0.244453125
->>>>>>> Stashed changes
         ],
         "magneticField": [
             0.0,
@@ -81,40 +47,21 @@
             0
         ],
         "height": 0,
-<<<<<<< Updated upstream
-        "velocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "temprature": 0.0,
-        "humidity": 0
-    },
-    {
-        "timestamp": 4216,
-=======
         "velocity": 0.0,
         "temprature": 14.1,
         "humidity": 50
     },
     {
         "timestamp": 2138,
->>>>>>> Stashed changes
         "angVelocity": [
             1.87,
             33.32,
             -11.06
         ],
         "acceleration": [
-<<<<<<< Updated upstream
-            -0.100078125,
-            0.174609375,
-            -0.2976953125
-=======
             -0.2030078125,
             0.130546875,
             0.289453125
->>>>>>> Stashed changes
         ],
         "magneticField": [
             0.0,
@@ -126,27 +73,6 @@
             0
         ],
         "height": 0,
-<<<<<<< Updated upstream
-        "velocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "temprature": 0.0,
-        "humidity": 0
-    },
-    {
-        "timestamp": 4618,
-        "angVelocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "acceleration": [
-            -0.1169140625,
-            0.2394140625,
-            -0.344296875
-=======
         "velocity": 0.0,
         "temprature": 14.1,
         "humidity": 50
@@ -162,7 +88,6 @@
             -0.2369921875,
             0.1464453125,
             0.3010546875
->>>>>>> Stashed changes
         ],
         "magneticField": [
             0.0,
@@ -174,27 +99,6 @@
             0
         ],
         "height": 0,
-<<<<<<< Updated upstream
-        "velocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "temprature": 0.0,
-        "humidity": 0
-    },
-    {
-        "timestamp": 3409,
-        "angVelocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "acceleration": [
-            -0.045703125,
-            0.1171875,
-            -0.1359375
-=======
         "velocity": 0.0,
         "temprature": 14.1,
         "humidity": 50
@@ -210,7 +114,6 @@
             -0.271328125,
             0.16578125,
             0.30328125
->>>>>>> Stashed changes
         ],
         "magneticField": [
             0.0,
@@ -222,27 +125,6 @@
             0
         ],
         "height": 0,
-<<<<<<< Updated upstream
-        "velocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "temprature": 0.0,
-        "humidity": 0
-    },
-    {
-        "timestamp": 3848,
-        "angVelocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "acceleration": [
-            -0.0776953125,
-            0.19921875,
-            -0.23109375
-=======
         "velocity": 0.0,
         "temprature": 14.1,
         "humidity": 50
@@ -258,7 +140,6 @@
             -0.29421875,
             0.183984375,
             0.301328125
->>>>>>> Stashed changes
         ],
         "magneticField": [
             0.0,
@@ -270,27 +151,6 @@
             0
         ],
         "height": 0,
-<<<<<<< Updated upstream
-        "velocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "temprature": 0.0,
-        "humidity": 0
-    },
-    {
-        "timestamp": 4254,
-        "angVelocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "acceleration": [
-            -0.100078125,
-            0.256640625,
-            -0.2976953125
-=======
         "velocity": 0.0,
         "temprature": 14.1,
         "humidity": 50
@@ -306,7 +166,6 @@
             -0.347734375,
             0.2143359375,
             0.2917578125
->>>>>>> Stashed changes
         ],
         "magneticField": [
             0.0,
@@ -318,27 +177,6 @@
             0
         ],
         "height": 0,
-<<<<<<< Updated upstream
-        "velocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "temprature": 0.0,
-        "humidity": 0
-    },
-    {
-        "timestamp": 4651,
-        "angVelocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "acceleration": [
-            -0.1157421875,
-            0.2968359375,
-            -0.344296875
-=======
         "velocity": 0.0,
         "temprature": 14.1,
         "humidity": 50
@@ -354,7 +192,6 @@
             -0.3641015625,
             0.27421875,
             0.30734375
->>>>>>> Stashed changes
         ],
         "magneticField": [
             0.0,
@@ -366,27 +203,6 @@
             0
         ],
         "height": 0,
-<<<<<<< Updated upstream
-        "velocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "temprature": 0.0,
-        "humidity": 0
-    },
-    {
-        "timestamp": 1303,
-        "angVelocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "acceleration": [
-            -0.045703125,
-            0.1171875,
-            -0.1359375
-=======
         "velocity": 0.0,
         "temprature": 14.1,
         "humidity": 50
@@ -402,106 +218,6 @@
             -0.333359375,
             0.273984375,
             0.3030078125
->>>>>>> Stashed changes
-        ],
-        "magneticField": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "gps": [
-            0,
-            0
-        ],
-        "height": 0,
-<<<<<<< Updated upstream
-        "velocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "temprature": 0.0,
-        "humidity": 0
-    },
-    {
-        "timestamp": 1707,
-        "angVelocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "acceleration": [
-            -0.0776953125,
-            0.19921875,
-            -0.23109375
-=======
-        "velocity": 0.0,
-        "temprature": 14.1,
-        "humidity": 50
-    },
-    {
-        "timestamp": 4512,
-        "angVelocity": [
-            -3.13,
-            52.66,
-            17.39
-        ],
-        "acceleration": [
-            -0.3282421875,
-            0.2819921875,
-            0.2952734375
->>>>>>> Stashed changes
-        ],
-        "magneticField": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "gps": [
-            0,
-            0
-        ],
-        "height": 0,
-<<<<<<< Updated upstream
-        "velocity": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "temprature": 0.0,
-        "humidity": 0
-    },
-    {
-        "timestamp": 4082,
-        "angVelocity": [
-=======
-        "velocity": 0.0,
-        "temprature": 14.1,
-        "humidity": 50
-    },
-    {
-        "timestamp": 4785,
-        "angVelocity": [
-            -20.59,
-            109.63,
-            167.16
-        ],
-        "acceleration": [
-            -0.31765625,
-            0.2934765625,
-            0.2734765625
-=======
-        "timestamp": 1592,
-        "angVelocity": [
-            -1.11,
-            21.91,
-            -6.05
-        ],
-        "acceleration": [
-            -0.11015625,
-            0.0828515625,
-            0.2019140625
->>>>>>> Stashed changes
         ],
         "magneticField": [
             0.0,
@@ -518,320 +234,6 @@
         "humidity": 50
     },
     {
-<<<<<<< Updated upstream
-        "timestamp": 5056,
-        "angVelocity": [
-            17.11,
-            32.69,
-            1.6
-        ],
-        "acceleration": [
-            -0.286796875,
-            0.3483984375,
-            0.221875
-=======
-        "timestamp": 1863,
-        "angVelocity": [
-            10.22,
-            42.22,
-            -6.33
-        ],
-        "acceleration": [
-            -0.154453125,
-            0.10953125,
-            0.244453125
->>>>>>> Stashed changes
-        ],
-        "magneticField": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "gps": [
-            0,
-            0
-        ],
-        "height": 0,
-        "velocity": 0.0,
-        "temprature": 14.1,
-        "humidity": 50
-    },
-    {
-<<<<<<< Updated upstream
-        "timestamp": 5327,
-        "angVelocity": [
-            7.65,
-            9.6,
-            -14.53
-        ],
-        "acceleration": [
-            -0.2593359375,
-            0.3762890625,
-            0.18578125
-=======
-        "timestamp": 2138,
-        "angVelocity": [
-            1.87,
-            33.32,
-            -11.06
-        ],
-        "acceleration": [
-            -0.2030078125,
-            0.130546875,
-            0.289453125
->>>>>>> Stashed changes
-        ],
-        "magneticField": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "gps": [
-            0,
-            0
-        ],
-        "height": 0,
-        "velocity": 0.0,
-        "temprature": 14.1,
-        "humidity": 50
-    },
-    {
-<<<<<<< Updated upstream
-        "timestamp": 5602,
-        "angVelocity": [
-            4.31,
-            15.65,
-            -60.93
-        ],
-        "acceleration": [
-            -0.2424609375,
-            0.3700390625,
-            0.1569921875
-=======
-        "timestamp": 2448,
-        "angVelocity": [
-            2.5,
-            23.51,
-            -7.79
-        ],
-        "acceleration": [
-            -0.2369921875,
-            0.1464453125,
-            0.3010546875
->>>>>>> Stashed changes
-        ],
-        "magneticField": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "gps": [
-            0,
-            0
-        ],
-        "height": 0,
-        "velocity": 0.0,
-        "temprature": 14.1,
-        "humidity": 50
-    },
-    {
-<<<<<<< Updated upstream
-        "timestamp": 6090,
-        "angVelocity": [
-            30.81,
-            60.38,
-            -8.76
-        ],
-        "acceleration": [
-            -0.2634375,
-            0.3715234375,
-            0.1333203125
-=======
-        "timestamp": 2936,
-        "angVelocity": [
-            13.63,
-            51.75,
-            -12.73
-        ],
-        "acceleration": [
-            -0.271328125,
-            0.16578125,
-            0.30328125
->>>>>>> Stashed changes
-        ],
-        "magneticField": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "gps": [
-            0,
-            0
-        ],
-        "height": 0,
-        "velocity": 0.0,
-        "temprature": 14.1,
-        "humidity": 50
-    },
-    {
-<<<<<<< Updated upstream
-        "timestamp": 6363,
-        "angVelocity": [
-            47.16,
-            34.22,
-            -21.84
-        ],
-        "acceleration": [
-            -0.3390625,
-            0.3971484375,
-            0.0862890625
-=======
-        "timestamp": 3209,
-        "angVelocity": [
-            -6.67,
-            -6.4,
-            4.38
-        ],
-        "acceleration": [
-            -0.29421875,
-            0.183984375,
-            0.301328125
->>>>>>> Stashed changes
-        ],
-        "magneticField": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "gps": [
-            0,
-            0
-        ],
-        "height": 0,
-        "velocity": 0.0,
-        "temprature": 14.1,
-        "humidity": 50
-    },
-    {
-<<<<<<< Updated upstream
-        "timestamp": 6672,
-        "angVelocity": [
-            1.8,
-            18.71,
-            -24.76
-        ],
-        "acceleration": [
-            -0.287734375,
-            0.354140625,
-            0.038125
-=======
-        "timestamp": 3480,
-        "angVelocity": [
-            13.98,
-            26.64,
-            8.0
-        ],
-        "acceleration": [
-            -0.347734375,
-            0.2143359375,
-            0.2917578125
->>>>>>> Stashed changes
-        ],
-        "magneticField": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "gps": [
-            0,
-            0
-        ],
-        "height": 0,
-        "velocity": 0.0,
-        "temprature": 14.1,
-        "humidity": 50
-    },
-    {
-<<<<<<< Updated upstream
-        "timestamp": 6943,
-        "angVelocity": [
-            -2.29,
-            19.26,
-            -9.46
-        ],
-        "acceleration": [
-            -0.2365625,
-            0.322890625,
-            -0.007265625
-=======
-        "timestamp": 3752,
-        "angVelocity": [
-            -12.24,
-            11.68,
-            -4.03
-        ],
-        "acceleration": [
-            -0.3641015625,
-            0.27421875,
-            0.30734375
->>>>>>> Stashed changes
-        ],
-        "magneticField": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "gps": [
-            0,
-            0
-        ],
-        "height": 0,
-        "velocity": 0.0,
-        "temprature": 14.1,
-        "humidity": 50
-    },
-    {
-<<<<<<< Updated upstream
-        "timestamp": 7216,
-        "angVelocity": [
-            -2.71,
-            3.54,
-            -14.53
-        ],
-        "acceleration": [
-            -0.2347265625,
-            0.30453125,
-            -0.034375
-=======
-        "timestamp": 4024,
-        "angVelocity": [
-            -2.01,
-            18.57,
-            -2.15
-        ],
-        "acceleration": [
-            -0.333359375,
-            0.273984375,
-            0.3030078125
->>>>>>> Stashed changes
-        ],
-        "magneticField": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "gps": [
-            0,
-            0
-        ],
-        "height": 0,
-        "velocity": 0.0,
-        "temprature": 14.1,
-        "humidity": 50
-    },
-    {
-<<<<<<< Updated upstream
-=======
         "timestamp": 4512,
         "angVelocity": [
             -3.13,
@@ -1092,7 +494,6 @@
         "humidity": 50
     },
     {
->>>>>>> Stashed changes
         "timestamp": 7704,
         "angVelocity": [
             -0.06,
@@ -26869,20 +26270,12 @@
             0.108828125,
             -0.2474609375,
             0.40859375
-<<<<<<< Updated upstream
         ],
         "magneticField": [
->>>>>>> Stashed changes
             0.0,
             0.0,
             0.0
         ],
-<<<<<<< Updated upstream
-        "acceleration": [
-            -0.10125,
-            0.256640625,
-            -0.2976953125
-=======
         "gps": [
             25336354,
             55113044
@@ -26903,8 +26296,6 @@
             0.11015625,
             -0.26109375,
             0.403203125
-=======
->>>>>>> Stashed changes
         ],
         "magneticField": [
             0.0,
@@ -26916,16 +26307,11 @@
             55113044
         ],
         "height": 199,
-<<<<<<< Updated upstream
         "velocity": 0.24,
-=======
-        "velocity": 0.08,
->>>>>>> Stashed changes
         "temprature": 12.2,
         "humidity": 58
     },
     {
-<<<<<<< Updated upstream
         "timestamp": 396348,
         "angVelocity": [
             -0.55,
@@ -26936,19 +26322,6 @@
             0.112265625,
             -0.260078125,
             0.3958984375
->>>>>>> Stashed changes
-=======
-        "timestamp": 395857,
-        "angVelocity": [
-            25.73,
-            -10.85,
-            12.1
-        ],
-        "acceleration": [
-            0.11015625,
-            -0.26109375,
-            0.403203125
->>>>>>> Stashed changes
         ],
         "magneticField": [
             0.0,
@@ -26959,22 +26332,12 @@
             25336354,
             55113044
         ],
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        "height": 0,
-        "velocity": [
-=======
         "height": 199,
         "velocity": 0.08,
-=======
-        "height": 199,
-        "velocity": 0.24,
->>>>>>> Stashed changes
         "temprature": 12.2,
         "humidity": 58
     },
     {
-<<<<<<< Updated upstream
         "timestamp": 396620,
         "angVelocity": [
             12.17,
@@ -26987,19 +26350,10 @@
             0.39546875
         ],
         "magneticField": [
->>>>>>> Stashed changes
             0.0,
             0.0,
             0.0
         ],
-<<<<<<< Updated upstream
-        "temprature": 23.8,
-        "humidity": 27
-    },
-    {
-        "timestamp": 4520,
-        "angVelocity": [
-=======
         "gps": [
             25336354,
             55113044
@@ -27022,17 +26376,10 @@
             0.403359375
         ],
         "magneticField": [
->>>>>>> Stashed changes
             0.0,
             0.0,
             0.0
         ],
-<<<<<<< Updated upstream
-        "acceleration": [
-            -0.1165625,
-            0.2968359375,
-            -0.344296875
-=======
         "gps": [
             25336354,
             55113044
@@ -27053,19 +26400,6 @@
             0.1259765625,
             -0.2569140625,
             0.40890625
->>>>>>> Stashed changes
-=======
-        "timestamp": 396348,
-        "angVelocity": [
-            -0.55,
-            27.26,
-            -11.75
-        ],
-        "acceleration": [
-            0.112265625,
-            -0.260078125,
-            0.3958984375
->>>>>>> Stashed changes
         ],
         "magneticField": [
             0.0,
@@ -27076,22 +26410,12 @@
             25336354,
             55113044
         ],
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        "height": 0,
-        "velocity": [
-=======
         "height": 199,
         "velocity": 0.25,
-=======
-        "height": 199,
-        "velocity": 0.08,
->>>>>>> Stashed changes
         "temprature": 12.2,
         "humidity": 58
     },
     {
-<<<<<<< Updated upstream
         "timestamp": 397440,
         "angVelocity": [
             13.14,
@@ -27104,49 +26428,6 @@
             0.4162890625
         ],
         "magneticField": [
->>>>>>> Stashed changes
-            0.0,
-            0.0,
-            0.0
-        ],
-<<<<<<< Updated upstream
-        "temprature": 23.8,
-        "humidity": 27
-=======
-        "gps": [
-            25336354,
-            55113044
-        ],
-        "height": 199,
-        "velocity": 0.06,
-        "temprature": 12.2,
-        "humidity": 58
-    },
-    {
-        "timestamp": 397930,
-        "angVelocity": [
-            15.93,
-            39.51,
-            -8.13
-        ],
-        "acceleration": [
-            0.1073828125,
-            -0.2377734375,
-            0.4378515625
-=======
-        "timestamp": 396620,
-        "angVelocity": [
-            12.17,
-            19.75,
-            -17.46
-        ],
-        "acceleration": [
-            0.1371484375,
-            -0.272265625,
-            0.39546875
->>>>>>> Stashed changes
-        ],
-        "magneticField": [
             0.0,
             0.0,
             0.0
@@ -27156,137 +26437,6 @@
             55113044
         ],
         "height": 199,
-<<<<<<< Updated upstream
-        "velocity": 0.13,
-=======
-        "velocity": 0.14,
->>>>>>> Stashed changes
-        "temprature": 12.2,
-        "humidity": 58
-    },
-    {
-<<<<<<< Updated upstream
-        "timestamp": 398201,
-        "angVelocity": [
-            186.64,
-            12.86,
-            -66.01
-        ],
-        "acceleration": [
-            0.086875,
-            -0.15234375,
-            0.454140625
-=======
-        "timestamp": 396894,
-        "angVelocity": [
-            5.49,
-            21.77,
-            -17.04
-        ],
-        "acceleration": [
-            0.1616015625,
-            -0.2866796875,
-            0.403359375
->>>>>>> Stashed changes
-        ],
-        "magneticField": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "gps": [
-            25336354,
-            55113044
-        ],
-        "height": 199,
-<<<<<<< Updated upstream
-        "velocity": 0.1,
-=======
-        "velocity": 0.08,
->>>>>>> Stashed changes
-        "temprature": 12.2,
-        "humidity": 58
-    },
-    {
-<<<<<<< Updated upstream
-        "timestamp": 398476,
-        "angVelocity": [
-            -41.25,
-            13.21,
-            -136.41
-        ],
-        "acceleration": [
-            0.12171875,
-            -0.0292578125,
-            0.45734375
-=======
-        "timestamp": 397166,
-        "angVelocity": [
-            -6.4,
-            31.02,
-            -17.11
-        ],
-        "acceleration": [
-            0.1259765625,
-            -0.2569140625,
-            0.40890625
->>>>>>> Stashed changes
-        ],
-        "magneticField": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "gps": [
-            25336354,
-            55113044
-        ],
-        "height": 199,
-<<<<<<< Updated upstream
-        "velocity": 0.46,
-=======
-        "velocity": 0.25,
->>>>>>> Stashed changes
-        "temprature": 12.2,
-        "humidity": 58
-    },
-    {
-<<<<<<< Updated upstream
-        "timestamp": 398748,
-        "angVelocity": [
-            -7.58,
-            2.99,
-            -18.36
-        ],
-        "acceleration": [
-            0.0558984375,
-            -0.028671875,
-            0.4548828125
-=======
-        "timestamp": 397440,
-        "angVelocity": [
-            13.14,
-            14.26,
-            -11.89
-        ],
-        "acceleration": [
-            0.1467578125,
-            -0.2794140625,
-            0.4162890625
->>>>>>> Stashed changes
-        ],
-        "magneticField": [
-            0.0,
-            0.0,
-            0.0
-        ],
-        "gps": [
-            25336354,
-            55113044
-        ],
-        "height": 199,
-<<<<<<< Updated upstream
-=======
         "velocity": 0.06,
         "temprature": 12.2,
         "humidity": 58
@@ -27391,7 +26541,6 @@
             55113044
         ],
         "height": 199,
->>>>>>> Stashed changes
         "velocity": 0.39,
         "temprature": 12.5,
         "humidity": 58
@@ -27707,10 +26856,5 @@
         "velocity": 0.09,
         "temprature": 12.6,
         "humidity": 58
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     }
 ]
->>>>>>> Stashed changes
