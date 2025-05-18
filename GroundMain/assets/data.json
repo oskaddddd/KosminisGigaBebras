@@ -14435,10 +14435,10 @@
             0.0
         ],
         "gps": [
-            30,
+            70,
             30
         ],
-        "height": 0,
+        "height": 30,
         "velocity": 0.0,
         "temprature": 29.1,
         "humidity": 95,
@@ -14465,7 +14465,7 @@
             20,
             20
         ],
-        "height": 0,
+        "height": 20,
         "velocity": 0.0,
         "temprature": 29.1,
         "humidity": 95,
@@ -14492,7 +14492,7 @@
             10,
             10
         ],
-        "height": 0,
+        "height": 60,
         "velocity": 0.0,
         "temprature": 29.1,
         "humidity": 95,

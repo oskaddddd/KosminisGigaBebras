@@ -20,7 +20,7 @@ import logging
 import time
 import json
 
-from gradient import gradient
+
 
 
 
@@ -46,29 +46,21 @@ with open("./GroundMain/assets/gradient.json", 'r') as f:
 
 
 class pollutionLegendWidget(pg.GraphicsLayoutWidget):
-    def __init__(self, cmap, minVal = 0, maxVal = 1, parent = None):
+    def __init__(self, parent = None):
         super().__init__(parent)
-
-        self.img = pg.ImageItem()
-
-        # Define color map and set levels
-        cmap = pg.colormap.get('viridis')  # or 'plasma', 'inferno', etc.
-        self.img.setLookupTable(cmap.getLookupTable(0.0, 1.0, 256))
-        self.img.setLevels([minVal, maxVal])  # map color range to data range
-        
         self.color_bar = pg.ColorBarItem(
-            values=(minVal, maxVal), 
-            colorMap = cmap,
-            interactive=False
+            values=(0, 69), 
+            interactive=False,
+            label="ppm"
         )
-        # Create an ImageItem with a color map
-        #color_bar.setImageItem(img, insert_in=self)
+
         self.addItem(self.color_bar)
+    
+    def updateLegend(self, maxVal, cmap:pg.colormap):
+        self.color_bar.values =(0, maxVal)
+        self.color_bar.setColorMap(cmap)
+        self.color_bar.interactive=False
         
-    def SetMaxMin(self, min = None, max = None):
-        self.color_bar.setData(values = (
-            [min, self.maxMin[0]][min == None],\
-            [max, self.maxMin[1]][max == None]))
 
         
 
@@ -199,7 +191,7 @@ class gpsWidget(gl.GLViewWidget):
         grid.setSpacing(1, 1)
         self.addItem(grid)
         
-        self.plot = gl.GLLinePlotItem(antialias = False, color = (255, 255, 255, 255), mode = 'line_strip')
+        self.plot = gl.GLLinePlotItem(antialias = True, color = (255, 255, 255, 255), mode = 'line_strip')
         self.markerDot = gl.GLScatterPlotItem(pos = np.array([[0, 0, 0]]), size = 10, color = (255, 0, 0, 255))
         #self.markerDot.setData(pos = [[0, 0, 0]], size = 1, color = 'r')
 
@@ -289,8 +281,7 @@ class MainWindow(QMainWindow):
         #self.debugPlotDebug = [0]
         self.pens = [pg.mkPen(color = "w"), pg.mkPen(color = 'r'), pg.mkPen(color = 'b')]
         
-        self.pollution_gradient = gradient((0, 1), gradient_data)
-        self.pollution_cmap = pg.colormap.get("virdis")
+        self.pollution_cmap = pg.ColorMap([0, 0.4,  1], [(0, 255, 0), (255, 255, 0), (255, 0, 0)])
         
         #Initialise the serialMonitor Class responsible for managing incoming data
         self.serial = SerialMonitor()
@@ -321,6 +312,7 @@ class MainWindow(QMainWindow):
         #If data was not cleared, display it
         if len(DataManager.dictData) != 0:
             self.updateData("data")
+            self.updateData("debug")
         
         self.ui.timeSlider.timeUpdated.connect(self.updateGraphMarkers)
         
@@ -356,15 +348,14 @@ class MainWindow(QMainWindow):
         
         gps = DataManager.extraxtData("gps", np.float32)
         
-        pollution = DataManager.extraxtData("pollution", np.uint16)[:-self.valid_gps_index+1]
+        pollution = DataManager.extraxtData("pollution", np.float32)[:-self.valid_gps_index+1]
         
-        maxPollutionVal = max(pollution)
-        
-        self.pollution_gradient.SetMaxMin(max = maxPollutionVal)
-        colors = np.array(list(map(lambda d: self.pollution_gradient.GetColorAtPoint(d), pollution)), np.float32)
-        self.ui.pollutionLegend.SetMaxMin(maxVal = maxPollutionVal)
-        
-        print("hello", colors, self.pollution_gradient.GetColorAtPoint(pollution[0]))
+        maxPollutionVal = pollution.max()
+
+        colors = self.pollution_cmap.map(pollution/maxPollutionVal)/255
+        print(colors)
+        self.ui.pollutionLegend.updateLegend(maxPollutionVal, self.pollution_cmap)
+
         
 
         #Ignore the invalid gps data
@@ -392,7 +383,7 @@ class MainWindow(QMainWindow):
             result[:, 2] /= 10
 
             #Plot the data
-            self.ui.locationPlot.plot.setData(pos = result, color = colors, width = 2.0)
+            self.ui.locationPlot.plot.setData(pos = result, color = colors, width = 4.0)
             
     def updateDebugPlot(self, newPackets = 0):
                 
