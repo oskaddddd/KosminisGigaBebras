@@ -1,4 +1,5 @@
 from PyQt6.QtWidgets import *
+from PyQt6.QtGui import QPainter, QLinearGradient, QBrush, QPixmap ,QColor, QFont
 from PyQt6 import uic
 from PyQt6.QtCore import QThread, pyqtSignal
 from PyQt6.QtGui import QVector3D
@@ -17,6 +18,11 @@ import dataAPI
 import logging
 
 import time
+import json
+
+from gradient import gradient
+
+
 
 
 logging.basicConfig(level=logging.DEBUG)
@@ -29,8 +35,46 @@ canID = 0xff
 fullID = bytes([byte for byte in startBytes]+[canID])
 
 DataManager = dataAPI.DataMain(startBytes, canID)
+
+
+#Read the gradient data from json
+gradient_data = []
+with open("./GroundMain/assets/gradient.json", 'r') as f:
+    gradient_data = json.load(f)
+    
 #print("Hello")
 
+
+class pollutionLegendWidget(pg.GraphicsLayoutWidget):
+    def __init__(self, cmap, minVal = 0, maxVal = 1, parent = None):
+        super().__init__(parent)
+
+        self.img = pg.ImageItem()
+
+        # Define color map and set levels
+        cmap = pg.colormap.get('viridis')  # or 'plasma', 'inferno', etc.
+        self.img.setLookupTable(cmap.getLookupTable(0.0, 1.0, 256))
+        self.img.setLevels([minVal, maxVal])  # map color range to data range
+        
+        self.color_bar = pg.ColorBarItem(
+            values=(minVal, maxVal), 
+            colorMap = cmap,
+            interactive=False
+        )
+        # Create an ImageItem with a color map
+        #color_bar.setImageItem(img, insert_in=self)
+        self.addItem(self.color_bar)
+        
+    def SetMaxMin(self, min = None, max = None):
+        self.color_bar.setData(values = (
+            [min, self.maxMin[0]][min == None],\
+            [max, self.maxMin[1]][max == None]))
+
+        
+
+        
+
+    
 #2D plot widget
 class dataPlotWidget(PlotWidget):
     
@@ -46,8 +90,19 @@ class dataPlotWidget(PlotWidget):
         self.markerLine = pg.InfiniteLine(pos=0, pen = pg.mkPen('r'))
         self.addItem(self.markerLine)
         
+        self.setLabel("bottom", "seconds")
         
         #self.marker.__init__()
+    def setAxis(self, dataName, axis = "left"):
+        table = {"height": "m",
+                 "pollution": "ppm",
+                 "wind": "m/s",
+                 "velocity": "m/s",
+                 "magneticField":"no idea",
+                 "acceleration":"G",
+                 "humidity":"%",
+                 "temprature":"°C"}
+        self.setLabel(axis, table[dataName])
     def marker(self, x):
         self.markerLine.setPos(x)
         #self.plotItem.addLine(x = x, y=None,  pen=pg.mkPen('r', width=1))
@@ -234,8 +289,9 @@ class MainWindow(QMainWindow):
         #self.debugPlotDebug = [0]
         self.pens = [pg.mkPen(color = "w"), pg.mkPen(color = 'r'), pg.mkPen(color = 'b')]
         
+        self.pollution_gradient = gradient((0, 1), gradient_data)
+        self.pollution_cmap = pg.colormap.get("virdis")
         
-
         #Initialise the serialMonitor Class responsible for managing incoming data
         self.serial = SerialMonitor()
         self.serial.update_signal.connect(self.updateData)
@@ -245,7 +301,7 @@ class MainWindow(QMainWindow):
         self.dataType = "height"
         
         #self.ui.debugPlot.curve.pen = self.pens[1]
-        #self.ui.debugPlot.curve1.pen = self.pens[2]
+        self.ui.debugPlot.setLabel("left", "packets")
         
         self.valid_gps_index = 0
         for i in range(1, len(DataManager.DataBase)):
@@ -300,6 +356,17 @@ class MainWindow(QMainWindow):
         
         gps = DataManager.extraxtData("gps", np.float32)
         
+        pollution = DataManager.extraxtData("pollution", np.uint16)[:-self.valid_gps_index+1]
+        
+        maxPollutionVal = max(pollution)
+        
+        self.pollution_gradient.SetMaxMin(max = maxPollutionVal)
+        colors = np.array(list(map(lambda d: self.pollution_gradient.GetColorAtPoint(d), pollution)), np.float32)
+        self.ui.pollutionLegend.SetMaxMin(maxVal = maxPollutionVal)
+        
+        print("hello", colors, self.pollution_gradient.GetColorAtPoint(pollution[0]))
+        
+
         #Ignore the invalid gps data
         if len(gps) != 0 and gps[0][0] == 0:
             self.valid_gps_index = len(gps)-1
@@ -325,7 +392,8 @@ class MainWindow(QMainWindow):
             result[:, 2] /= 10
 
             #Plot the data
-            self.ui.locationPlot.plot.setData(pos = result)
+            self.ui.locationPlot.plot.setData(pos = result, color = colors, width = 2.0)
+            
     def updateDebugPlot(self, newPackets = 0):
                 
         #Calculate the local time (Since start of program)
@@ -351,12 +419,12 @@ class MainWindow(QMainWindow):
             #Eecieved a data packet
             case "data":
                 
-                #Update the gps plot
-                self.updateGpsPlot()
+                
                 
                 #Update the entire timeline (x axis of graphs displaying CanSat data)
                 self.timeline = DataManager.extraxtData("timestamp")[:]/1000
                 
+                self.ui.dataPlot.setAxis(self.dataType)
                 #Clear the data plot and draw a new graph with the updated data
                 if self.dataType in ["acceleration", "magneticField"]:
                     #dat = DataManager.extraxtData(self.dataType, np.float32)
@@ -371,6 +439,8 @@ class MainWindow(QMainWindow):
                         y = DataManager.extraxtData(self.dataType))
                 #self.ui.dataPlot.curve.setData(x = self.timeline, y = DataManager.extraxtData(self.dataType))
                 
+                #Update the gps plot
+                self.updateGpsPlot()
             
             #Recieved a debug packet 
             case "debug":
@@ -386,7 +456,7 @@ class MainWindow(QMainWindow):
                 self.ui.dhtCheckbox.setChecked( DataManager.DebugData[0]["dht"])
                 self.ui.gpsCheckbox.setChecked( DataManager.DebugData[0]["gps"])
                 self.ui.sdCheckbox.setChecked(DataManager.DebugData[0]["sd"])
-                self.ui.co2Checkbox.setChecked(DataManager.DebugData[0]["co2"])
+                self.ui.mqCheckbox.setChecked(DataManager.DebugData[0]["mq"])
                 
             
         #Plot the {packets per second} graphs
@@ -398,6 +468,8 @@ class MainWindow(QMainWindow):
     #Fucntion handling the change of the data type selection dropdown
     def dataDropboxChenged(self, text):
         self.dataType = text
+        self.ui.dataPlot.setAxis(self.dataType)
+
         match text:
             case "acceleration" | "magneticField":
                 #dat = DataManager.extraxtData(self.dataType, np.float32)
@@ -405,7 +477,7 @@ class MainWindow(QMainWindow):
                 #print("dat", dat, "\nmag:", magnitudes)
                 self.ui.dataPlot.curve.setData(\
                     x = self.timeline,\
-                    y = np.linalg.norm(DataManager.extraxtData(self.dataType, np.float32), axis=1)\
+                    y = np.linalg.norm(DataManager.extraxtData(self.dataType, np.float32), axis=1)*2\
                 )
             
             case "wind":

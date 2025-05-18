@@ -132,7 +132,7 @@ DebugPayload debug;
 
 //Setup the dht11
 #define DHT_SENSOR_TYPE DHT_TYPE_11
-static const int DHT_SENSOR_PIN = 6;
+static const int DHT_SENSOR_PIN = 2;
 DHT_Async dht_sensor(DHT_SENSOR_PIN, DHT_SENSOR_TYPE);
 
 #define PIN_MQ135 A0
@@ -142,6 +142,8 @@ MQ135 CO2_sensor(PIN_MQ135);
 
 
 const int photores_pin = A6;  
+const uint8_t speaker_pin = 8;
+
 
 TinyGPSPlus gps;
 GY_85 GY85;
@@ -184,6 +186,7 @@ void setup() {
     
     
   }
+  tone(speaker_pin, 200);
 }
 
 
@@ -253,7 +256,7 @@ void readSensors() {
   data.angVelocity[1] = GY85.gyro_y(gyroReadings)*100;
   data.angVelocity[2] = GY85.gyro_z(gyroReadings)*100;
 
-  data.co2 = CO2_sensor.getCorrectedPPM(data.temperature, data.humidity);
+  data.co2 = CO2_sensor.getCorrectedPPM(data.temperature/100, data.humidity);
 
   //Set the gy85 as working int he debug packet
   debug.setSensorStatus("gy", true);
@@ -336,7 +339,7 @@ void BuildPacket(uint8_t type){
 //Send the packet
 void SendPacket(){
   //Transmit the packet
-  if (debug.photoresistor > 100){
+  if (debug.photoresistor > 100 || debug.photoresistor == 0){
     if (Serial.availableForWrite() >= packetLength){
       Serial.write(Packet, packetLength);
 

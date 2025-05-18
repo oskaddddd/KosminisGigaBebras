@@ -35,6 +35,16 @@
     <item row="0" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
+       <widget class="pollutionLegendWidget" name="pollutionLegend" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="gpsWidget" name="locationPlot" native="true">
@@ -87,6 +97,19 @@
              </widget>
             </item>
             <item>
+             <widget class="QCheckBox" name="mqCheckbox">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LayoutDirection::RightToLeft</enum>
+              </property>
+              <property name="text">
+               <string>MQ135</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QCheckBox" name="gpsCheckbox">
               <property name="enabled">
                <bool>false</bool>
@@ -109,19 +132,6 @@
               </property>
               <property name="text">
                <string>SD </string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="co2Checkbox">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="layoutDirection">
-               <enum>Qt::LayoutDirection::RightToLeft</enum>
-              </property>
-              <property name="text">
-               <string>CO2</string>
               </property>
              </widget>
             </item>
@@ -179,7 +189,7 @@
           </item>
           <item>
            <property name="text">
-            <string>co2</string>
+            <string>pollution</string>
            </property>
           </item>
           <item>
@@ -256,6 +266,12 @@
    <class>timeSlider</class>
    <extends>QSlider</extends>
    <header>mainGUI</header>
+  </customwidget>
+  <customwidget>
+   <class>pollutionLegendWidget</class>
+   <extends>QWidget</extends>
+   <header>mainGUI</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <tabstops>
