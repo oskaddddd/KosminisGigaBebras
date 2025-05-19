@@ -18,8 +18,9 @@ import dataAPI
 import logging
 
 import time
-import json
+import json 
 
+from math import tan
 
 
 
@@ -113,7 +114,7 @@ class SliderManager():
             self.time = DataManager.DataBase[0]["timestamp"]
             self.timeRange = DataManager.DataBase[0]["timestamp"] - DataManager.DataBase[-1]["timestamp"]
         
-        
+        self.index = 0
         self.slider = slider
         self.slider.valueChanged.connect(self.updateSliderVal)
         self.slider.setMaximum(len(DataManager.DataBase))
@@ -172,11 +173,11 @@ class SliderManager():
             return
         
         expectedTime = (self.timeRange*value/self.slider.maximum()) + DataManager.DataBase[-1]["timestamp"]
-        index = DataManager.DataBase.bisect_left({"timestamp":expectedTime })
+        self.index = DataManager.DataBase.bisect_left({"timestamp":expectedTime })
         
-        self.time = DataManager.DataBase[index]["timestamp"]
-        logging.debug(f"ratio:{value/self.slider.maximum()}\n-timerange:{self.timeRange}\n-expectedTime:{expectedTime}\n-TIME:{self.time}\n-Index:{index}\n-RangeLen:{len(DataManager.DataBase)}")
-        self.slider.timeUpdated.emit(index)
+        self.time = DataManager.DataBase[self.index]["timestamp"]
+        logging.debug(f"ratio:{value/self.slider.maximum()}\n-timerange:{self.timeRange}\n-expectedTime:{expectedTime}\n-TIME:{self.time}\n-Index:{self.index}\n-RangeLen:{len(DataManager.DataBase)}")
+        self.slider.timeUpdated.emit(self.index)
         
     
         
@@ -190,6 +191,9 @@ class gpsWidget(gl.GLViewWidget):
         grid.setSize(800, 800)
         grid.setSpacing(1, 1)
         self.addItem(grid)
+        
+        self.wind = gl.GLLinePlotItem(color = (0, 0, 255, 255), mode = "lines")
+        self.addItem(self.wind)
         
         self.plot = gl.GLLinePlotItem(antialias = True, color = (255, 255, 255, 255), mode = 'line_strip')
         self.markerDot = gl.GLScatterPlotItem(pos = np.array([[0, 0, 0]]), size = 10, color = (255, 0, 0, 255))
@@ -348,14 +352,19 @@ class MainWindow(QMainWindow):
         
         gps = DataManager.extraxtData("gps", np.float32)
         
-        pollution = DataManager.extraxtData("pollution", np.float32)[:-self.valid_gps_index+1]
         
-        maxPollutionVal = pollution.max()
+        #Calculate polluton colors
+        pollution = DataManager.extraxtData("pollution", np.float32)[:-self.valid_gps_index+1]
+        maxPollutionVal = 1
+        if len(pollution) != 0:
+            maxPollutionVal = pollution.max()
 
         colors = self.pollution_cmap.map(pollution/maxPollutionVal)/255
         print(colors)
         self.ui.pollutionLegend.updateLegend(maxPollutionVal, self.pollution_cmap)
 
+        
+        
         
 
         #Ignore the invalid gps data
@@ -385,6 +394,23 @@ class MainWindow(QMainWindow):
             #Plot the data
             self.ui.locationPlot.plot.setData(pos = result, color = colors, width = 4.0)
             
+        #Calculate wind 
+        arrowLength = 1
+        deltaTimes = self.timeline[self.valid_gps_index:]+self.timeline[self.valid_gps_index-1:-1]
+        
+        gpsDifference = gps[0:-self.valid_gps_index] - gps[1:-self.valid_gps_index+1]
+        gpsDifference = gpsDifference[:, :]/(deltaTimes[:, np.newaxis]/0.11/arrowLength)
+        
+        wind_data = np.empty(((result.shape[0]-1)*2, 3))
+        wind_data[0::2] = result[1:]
+        wind_data[1::2] = result[1:]
+        wind_data[1::2, :2] += gpsDifference
+        
+        print(gpsDifference)
+        
+        self.ui.locationPlot.wind.setData(pos = wind_data)
+        self.updateGraphMarkers(self.sliderManager.index)
+            
     def updateDebugPlot(self, newPackets = 0):
                 
         #Calculate the local time (Since start of program)
@@ -409,29 +435,48 @@ class MainWindow(QMainWindow):
             
             #Eecieved a data packet
             case "data":
+                self.timeline = DataManager.extraxtData("timestamp")[:]/1000
                 
+                
+                match self.dataType:
+                    case "acceleration" | "magneticField":
+                        #dat = DataManager.extraxtData(self.dataType, np.float32)
+                        #magnitudes = np.linalg.norm(dat, axis=1)
+                        #print("dat", dat, "\nmag:", magnitudes)
+                        self.ui.dataPlot.curve.setData(\
+                            x = self.timeline,\
+                            y = np.linalg.norm(DataManager.extraxtData(self.dataType, np.float32), axis=1)*2\
+                        )
+
+                    case "wind":
+                        gpsData = DataManager.extraxtData("gps", np.float32)
+                        print(gpsData[:-self.valid_gps_index].shape, gpsData[:-self.valid_gps_index+1].shape)
+                        deltaTimes = self.timeline[self.valid_gps_index:]+self.timeline[self.valid_gps_index-1:-1]
+
+                        gpsDifference = gpsData[0:-self.valid_gps_index] - gpsData[1:-self.valid_gps_index+1]
+
+                        print(gpsDifference)
+                        self.ui.dataPlot.curve.setData(\
+                            x = self.timeline[:-self.valid_gps_index],\
+                            y = (np.linalg.norm(gpsDifference, axis=1)*0.11)/deltaTimes\
+                        )
+
+                    case _:
+                        self.ui.dataPlot.curve.setData(\
+                            x = self.timeline, \
+                            y = DataManager.extraxtData(self.dataType, np.float32)\
+                        )
+
                 
                 
                 #Update the entire timeline (x axis of graphs displaying CanSat data)
-                self.timeline = DataManager.extraxtData("timestamp")[:]/1000
-                
-                self.ui.dataPlot.setAxis(self.dataType)
+    
+    
                 #Clear the data plot and draw a new graph with the updated data
-                if self.dataType in ["acceleration", "magneticField"]:
-                    #dat = DataManager.extraxtData(self.dataType, np.float32)
-                    #magnitudes = np.linalg.norm(dat, axis=1)
-                    #print("dat", dat, "\nmag:", magnitudes)
-                    self.ui.dataPlot.curve.setData(\
-                        x = self.timeline,\
-                        y = np.linalg.norm(DataManager.extraxtData(self.dataType, np.float32), axis=1))
-                else:
-                    self.ui.dataPlot.curve.setData(\
-                        x = self.timeline, \
-                        y = DataManager.extraxtData(self.dataType))
-                #self.ui.dataPlot.curve.setData(x = self.timeline, y = DataManager.extraxtData(self.dataType))
                 
                 #Update the gps plot
                 self.updateGpsPlot()
+                
             
             #Recieved a debug packet 
             case "debug":
@@ -454,45 +499,18 @@ class MainWindow(QMainWindow):
         #self.ui.debugPlot.curve1.setData(x = list(range(tStamp+1)), y = self.debugPlotDebug, pen = self.pens[0])
         #self.ui.debugPlot.plot(list(range(tStamp+1)), self.debugPlotDebug, pen = self.pens[1])
         #self.ui.debugPlot.marker(self.ui.timeSlider.time/1000)
-        
+    
         
     #Fucntion handling the change of the data type selection dropdown
     def dataDropboxChenged(self, text):
         self.dataType = text
         self.ui.dataPlot.setAxis(self.dataType)
+        self.updateData("data")
 
-        match text:
-            case "acceleration" | "magneticField":
-                #dat = DataManager.extraxtData(self.dataType, np.float32)
-                #magnitudes = np.linalg.norm(dat, axis=1)
-                #print("dat", dat, "\nmag:", magnitudes)
-                self.ui.dataPlot.curve.setData(\
-                    x = self.timeline,\
-                    y = np.linalg.norm(DataManager.extraxtData(self.dataType, np.float32), axis=1)*2\
-                )
-            
-            case "wind":
-                gpsData = DataManager.extraxtData("gps", np.float32)
-                print(gpsData[:-self.valid_gps_index].shape, gpsData[:-self.valid_gps_index+1].shape)
-                deltaTimes = self.timeline[self.valid_gps_index:]+self.timeline[self.valid_gps_index-1:-1]
-                
-                gpsDifference = gpsData[0:-self.valid_gps_index] - gpsData[1:-self.valid_gps_index+1]
-                
-                print(gpsDifference)
-                self.ui.dataPlot.curve.setData(\
-                    x = self.timeline[:-self.valid_gps_index],\
-                    y = (np.linalg.norm(gpsDifference, axis=1)*0.11)/deltaTimes\
-                )
-            
-            case _:
-                self.ui.dataPlot.curve.setData(\
-                    x = self.timeline, \
-                    y = DataManager.extraxtData(self.dataType, np.float32)\
-                )
-            
         self.ui.dataPlot.centerOn(self.ui.dataPlot.curve)
         self.ui.dataPlot.plotItem.enableAutoRange('xy', True)
         self.ui.dataPlot.plotItem.autoRange()
+        
         
 
 if __name__ == "__main__":
