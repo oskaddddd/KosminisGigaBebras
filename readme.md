@@ -1,8 +1,15 @@
+# About
+This was a CanSat project developped by a team of students in VGTU inžinerijos licėjus.
+![2025-05-19-21-49-26-340](https://github.com/user-attachments/assets/70e8b574-33f2-4834-ae80-0daaec59d9a9)
+![Uploading Screenshot from 2025-12-03 14-14-43.png…]()
+
+
 # Packet structure
 
 The packet is sent in byte form.
 
 ## Header
+
 
 The header is used to identify what kind of packet this is and to know the time that it was sent.
 
